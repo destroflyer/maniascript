@@ -45,7 +45,7 @@ export default {
       ]
     },
     editLink: {
-      pattern: 'https://github.com/destroflyer/maniascript/master/docs/:path',
+      pattern: 'https://github.com/destroflyer/maniascript/blob/master/docs/:path',
       text: 'Edit this page on GitHub'
     },
     socialLinks: [
