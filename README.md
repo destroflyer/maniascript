@@ -1,2 +1,2 @@
-# maniascript
-A documentation about Maniascript/Manialinks of Nadeos game Trackmania.
+# ManiaScript
+A documentation about ManiaScript, a scripting language made by Ubisoft Nadeo for their games.
