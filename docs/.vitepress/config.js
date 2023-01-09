@@ -43,7 +43,7 @@ export default {
             { text: "Aliases", link: "/advanced/aliases.md" },
             { text: "Constants", link: "/advanced/constants.md" },
             { text: "Debugger", link: "/advanced/debugger.md" },
-            { text: "Extension variables", link: "/advanced/extension_variables.md" },
+            { text: "Extension properties", link: "/advanced/extension_properties.md" },
             { text: "Network", link: "/advanced/network.md" },
             { text: "Logs", link: "/advanced/logs.md" },
             { text: "Persistence", link: "/advanced/persistence.md" },
