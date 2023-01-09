@@ -32,14 +32,22 @@ export default {
             { text: "Variables", link: "/basics/variables.md" },
             { text: "Types", link: "/basics/types.md" },
             { text: "Functions", link: "/basics/functions.md" },
-            { text: "Control Flow", link: "/basics/control_flow.md" },
-            { text: "Keywords", link: "/basics/keywords.md" },
+            { text: "Control Structures", link: "/basics/control_structures.md" },
           ],
         },
         {
           text: "Advanced",
           items: [
-            { text: "Context", link: "/advanced/context.md" },
+            { text: "Contexts", link: "/advanced/contexts.md" },
+            { text: "Labels", link: "/advanced/labels.md" },
+            { text: "Aliases", link: "/advanced/aliases.md" },
+            { text: "Constants", link: "/advanced/constants.md" },
+            { text: "Debugger", link: "/advanced/debugger.md" },
+            { text: "Extension variables", link: "/advanced/extension_variables.md" },
+            { text: "Network", link: "/advanced/network.md" },
+            { text: "Logs", link: "/advanced/logs.md" },
+            { text: "Persistence", link: "/advanced/persistence.md" },
+            { text: "Translations", link: "/advanced/translations.md" },
           ],
         },
       ]
@@ -50,10 +58,10 @@ export default {
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/destroflyer/maniascript' },
-      { icon: 'discord', link: 'https://discord.gg/BzDg4W78Na' }
+      { icon: 'discord', link: 'https://discord.gg/BzDg4W78Na' },
     ],
     footer: {
-      message: 'Made with ❤️ by destroflyer'
+      message: 'Made with ❤️ by destroflyer',
     },
   },
 };

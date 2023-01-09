@@ -23,3 +23,7 @@ In this case, you can also omit the type as it will be resolved automatically ba
 declare MyNumber = 42;
 ```
 
+## Scope
+ManiaScript variables are local, meaning they only exist in the scope that they were declared in (e.g. the currently executed function or loop body). The outermost scope (containing directives and functions) is called the global scope and variables declared in it are called global variables as they are therefore accessible throughout the entire program.
+
+In the global scope, variables can't be declared with an initial value. Thus, an explicit type is mandatory.

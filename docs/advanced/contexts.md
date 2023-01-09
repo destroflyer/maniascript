@@ -1,4 +1,4 @@
-# Context
+# Contexts
 Each ManiaScript runs in a specific context, which can be various engine classes, like `CMlScriptIngame` or `CMapeditorPlugin`. These classes you can find in the api docs mentioned above.
 The class methods and properites then apply from there.
 
