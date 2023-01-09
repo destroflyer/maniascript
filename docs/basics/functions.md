@@ -1,6 +1,6 @@
 # Functions
 
-# Declaration
+## Declaration
 Functions always have a name, a list of zero or more arguments (each specifying type and name) and a return type. A value can be returned using the `return` keyword.
 
 ```ManiaScript

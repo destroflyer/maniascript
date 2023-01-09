@@ -48,23 +48,6 @@ A `Real` is a real number between 1e-45 and 1e+38. Default value is `0.0`. Compa
 
 `Real` values always need to be written with a `.` character (`3.141592`). In case of the number ending with `.0`, the `0` can be omitted (`-1.`).
 
-## Vectors
-ManiaScript offers a few numeric vector types, which represent an object containing multiple numbers. Default values are the default value of the corresponding numeric type.
-
-| Type      | Description                               | Example           |
-|:----------|:------------------------------------------|:------------------|
-| `Int2`    | Two-dimensional vector, using `Integer`   | `<1, 2>`          |
-| `Int3`    | Three-dimensional vector, using `Integer` | `<255, 128, 0>`   |
-| `Vec2`    | Two-dimensional vector, using `Real`      | `<1., -.5>`       |
-| `Vec3`    | Three-dimensional vector, using `Real`    | `<.5, -1.2, -0.>` |
-
-The values can be accessed via the properties `X`, `Y` and `Z` (if three-dimensional):
-```ManiaScript
-A = <1, 2>;
-B = <3.4, 0, -5>;
-C = A.X + A.Y + B.Z;
-```
-
 ## Text
 A `Text` is a string of characters and is defined via quotes `"`. Default value is empty `""`.
 ```ManiaScript
@@ -163,45 +146,60 @@ Associative array methods:
 | `sortkey()`            | ValueType[] | Sorts keys ascending                                                   |
 | `sortkeyreverse()`     | ValueType[] | Sorts keys descending                                                  |
 
+## Vectors
+ManiaScript offers a few numeric vector types, which represent a container including multiple numbers. Default values are the default value of the corresponding numeric type.
+
+| Type      | Description                               | Example           |
+|:----------|:------------------------------------------|:------------------|
+| `Int2`    | Two-dimensional vector, using `Integer`   | `<1, 2>`          |
+| `Int3`    | Three-dimensional vector, using `Integer` | `<255, 128, 0>`   |
+| `Vec2`    | Two-dimensional vector, using `Real`      | `<1., -.5>`       |
+| `Vec3`    | Three-dimensional vector, using `Real`    | `<.5, -1.2, -0.>` |
+
+The values can either be accessed via the properties `X`, `Y` and `Z` (if three-dimensional) or via array indices `0`, `1` and `2` (if three-dimensional):
+
+```ManiaScript
+A = <1, 2>;
+B = <3.4, 0, -5>;
+
+C = A.X + A.Y + B.Z;
+C = A[0] + A[1] + B[2];
+```
+
 ## Structs
+A struct is a data object containing multiple variables. It can be seen as a tool to group data (making the code both more readable and reusable). Declaring the definition of a struct type can be done via `#Struct` and only in the global scope:
+
 ```ManiaScript
 #Struct MyStruct {
-  Integer MyMember;
-  Text MyTextMember;
-}
-
-main() {
-  // declare empty struct
-  declare MyStruct MyVar;
-  // declare struct with constructor
-  declare MyStruct2 MyVar = MyStruct{MyMember = 1, MyTextMember = "Example"};
-  log(MyVar.MyMember); //Output : 0
-
-  MyVar.MyMember = 1;
-  log(MyVar.MyMember); //Output : 1
-
-  declare MyStruct MyCopy = MyVar;
-  log(MyCopy.MyMember); //Output : 1
-
-  MyVar.MyMember = MyVar.MyMember + 1;
-
-  log(MyVar.MyMember); //Output : 2
-  log(MyCopy.MyMember); //Output : 1
+  Integer MyNumber;
+  Text MyText;
 }
 ```
 
-## Void
-`Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.
+At this point, you will only have defined what this specific struct type looks like. To create a variables of this type, you need to declare it as you would do with any other type. A complete struct is expressed by specifying the struct name, curly braces `{}` and (not mandatory) property name and value pairs. Omitting a property inside the curly braces will assign the default value of its type to it.
 
-## Classes
-While classes do exist in ManiaScript and can be used, there is no way to create custom classes.
+```ManiaScript
+declare MyStruct MyDefaultValues = MyStruct{};
+declare MyStruct MyCustomValues = MyStruct{ MyNumber = 1, MyText = "Example" };
+```
 
-Naming convention:
-- An instance of a class type is called an object
-- A variable inside an object is called a property
-- A function inside an object is called a method
+Of course, it's also possible to set the whole struct or access single properties via `.` at a later point:
 
-When a variable of a class type does not have an instance assigned to it, its value is `Null`.
+```ManiaScript
+MyCustomValues = MyStruct{ MyNumber = 2, MyText = "Another example" };
+MyCustomValues.MyNumber *= 2;
+log(MyCustomValues.MyNumber);
+```
+
+Struct methods:
+
+| Method               | Return Type | Description                                  |
+|:---------------------|:------------|:---------------------------------------------|
+| `toJson()`           | `String`    | Serializes this struct into a JSON string.   |
+| `fromString(String)` | StructType  | Deserializes a JSON string into this struct. |
+
+## Class
+While classes do exist in ManiaScript and can be used, there is no way to create custom classes. When a variable of a class type does not have an instance assigned to it, its value is `Null`.
 
 Object properties and methods can be accessed via `.`:
 ```ManiaScript
@@ -212,7 +210,11 @@ A = MyObject.MyFunction();
 ## Ident
 Every class in ManiaScript has a unique `Id` property of the type `Ident`, that can be used to identify the class. When not available, the value is `NullId`.
 
+## Void
+`Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.
+
 ## Casting
+TODO
 
 ## Not documented
 - `Class` (?)
