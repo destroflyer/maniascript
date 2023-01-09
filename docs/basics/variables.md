@@ -7,20 +7,20 @@ Variables are declared with they keyword `declare`. The following code declares 
 declare Integer MyNumber;
 ```
 
-Once declared, you can change the value of a variable via `=`:
-
-```ManiaScript
-MyNumber = 42;
-```
-
-It's also possible to declare a variable with an initial value using `=`:
+It is also possible to declare a variable with an initial value using `=`. If no value is specified (as above), the default value of its type will be used.
 ```ManiaScript
 declare Integer MyNumber = 42;
 ```
 
-In this case, you can also omit the type as it will be resolved automatically based on the initial value:
+In this case, you can omit the type as it will be resolved automatically based on the initial value:
 ```ManiaScript
 declare MyNumber = 42;
+```
+
+Once declared, you can of course change the value of a variable via `=` at any time:
+
+```ManiaScript
+MyNumber = 42;
 ```
 
 ## Scope
