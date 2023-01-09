@@ -16,16 +16,19 @@ Implementing a label (i.e. defining the code that should be executed when callin
 ```
 
 Label implementations can only be declared in the global scope (alongside your directives, global variables and function definitions). The code inside the block has the scope of the label when it's called, meaning that (only) the variables and functions known at the place of `+++ MyLabel +++`/`--- MyLabel ---` can be accessed. But since labels can be called multiple times (and even from different contexts), their scope is in fact the intersection of those calling scopes:
+
 ```ManiaScript
-Void fn1() {
-    declare V = 2;
-    declare W = 3;
-    +++ MyLabel +++
+Void MyFunction1() {
+  declare V = 2;
+  declare W = 3;
+  +++ MyLabel +++
 }
-Void fn2() {
-    declare V = 4;
-    +++ MyLabel +++
+
+Void MyFunction2() {
+  declare V = 4;
+  +++ MyLabel +++
 }
+
 *** MyLabel ***
 ***
 log(V); // logs 2 and 4 respectively
@@ -38,15 +41,16 @@ Labels can only be called in a function. This means that you can only access fun
 ```ManiaScript
 *** MyLabel ***
 ***
-declare Tmp = V;
+declare Tmp = MyVariable;
 // ...
 ***
-Void fn1() {
-    declare V = 3;
-    +++ MyLabel +++
-    declare Tmp = "tmp";
-    // ...
+
+Void MyFunction() {
+  declare MyVariable = 3;
+  +++ MyLabel +++
+  declare Tmp = "tmp";
+  // ...
 }
 ```
 
-When trying to compile the code above, you would receive an error that the variable `Tmp` has already been declared before. Wrapping the label call `+++ MyLabel +++` in curly braces will result in the `Tmp` variable of the `MyLabel` implementation to not exist in the scope of `fn1` and therefore to not cause any further error.
+When trying to compile the code above, you would receive an error that the variable `Tmp` has already been declared before. Wrapping the label call `+++ MyLabel +++` in curly braces will result in the `Tmp` variable of the `MyLabel` implementation to not exist in the scope of `MyFunction` and therefore to not cause any further error.
