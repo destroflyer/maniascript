@@ -3,8 +3,8 @@ ManiaScript is a scripting language made by Ubisoft Nadeo for their games such a
 
 Please note that this website is not an official Nadeo resource, it is community-driven, trying to stay as up-to-date as possible.
 
-## Programming
-Writing ManiaScript requires basic knowledge of how object-oriented programming languages work. You will need to declare variables, check conditions, loop over lists, call functions or access properties of classes. This documentation will not cover these basics. If you aren't familiar with an object-oriented language yet (such as JavaScript, Java, C#, Python or PHP), a training resource for one of these languages will be a better starting point for your journey.
+## Prerequisites
+Writing ManiaScript requires basic knowledge of how object-oriented programming languages work. You will need to declare variables, check conditions, loop over lists, call functions or access properties of classes. This documentation will not cover these bosics. If you aren't familiar with an object-oriented language yet (such as Java, JavaScript, C#, Python or PHP), a training resource for one of these languages will be a better starting point for your journey.
 
 ## ManiaScript vs ManiaLink
 When dealing with ManiaScript, you will most likely encounter the term ManiaLink at some point - Therefore it is important to understand what the difference between them is and how they complement each other. While ManiaScript itself is a mostly generic programming language and is therefore used in a lot different places, ManiaLinks are used when you want to display something to the user.
