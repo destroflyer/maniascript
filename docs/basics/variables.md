@@ -24,6 +24,8 @@ MyNumber = 42;
 ```
 
 ## Scope
-ManiaScript variables are local, meaning they only exist in the scope that they were declared in (e.g. the currently executed function or loop body). The outermost scope (containing directives and functions) is called the global scope and variables declared in it are called global variables as they are therefore accessible throughout the entire program.
+Scopes in ManiaScript work similar as in other common languages: A scope is defined with a matching pair of curly brackets, starting with `{` and ending with `}`. Variable visibility is limited to the largest scope containing the declaration of the variable and of course to the instructions following the declaration.
 
-In the global scope, variables can't be declared with an initial value. Thus, an explicit type is mandatory.
+This means you can wrap statements in curly braces to have them act in a local scope, which can be helpful to avoid conflicts with duplicated variable names.
+
+The outermost scope (containing directives and functions) is called the global scope and variables declared in it are called global variables, as they are accessible throughout the entire program. In the global scope, variables can not be declared with an initial value. Thus, an explicit type is mandatory.

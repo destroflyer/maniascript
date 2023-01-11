@@ -1,14 +1,16 @@
 # Types
 
-ManiaScript is a strongly typed language, meaning every value has to be of a certain type and a value of a different type will not be accepted in its place.
+ManiaScript is a strongly typed language, meaning every value has to be of a certain type and a value of a different type will not be accepted in its place. No implicit conversions are made.
 
 ## Boolean
 A `Boolean` can be either `True` or `False`. Default value is `False`.
 
 ```ManiaScript
-A = True;
+declare Boolean A = True;
 ```
+
 Operators:
+
 ```ManiaScript
 A = B && C; // And
 A = B || C; // Or
@@ -17,13 +19,16 @@ ManiaScript does not offer boolean compound assignments (`A |= B`, `A &= B`), yo
 
 ## Numerics
 There are two numeric types `Integer` and `Real`, depending on precision and range. Both of them support basic arithmetic operations:
+
 ```ManiaScript
 A = B + C; // Addition
 A = B - C; // Subtraction
 A = B * C; // Multiplication
 A = B / C; // Division
 ```
+
 ManiaScript offers arithmetic compound assignments:
+
 ```ManiaScript
 A += B; // A = A + B;
 A -= B; // A = A - B;
@@ -37,6 +42,10 @@ ManiaScript does not offer atomic increment/decrement operations (`A++`, `A--`),
 ## Integer
 An `Integer` is an integer between -2<sup>31</sup> (-2147483648) and 2<sup>31</sup>-1 (2147483647). Default value is `0`.
 
+```ManiaScript
+declare Integer A = 42;
+```
+
 The `Integer` type also offers a modulo operator (Not available for `Real`):
 ```ManiaScript
 A = B % C;
@@ -46,36 +55,49 @@ A %= B; // A = A % B
 ## Real
 A `Real` is a real number between 1e-45 and 1e+38. Default value is `0.0`. Comparison threshold for `Real` values is 1e-5 (0.00001).
 
-`Real` values always need to be written with a `.` character (`3.141592`). In case of the number ending with `.0`, the `0` can be omitted (`-1.`).
+```ManiaScript
+declare Real A = 1.23;
+```
+
+`Real` values always need to be written with a `.` character (`3.141592`). In case of the number ending with `.0`, the `0` can be omitted (e.g. `-1.` instead of `-1.0`).
 
 ## Text
 A `Text` is a string of characters and is defined via quotes `"`. Default value is empty `""`.
+
 ```ManiaScript
-A = "Hello World";
+declare Text A = "Hello World";
 ```
 
 Special characters can be escaped via `\`:
+
 ```ManiaScript
 A = "Me: \"Hello World\"";
 B = "This is a backslash: \\";
+C = "Line1\nLine2";
 ```
 
-A `Text` can be concatenated to another `Text` with the `^` operator:
+A `Text` can be concatenated with another `Text`, `Integer`, `Real` or `Boolean` with the `^` operator:
+
 ```ManiaScript
 A = "Hello";
-B = " World";
-C = A ^ B; // "Hello World"
+B = "World";
+C = 1;
+D = 2.3;
+E = True;
+F = A ^ B ^ C ^ D ^ E; // HelloWorld12.3True
 ```
 
-ManiaScript offers text interpolation via `"""`:
+ManiaScript also offers text blocks via `"""`, where you don't have to escape `"` and can use string interpolation to insert values.
+
 ```ManiaScript
-A = "world";
+A = "destroflyer";
 B = 42.157;
-C = """The {{{ A }}} record is {{{ B }}}."""; // "The world record is 42.157."
+C = """Player "{{{ A }}}": {{{ B }}}"""; // Player "destroflyer": 42.157"
 ```
 
 ## Array
 An array can store multiple values of a specific type. It is declared via square brackets `[]` after the value type:
+
 ```ManiaScript
 declare Integer[] A = [1, 3, 5, 7];
 ```
@@ -113,10 +135,12 @@ Array methods:
 An associative array can store multiple values of a specific type, indexed via keys. It is declared via the key type in square brackets `[]` after the value type:
 
 ```ManiaScript
-declare Text[Integer] A; // Text values indexed by Integers
+// Text values indexed by Integers
+declare Text[Integer] A = [1 => "Hello", 1337 => "World"];
 ```
 
 Associative arrays don't have an `add` method, instead values are directly assigned to keys:
+
 ```ManiaScript
 A[42] = "The answer";
 ```
@@ -159,8 +183,8 @@ ManiaScript offers a few numeric vector types, which represent a container inclu
 The values can either be accessed via the properties `X`, `Y` and `Z` (if three-dimensional) or via array indices `0`, `1` and `2` (if three-dimensional):
 
 ```ManiaScript
-A = <1, 2>;
-B = <3.4, 0, -5>;
+declare Int2 A = <1, 2>;
+declare Vec3 B = <3.4, 0, -5>;
 
 C = A.X + A.Y + B.Z;
 C = A[0] + A[1] + B[2];
@@ -202,6 +226,7 @@ Struct methods:
 While classes do exist in ManiaScript and can be used, there is no way to create custom classes. When a variable of a class type does not have an instance assigned to it, its value is `Null`.
 
 Object properties and methods can be accessed via `.`:
+
 ```ManiaScript
 A = MyObject.MyProperty + 123;
 A = MyObject.MyFunction();
@@ -214,7 +239,14 @@ Every class in ManiaScript has a unique `Id` property of the type `Ident`, that 
 `Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.
 
 ## Casting
-TODO
+Casting a type into a another type can be done with the keyword `as` followed by the target type. This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching ManiaLink elements).
+
+```ManiaScript
+// Value will be cast from CMlControl to CMlQuad
+declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
+// BgColor is only declared in the CMlQuad class, not in CMlControl
+MyQuad.BgColor = <0, 0, 0>;
+```
 
 ## Not documented
 - `Class` (?)

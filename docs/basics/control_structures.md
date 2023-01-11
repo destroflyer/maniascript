@@ -82,7 +82,7 @@ To execute code a set number of times, a `for` loop can be used:
 
 ```ManiaScript
 for (MyIndex, 2, 5) {
-    // Executed with MyIndex=2, MyIndex=3, MyIndex=4 and MyIndex=5 (a total of 4 times)
+    // Executed with MyIndex = 2, 3, 4 and then 5 (a total of 4 times)
 }
 ```
 
