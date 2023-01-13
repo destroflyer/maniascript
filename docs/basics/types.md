@@ -14,7 +14,10 @@ Operators:
 ```ManiaScript
 A = B && C; // And
 A = B || C; // Or
+A = B == C; // Equal to
+A = B != C; // Not equal to
 ```
+
 ManiaScript does not offer boolean compound assignments (`A |= B`, `A &= B`), you are required to write `A = A || B`, `A = A && B`.
 
 ## Numerics
@@ -27,7 +30,7 @@ A = B * C; // Multiplication
 A = B / C; // Division
 ```
 
-ManiaScript offers arithmetic compound assignments:
+ManiaScript offers basic arithmetic compound assignments:
 
 ```ManiaScript
 A += B; // A = A + B;
@@ -35,9 +38,23 @@ A -= B; // A = A - B;
 A *= B; // A = A * B;
 A /= B; // A = A / B;
 ```
+
 The result of a basic arithmetic operation of a `Real` and an `Integer` is a `Real`.
 
 ManiaScript does not offer atomic increment/decrement operations (`A++`, `A--`), you are required to write `A += 1`, `A -= 1`.
+
+It's also possible to compare numerics via comparison operators.
+
+```ManiaScript
+A = B < C; // Less than
+A = B <= C; // Less than or equal to
+A = B == C; // Equal to
+A = B != C; // Not equal to
+A = B >= C; // Greater than or equal to
+A = B > C; // Greater than
+```
+
+The result of a comparison operation is a `Boolean`.
 
 ## Integer
 An `Integer` is an integer between -2<sup>31</sup> (-2147483648) and 2<sup>31</sup>-1 (2147483647). Default value is `0`.
@@ -61,6 +78,35 @@ declare Real A = 1.23;
 
 `Real` values always need to be written with a `.` character (`3.141592`). In case of the number ending with `.0`, the `0` can be omitted (e.g. `-1.` instead of `-1.0`).
 
+## Vector
+ManiaScript offers a few numeric vector types, which represent a container including multiple numbers. Default values are the default value of the corresponding numeric type. Expressing a vector is done by listing the numbers between `<` and `>`, separated by `,`.
+
+| Type      | Description                               | Example           |
+|:----------|:------------------------------------------|:------------------|
+| `Int2`    | Two-dimensional vector, using `Integer`   | `<1, 2>`          |
+| `Int3`    | Three-dimensional vector, using `Integer` | `<255, 128, 0>`   |
+| `Vec2`    | Two-dimensional vector, using `Real`      | `<1., -.5>`       |
+| `Vec3`    | Three-dimensional vector, using `Real`    | `<.5, -1.2, -0.>` |
+
+The values can either be accessed via the properties `X`, `Y` and `Z` (if three-dimensional) or via array indices `0`, `1` and `2` (if three-dimensional):
+
+```ManiaScript
+declare Int2 A = <1, 2>;
+declare Vec3 B = <3.4, 0, -5>;
+
+C = A.X + A.Y + B.Z;
+C = A[0] + A[1] + B[2];
+```
+
+Operators:
+
+```ManiaScript
+A = B + C; // Addition (<B.X + C.X, B.Y + C.Y, B.Z + C.Z>)
+A = B - C; // Subtraction (<B.X - C.X, B.Y - C.Y, B.Z - C.Z>)
+A = B == C; // Equal to (B.X == C.X && B.Y == C.Y && B.Z == C.Z)
+A = B != C; // Not equal to (B.X != C.X || B.Y != C.Y || B.Z != C.Z)
+```
+
 ## Text
 A `Text` is a string of characters and is defined via quotes `"`. Default value is empty `""`.
 
@@ -76,7 +122,7 @@ B = "This is a backslash: \\";
 C = "Line1\nLine2";
 ```
 
-A `Text` can be concatenated with another `Text`, `Integer`, `Real` or `Boolean` with the `^` operator:
+A `Text` can be concatenated with another `Text`, `Integer`, `Real`, `Boolean` or `Ident` with the `^` operator:
 
 ```ManiaScript
 A = "Hello";
@@ -94,6 +140,64 @@ A = "destroflyer";
 B = 42.157;
 C = """Player "{{{ A }}}": {{{ B }}}"""; // Player "destroflyer": 42.157"
 ```
+
+Operators:
+
+```ManiaScript
+A = B < C; // Less than
+A = B <= C; // Less than or equal to
+A = B == C; // Equal to
+A = B != C; // Not equal to
+A = B >= C; // Greater than or equal to
+A = B > C; // Greater than
+```
+
+Comparing texts via operators such as `>` will alphabetically compare them character by character. A character occurring later in the alphabet will be considered greater than a character occurring earlier.
+
+## Class
+While classes do exist in ManiaScript and can be used, there is no way to create custom classes. When a variable of a class type does not have an instance assigned to it, its value is `Null`.
+
+Object properties and methods can be accessed via `.`:
+
+```ManiaScript
+A = MyObject.MyProperty + 123;
+A = MyObject.MyFunction();
+```
+
+## Ident
+Every class in ManiaScript has an `Id` property of the type `Ident`. Its value can be used to uniquely identify the according object. When not available, the value is `NullId`.
+
+## Struct
+While a script can't declare custom classes, it's possible to define structs, which are pure data objects containing multiple variables as properties. Struct types can only be declared in the global scope, via `#Struct`:
+
+```ManiaScript
+#Struct MyStruct {
+  Integer MyNumber;
+  Text MyText;
+}
+```
+
+At this point, you only defined what this specific struct type looks like. To create a variable of this type, you need to declare it as you would do with any other type. A complete struct is expressed by specifying the struct name, curly braces `{}` and (not mandatory) property name and value pairs. Omitting a property inside the curly braces will assign the default value of its type to it.
+
+```ManiaScript
+declare MyStruct MyDefaultValues = MyStruct{};
+declare MyStruct MyCustomValues = MyStruct{ MyNumber = 1, MyText = "Example" };
+```
+
+Of course, it's also possible to set the whole struct or access single properties via `.` at a later point:
+
+```ManiaScript
+MyCustomValues = MyStruct{ MyNumber = 2, MyText = "Another example" };
+MyCustomValues.MyNumber *= 2;
+log(MyCustomValues.MyNumber);
+```
+
+Struct methods:
+
+| Method               | Return Type | Description                                  |
+|:---------------------|:------------|:---------------------------------------------|
+| `toJson()`           | `String`    | Serializes this struct into a JSON string.   |
+| `fromString(String)` | StructType  | Deserializes a JSON string into this struct. |
 
 ## Array
 An array can store multiple values of a specific type. It is declared via square brackets `[]` after the value type:
@@ -126,9 +230,9 @@ Array methods:
 | `clear()`                   | `Void`      | Removes all elements                                                                                                                                                                         |
 | `containsonly(OtherArray)`  | `Boolean`   | Returns if the array contains exactly the values in `OtherArray`                                                                                                                             |
 | `containsoneof(OtherArray)` | `Boolean`   | Returns if at least one value of `OtherArray` is present in this array                                                                                                                       |
-| `sort()`                    | ValueType[] | Sorts array ascending                                                                                                                                                                        |
-| `sortreverse()`             | ValueType[] | Sorts array descending                                                                                                                                                                       |
-| `slice(Index)`              | ValueType[] | Returns a subarray beginning at `Index` and ending at the end of the list                                                                                                                    |
+| `sort()`                    | ValueType[] | Returns a copy of this array, sorted ascending by value                                                                                                                                      |
+| `sortreverse()`             | ValueType[] | Returns a copy of this array, sorted descending by value                                                                                                                                     |
+| `slice(Index)`              | ValueType[] | Returns a subarray from index `Index` to the end                                                                                                                                             |
 | `slice(Index, Count)`       | ValueType[] | If `Count` >= 0, returns a subarray from index `Index` to `Index + Count`.<br/>If `Count` < 0, returns a subarray beginning at `Index` and excluding the last `Count` elements of the array. |
 
 ## Associative Array
@@ -161,79 +265,52 @@ Associative array methods:
 | `remove(Value)`        | `Boolean`   | Removes first element with value `Value`                               |
 | `removekey(Key)`       | `Boolean`   | Removes element with key `Key`                                         |
 | `exists(Value)`        | `Boolean`   | Returns if an element with value `Value` is present in array           |
-| `existkey(Key)`        | `Integer`   | Returns if an element with key `Key` is present in array               |
+| `existskey(Key)`       | `Integer`   | Returns if an element with key `Key` is present in array               |
 | `clear()`              | `Void`      | Removes all elements                                                   |
 | `containsonly(Array)`  | `Boolean`   | Returns if the array contains exactly the values in `OtherArray`       |
 | `containsoneof(Array)` | `Boolean`   | Returns if at least one value of `OtherArray` is present in this array |
-| `sort()`               | ValueType[] | Sorts values ascending                                                 |
-| `sortreverse()`        | ValueType[] | Sorts values descending                                                |
-| `sortkey()`            | ValueType[] | Sorts keys ascending                                                   |
-| `sortkeyreverse()`     | ValueType[] | Sorts keys descending                                                  |
+| `sort()`               | ValueType[] | Returns a copy of this array, sorted ascending by value                |
+| `sortreverse()`        | ValueType[] | Returns a copy of this array, sorted descending by value               |
+| `sortkey()`            | ValueType[] | Returns a copy of this array, sorted ascending by key                  |
+| `sortkeyreverse()`     | ValueType[] | Returns a copy of this array, sorted descending by key                 |
 
-## Vectors
-ManiaScript offers a few numeric vector types, which represent a container including multiple numbers. Default values are the default value of the corresponding numeric type.
+## Parameter Array
+A parameter array is an array containing objects, that has a few unique behaviours. It supports multiple types of keys, namely `Integer`, `Ident` or objects (in which case the objects `Id` property is used as key). Therefore, you can think of them as sorted object lists that still offer the possibility to access a specific element using its `Id`.
 
-| Type      | Description                               | Example           |
-|:----------|:------------------------------------------|:------------------|
-| `Int2`    | Two-dimensional vector, using `Integer`   | `<1, 2>`          |
-| `Int3`    | Three-dimensional vector, using `Integer` | `<255, 128, 0>`   |
-| `Vec2`    | Two-dimensional vector, using `Real`      | `<1., -.5>`       |
-| `Vec3`    | Three-dimensional vector, using `Real`    | `<.5, -1.2, -0.>` |
-
-The values can either be accessed via the properties `X`, `Y` and `Z` (if three-dimensional) or via array indices `0`, `1` and `2` (if three-dimensional):
+Parameter arrays are read-only and are exclusively offered by ingame APIs (they are not declarable yourself). Usually, they contain objects like the players on a server.
 
 ```ManiaScript
-declare Int2 A = <1, 2>;
-declare Vec3 B = <3.4, 0, -5>;
+PlayerIdA = Players[0].Id;
 
-C = A.X + A.Y + B.Z;
-C = A[0] + A[1] + B[2];
+// Some code doing stuff...
+
+PlayerA = Players[PlayerIdA];
 ```
 
-## Structs
-A struct is a data object containing multiple variables. It can be seen as a tool to group data (making the code both more readable and reusable). Declaring the definition of a struct type can be done via `#Struct` and only in the global scope:
+As stated, parameter arrays also accept the actual object as key (instead of its `Id`). However, there isn't really a good usecase for this, as you would just receive the object back that you passed in.
 
 ```ManiaScript
-#Struct MyStruct {
-  Integer MyNumber;
-  Text MyText;
-}
+PlayerA = Players[0];
+
+// Some code doing stuff...
+
+TheSamePlayerA = Players[PlayerA];
 ```
 
-At this point, you will only have defined what this specific struct type looks like. To create a variables of this type, you need to declare it as you would do with any other type. A complete struct is expressed by specifying the struct name, curly braces `{}` and (not mandatory) property name and value pairs. Omitting a property inside the curly braces will assign the default value of its type to it.
+Parameter array properties:
 
-```ManiaScript
-declare MyStruct MyDefaultValues = MyStruct{};
-declare MyStruct MyCustomValues = MyStruct{ MyNumber = 1, MyText = "Example" };
-```
+| Property | Type      | Description         |
+|:---------|:----------|:--------------------|
+| `count`  | `Integer` | Length of the array |
 
-Of course, it's also possible to set the whole struct or access single properties via `.` at a later point:
+Parameter array methods:
 
-```ManiaScript
-MyCustomValues = MyStruct{ MyNumber = 2, MyText = "Another example" };
-MyCustomValues.MyNumber *= 2;
-log(MyCustomValues.MyNumber);
-```
-
-Struct methods:
-
-| Method               | Return Type | Description                                  |
-|:---------------------|:------------|:---------------------------------------------|
-| `toJson()`           | `String`    | Serializes this struct into a JSON string.   |
-| `fromString(String)` | StructType  | Deserializes a JSON string into this struct. |
-
-## Class
-While classes do exist in ManiaScript and can be used, there is no way to create custom classes. When a variable of a class type does not have an instance assigned to it, its value is `Null`.
-
-Object properties and methods can be accessed via `.`:
-
-```ManiaScript
-A = MyObject.MyProperty + 123;
-A = MyObject.MyFunction();
-```
-
-## Ident
-Every class in ManiaScript has a unique `Id` property of the type `Ident`, that can be used to identify the class. When not available, the value is `NullId`.
+| Method           | Return Type | Description                                                  |
+|:-----------------|:------------|:-------------------------------------------------------------|
+| `get(Key)`       | ValueType   | Gets the element at the `Key` index                          |
+| `keyof(Value)`   | `Integer`   | Return the first key of an element with value `Value`        |
+| `exists(Value)`  | `Boolean`   | Returns if an element with value `Value` is present in array |
+| `existskey(Key)` | `Integer`   | Returns if an element with key `Key` is present in array     |
 
 ## Void
 `Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.
@@ -249,5 +326,4 @@ MyQuad.BgColor = <0, 0, 0>;
 ```
 
 ## Not documented
-- `Class` (?)
 - `Iso4`
