@@ -1,7 +1,18 @@
 # Time
 
 ## Now
-TODO
+ManiaScript offers a global constant `Now` to create logic that involves time. It will always be up-to-date and is an `Integer` specifying the number of milliseconds passed since the current "activity" has started (i.e. a value of 4213 means 4213 milliseconds or 4.213 seconds have passed). An example would be a custom game mode that was launched in the map editor - In this case, the value seems to be the time since the map editor was started. However, understanding the absolute value of `Now` is not too important, since it will mostly be used to recognize how much time (or if a certain amount of time) has passed since something happened.
+
+```ManiaScript
+MyStart = Now;
+
+// Some long running code
+
+MyPassedTime = Now - MyStart;
+if (MyPassedTime > 2000) {
+  // More than two seconds have passed
+}
+```
 
 ## Pausing
 There are multiple ways to pause the execution of your script. This can be necessary as during script execution, nothing else happens: The display is not updating, the simulations of the game are stuck, the logs are not being updated, and so on.
