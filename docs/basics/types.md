@@ -168,7 +168,7 @@ A = MyObject.MyFunction();
 Every class in ManiaScript has an `Id` property of the type `Ident`. Its value can be used to uniquely identify the according object. Default value is `NullId`.
 
 ## Struct
-While a script can't declare custom classes, it's possible to define structs, which are pure data objects containing multiple variables as properties. Struct types can only be declared in the global scope, via `#Struct`:
+While a script can't declare custom classes, it's possible to define structs, which are pure data objects containing multiple variables as properties. Struct types can only be declared via a [directive](/advanced/directives.html) `#Struct` in the global scope:
 
 ```ManiaScript
 #Struct MyStruct {
