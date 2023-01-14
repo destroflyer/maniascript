@@ -155,7 +155,7 @@ A = B > C; // Greater than
 Comparing texts via operators such as `>` will alphabetically compare them character by character. A character occurring later in the alphabet will be considered greater than a character occurring earlier.
 
 ## Class
-While classes do exist in ManiaScript and can be used, there is no way to create custom classes. When a variable of a class type does not have an instance assigned to it, its value is `Null`.
+While classes do exist in ManiaScript and can be used, there is no way to create custom classes. When a variable of a class type does not have an instance assigned to it, its value is `Null`. Default value is `Null`.
 
 Object properties and methods can be accessed via `.`:
 
@@ -165,7 +165,7 @@ A = MyObject.MyFunction();
 ```
 
 ## Ident
-Every class in ManiaScript has an `Id` property of the type `Ident`. Its value can be used to uniquely identify the according object. When not available, the value is `NullId`.
+Every class in ManiaScript has an `Id` property of the type `Ident`. Its value can be used to uniquely identify the according object. Default value is `NullId`.
 
 ## Struct
 While a script can't declare custom classes, it's possible to define structs, which are pure data objects containing multiple variables as properties. Struct types can only be declared in the global scope, via `#Struct`:
@@ -177,10 +177,11 @@ While a script can't declare custom classes, it's possible to define structs, wh
 }
 ```
 
-At this point, you only defined what this specific struct type looks like. To create a variable of this type, you need to declare it as you would do with any other type. A complete struct is expressed by specifying the struct name, curly braces `{}` and (not mandatory) property name and value pairs. Omitting a property inside the curly braces will assign the default value of its type to it.
+At this point, you only defined what this specific struct type looks like. To create a variable of this type, you need to declare it as you would do with any other type. A complete struct is expressed by specifying the struct name, curly braces `{}` and (not mandatory) property name and value pairs. Omitting a property inside the curly braces will assign the default value of its type to it. In the same way, the default value for a struct type is a struct with each property having its types default value assigned to it.
 
 ```ManiaScript
-declare MyStruct MyDefaultValues = MyStruct{};
+declare MyStruct MyDefaultValues1;
+declare MyStruct MyDefaultValues2 = MyStruct{};
 declare MyStruct MyCustomValues = MyStruct{ MyNumber = 1, MyText = "Example" };
 ```
 
@@ -205,6 +206,8 @@ An array can store multiple values of a specific type. It is declared via square
 ```ManiaScript
 declare Integer[] A = [1, 3, 5, 7];
 ```
+
+Default value is an empty array.
 
 Array elements are accessed via square brackets `[]` and index, starting at 0. Accessing an invalid index will throw an error.
 
@@ -242,6 +245,8 @@ An associative array can store multiple values of a specific type, indexed via k
 // Text values indexed by Integers
 declare Text[Integer] A = [1 => "Hello", 1337 => "World"];
 ```
+
+Default value is an empty array.
 
 Associative arrays don't have an `add` method, instead values are directly assigned to keys:
 
