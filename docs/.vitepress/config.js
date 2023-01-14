@@ -40,7 +40,7 @@ export default {
           items: [
             { text: "Errors", link: "/advanced/errors.md" },
             { text: "Asserts", link: "/advanced/asserts.md" },
-            { text: "Logs", link: "/advanced/logs.md" },
+            { text: "Log", link: "/advanced/log.md" },
             { text: "Time", link: "/advanced/time.md" },
             { text: "Labels", link: "/advanced/labels.md" },
             { text: "Aliases", link: "/advanced/aliases.md" },
