@@ -42,7 +42,7 @@ Void doSomething(CMlControl _Control) {
 }
 ```
 
-## The main function
+## Main
 The `main` function is a special case as it has neither arguments nor a return type. It is the entrance point when starting your program.
 
 ```ManiaScript

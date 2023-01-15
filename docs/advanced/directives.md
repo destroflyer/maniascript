@@ -22,11 +22,13 @@ Directives are special statements in the global scope a script, usually at the t
 See [Struct](/basics/types.html#struct).
 
 ## Include
-`#Include` loads another script and binds its constants (TODO: Check) and functions to a namespace. It is the same concept as what's often called an "import" in other programming languages.
+`#Include` loads another script and binds its constants and functions to a namespace (global variables are not included). It is the same concept as what's often called an "import" in other programming languages.
 
-An example would be a script called `Library.Script.txt` with the following content:
+An example would be a script located in `MyPath/Library.Script.txt` with the following content:
 
 ```ManiaScript
+#Const MyConstant 1.23
+
 Void MyFunction() {
   log("Hello");
 }
@@ -35,16 +37,17 @@ Void MyFunction() {
 To include and use this script in another one:
 
 ```ManiaScript
-#Include "Library.Script.txt" as MyLib
+#Include "MyPath/Library.Script.txt" as MyLib
 
 // ...
 
+log(MyLib::MyConstant);
 MyLib::MyFunction();
 ```
 
-The namespace name (in the example above `MyLib`) is freely definable, but of course it's not allowed to specify one conflicting with other names.
+The namespace (in the example above `MyLib`) is freely definable, but of course it's not allowed to specify one that's conflicting with other names.
 
-TODO: Describe MathLib, TextLib, etc.
+Included scripts are not allowed to have a [main function](/basics/functions.html#main) and the included constants and functions are only available in the script that directly includes them (i.e. not in scripts that include a script that includes them).
 
 ## Setting
 

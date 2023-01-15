@@ -45,6 +45,7 @@ export default {
             { text: "Labels", link: "/advanced/labels.md" },
             { text: "Aliases", link: "/advanced/aliases.md" },
             { text: "Directives", link: "/advanced/directives.md" },
+            { text: "Libraries", link: "/advanced/libraries.md" },
             { text: "Extension properties", link: "/advanced/extension_properties.md" },
             { text: "Contexts", link: "/advanced/contexts.md" },
             { text: "Debugger", link: "/advanced/debugger.md" },
