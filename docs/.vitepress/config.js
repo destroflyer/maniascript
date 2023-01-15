@@ -52,6 +52,7 @@ export default {
             { text: "Network", link: "/advanced/network.md" },
             { text: "Persistence", link: "/advanced/persistence.md" },
             { text: "Translations", link: "/advanced/translations.md" },
+            { text: "Reference generation", link: "/advanced/reference_generation.md" },
           ],
         },
       ]
