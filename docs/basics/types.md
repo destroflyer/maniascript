@@ -287,7 +287,7 @@ Parameter arrays are read-only and are exclusively offered by ingame APIs (they 
 ```ManiaScript
 PlayerIdA = Players[0].Id;
 
-// Some code doing stuff...
+// ...
 
 PlayerA = Players[PlayerIdA];
 ```
@@ -297,7 +297,7 @@ As stated, parameter arrays also accept the actual object as key (instead of its
 ```ManiaScript
 PlayerA = Players[0];
 
-// Some code doing stuff...
+// ...
 
 TheSamePlayerA = Players[PlayerA];
 ```

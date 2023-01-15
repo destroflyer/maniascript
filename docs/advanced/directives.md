@@ -55,7 +55,7 @@ Included scripts are not allowed to have a [main function](/basics/functions.htm
 #Setting MySetting 123 as "MySettingDescription"
 ```
 
-`#Setting` is only available in game modes (TODO: Check if correct). Settings are declared by specifying a name, value and an optional description (via `as`). The example above declares a setting called `MySetting` with the initial value `123` (which resolves the settings type to `Integer`) and the description `MySettingDescription`. From the scripts point of view, they behave like constants: They are globally accessible and their value cannot be modified at runtime by the script itself.
+`#Setting` is only available in game modes (TODO: Check if correct). Settings are declared by specifying a name, a value (which defines the settings type) and an optional description (of type `Text`, via `as`). From the scripts point of view, they behave like constants: They are globally accessible and their value cannot be modified at runtime by the script itself.
 
 However, settings can be modified from outside the script. This can for example happen by the host editing the configuration when creating a server, which is where the description will be displayed to explain what each settings functionality is. Using the description `<hidden>` will hide the setting from this dialog. Settings can also be modified at runtime via a server controller, e.g. triggered by player vote.
 
@@ -68,19 +68,20 @@ However, settings can be modified from outside the script. This can for example 
 `#Extends` defines that the current script is an extension of another script, meaning it should share the same `main()` method, constants, settings, variables, functions, etc. as its "parent" and will simply extend its functionality (usually by adding new implementations of [labels](/advanced/labels.html)). Since the parent script could also be extending another script, it is possible to build a hierarchy. Due to this mechanism, it is for example common (but not necessary) for all game modes to ultimately extend Nadeos lowest level game mode script `Libs/Nadeo/ModeLibs/Common/ModeBase.Script.txt` and start customizing from there.
 
 ## Command
-TODO: Describe commands.
+`#Command` is only available in game modes (TODO: Check if correct). Commands are declared by specifying a name, a value type (in round brackets `()`) and an optional description (of type `Text`, via `as`).
 
 ```ManiaScript
-#Command Command_ForceEndRound (Boolean) as "ForceEndRound"
+#Command MyCommand(Boolean) as "MyCommandDescription"
+```
 
-// later at script
-while (True) {
-  yield;
-  foreach (Event in PendingEvents) {
-    if (Event.Type != CTmModeEvent::EType::OnCommand) continue;
+Commands can be sent to the server and will appear as events in `PendingEvents`. The game mode can identify command events via their `Type` and `CommandName` properties:
+
+```ManiaScript
+foreach (Event in PendingEvents) {
+  if (Event.Type == CTmModeEvent::EType::OnCommand) {
     switch (Event.CommandName) {
-      case "Command_ForceEndRound": {
-        // @todo end round
+      case "MyCommand": {
+        // ...
       }
     }
   }

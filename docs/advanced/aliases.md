@@ -2,7 +2,7 @@
 
 Aliases are a special type of pointer that are assigned via `<=>`. They are fast and quite powerful, yet their behaviour can be surprising, especially if you are used to common pointer programming. 
 
-Here's an example: There's an API array (pre-declared as a system variable) of players , sorted descending by score, called `Players`. You can write:
+Here's an example: There's a [parameter array](/basics/types.html#parameter-array) of players called `Players`, which is offered by the ingame APIs and sorted descending by score. You can write:
 
 ```ManiaScript
 declare BestPlayer <=> Players[0];
@@ -17,8 +17,8 @@ declare BestPlayer <=> Players[0];
 
 // Some code doing stuff...
 
-log(BestPlayer.Login);
 // Will log Alice, right?
+log(BestPlayer.Login);
 ```
 
 But: Here, `BestPlayer` is an alias. Therefore, `BestPlayer` means "The player at the first position of the array `Players`". That's why, if scores would change (and therefore the order of our example API array), it would maybe not mean Alice anymore.

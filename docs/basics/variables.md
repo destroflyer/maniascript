@@ -1,7 +1,7 @@
 # Variables
 
 ## Declaration
-Variables are declared with they keyword `declare`. The following code declares a variable named `MyNumber` of type `Integer`:
+Variables are declared with they keyword `declare`, a [type](/basics/types.html) and a name. The following code declares a variable named `MyNumber` of type `Integer`:
 
 ```ManiaScript
 declare Integer MyNumber;
