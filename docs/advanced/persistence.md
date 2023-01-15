@@ -1,6 +1,6 @@
 # Persistence
 
-ManiaScript allows persisting variables, which means storing them across contexts (like different game modes) or even application restarts. This works with any (TODO: Check if correct) variable and can be done simply by adding the keyword `persistent` to its declaration.
+ManiaScript allows persisting variables, which means storing them across contexts (like different game modes) or even application restarts. To persist a variable, simply add the keyword `persistent` to its declaration.
 
 ```ManiaScript
 declare persistent Boolean MyGameMode_ConfigA;
@@ -18,7 +18,7 @@ MyGameMode_ConfigA += 1;
 When executing this script, the variable will not always have the value 43 - Instead, it will have the value 43 when executed for the first time, 44 during the second time, 45 during the third time, and so on (assuming nothing else is writing to it). This will continue until the stored variable gets deleted and will start from the initial value (in this case 42) again. To specify when this happens and a `persistent` variable should get deleted, you have two options. They are described in the following sections.
 
 ## Session
-ManiaScripts default behaviour is to only keep `persistent` variables stored during your current session. This means, the values are not kept when the game is closed. After restarting the game, none of them will still exist and declaring a `persistent` variable will assign a fresh initial value to it again.
+ManiaScripts default behaviour is to only keep `persistent` variables stored during your current session, meaning as long as your game client is running. In other words, the values are not kept when the game is closed. After restarting the game, none of them will exist anymore and declaring a `persistent` variable will assign a fresh initial value to it again.
 
 TODO: Check how this behaves on server.
 
@@ -34,3 +34,18 @@ UserMgr.MainUser.PersistentSave();
 The important part here is `UserMgr.MainUser.PersistentSave();`, which stores the current properties of `UserMgr.MainUser` (including our extension property) in a way that survives a game restart. Without the call to this method, the variable would be deleted when your current session is closed. Again, make sure you always use a custom prefix for your variable in order to avoid conflicts with other properties.
 
 TODO: Check how this behaves on server.
+
+## Supported types
+The following types can be persisted:
+- `Boolean`
+- `Integer`
+- `Real`
+- `Text`
+- Vectors
+- Structs
+- Arrays and associative arrays of a supported type
+
+The following types can not be persisted:
+- `Ident`
+- Classes
+- Parameter arrays
