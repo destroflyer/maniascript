@@ -49,12 +49,12 @@ TODO: Describe MathLib, TextLib, etc.
 ## Setting
 
 ```ManiaScript
-#Setting MySetting 123
+#Setting MySetting 123 as "MySettingDescription"
 ```
 
-`#Setting` is only available in game modes (TODO: Check if correct). Settings are declared exactly like constants (with a name and value) and also behave equally from the scripts point of view: They are globally accessible and their value cannot be modified by the script at runtime.
+`#Setting` is only available in game modes (TODO: Check if correct). Settings are declared by specifying a name, value and an optional description (via `as`). The example above declares a setting called `MySetting` with the initial value `123` (which resolves the settings type to `Integer`) and the description `MySettingDescription`. From the scripts point of view, they behave like constants: They are globally accessible and their value cannot be modified at runtime by the script itself.
 
-However, settings can be modified from outside the script. This can happen by the server host editing the playlist file or by a server controller (e.g. triggered by a player vote).
+However, settings can be modified from outside the script. This can for example happen by the host editing the configuration when creating a server, which is where the description will be displayed to explain what each settings functionality is. Using the description `<hidden>` will hide the setting from this dialog. Settings can also be modified at runtime via a server controller, e.g. triggered by player vote.
 
 ## Extends
 

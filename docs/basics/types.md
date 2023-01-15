@@ -195,10 +195,10 @@ log(MyCustomValues.MyNumber);
 
 Struct methods:
 
-| Method               | Return Type | Description                                  |
-|:---------------------|:------------|:---------------------------------------------|
-| `toJson()`           | `String`    | Serializes this struct into a JSON string.   |
-| `fromString(String)` | StructType  | Deserializes a JSON string into this struct. |
+| Method           | Return Type | Description                                  |
+|:-----------------|:------------|:---------------------------------------------|
+| `tojson()`       | `Text`      | Serializes this struct into a JSON string.   |
+| `fromjson(Text)` | StructType  | Deserializes a JSON string into this struct. |
 
 ## Array
 An array can store multiple values of a specific type. It is declared via square brackets `[]` after the value type:
