@@ -41,6 +41,7 @@ export default {
             { text: "Errors", link: "/advanced/errors.md" },
             { text: "Asserts", link: "/advanced/asserts.md" },
             { text: "Log", link: "/advanced/log.md" },
+            { text: "Dump", link: "/advanced/dump.md" },
             { text: "Time", link: "/advanced/time.md" },
             { text: "Labels", link: "/advanced/labels.md" },
             { text: "Aliases", link: "/advanced/aliases.md" },

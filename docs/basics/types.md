@@ -122,7 +122,7 @@ B = "This is a backslash: \\";
 C = "Line1\nLine2";
 ```
 
-A `Text` can be concatenated with another `Text`, `Integer`, `Real`, `Boolean` or `Ident` with the `^` operator:
+A `Text` can be concatenated with another value via the `^` operator:
 
 ```ManiaScript
 A = "Hello";
@@ -132,6 +132,8 @@ D = 2.3;
 E = True;
 F = A ^ B ^ C ^ D ^ E; // HelloWorld12.3True
 ```
+
+You can concatenate values of type `Text`, `Integer`, `Real`,  `Boolean`, `Ident` and arrays or associative arrays (of one these types) to a `Text`. In this case, they are converted to a readable text, depending on the type.
 
 ManiaScript also offers text blocks via `"""`, where you don't have to escape `"` and can use string interpolation to insert values.
 
@@ -238,7 +240,7 @@ Array methods:
 | `slice(Index)`              | ValueType[] | Returns a subarray from index `Index` to the end                                                                                                                                             |
 | `slice(Index, Count)`       | ValueType[] | If `Count` >= 0, returns a subarray from index `Index` to `Index + Count`.<br/>If `Count` < 0, returns a subarray beginning at `Index` and excluding the last `Count` elements of the array. |
 
-## Associative Array
+## Associative array
 An associative array can store multiple values of a specific type, indexed via keys. It is declared via the key type in square brackets `[]` after the value type:
 
 ```ManiaScript
@@ -279,7 +281,7 @@ Associative array methods:
 | `sortkey()`            | ValueType[] | Returns a copy of this array, sorted ascending by key                  |
 | `sortkeyreverse()`     | ValueType[] | Returns a copy of this array, sorted descending by key                 |
 
-## Parameter Array
+## Parameter array
 A parameter array is an array containing objects, that has a few unique behaviours. It supports multiple types of keys, namely `Integer`, `Ident` or objects (in which case the objects `Id` property is used as key). Therefore, you can think of them as sorted object lists that still offer the possibility to access a specific element using its `Id`.
 
 Parameter arrays are read-only and are exclusively offered by ingame APIs (they are not declarable yourself). Usually, they contain objects like the players on a server.

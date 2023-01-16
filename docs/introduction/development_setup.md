@@ -24,10 +24,10 @@ Features:
 
 Shortcuts:
 - `Ctrl` + `A`: Select all
-- `Ctrl` + `C`: Copy
-- `Ctrl` + `X`: Cut
+- `Ctrl` + `C`: Copy line/selection
+- `Ctrl` + `X`: Cut line/selection
 - `Ctrl` + `V`: Paste
-- `Ctrl` + `D`: Duplicate line
+- `Ctrl` + `D`: Duplicate line/selection
 - `Ctrl` + `Q`: Comment/Uncomment line/selection
 - `Ctrl` + `Shift` + `Q`: Uncomment line/selection
 - `Ctrl` + `Shift` + `Up`: Move line/selection up
