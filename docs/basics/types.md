@@ -323,7 +323,17 @@ Parameter array methods:
 `Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.
 
 ## Casting
-Casting a type into a another type can be done with the keyword `as` followed by the target type. This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching ManiaLink elements).
+Casting a value from one type to another type can either be done with the keyword `as` or the function `cast`.
+
+```ManiaScript
+declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
+```
+
+```ManiaScript
+declare MyQuad = cast(Page.GetFirstChild("myQuad"), CMlQuad);
+```
+
+This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching ManiaLink elements).
 
 ```ManiaScript
 // Value will be cast from CMlControl to CMlQuad
@@ -331,6 +341,3 @@ declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
 // BgColor is only declared in the CMlQuad class, not in CMlControl
 MyQuad.BgColor = <0, 0, 0>;
 ```
-
-## Not documented
-- `Iso4`
