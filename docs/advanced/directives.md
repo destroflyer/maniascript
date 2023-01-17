@@ -3,11 +3,11 @@ Directives are special statements in the global scope a script, usually at the t
 
 ## RequireContext
 
-```ManiaScript
-#RequireContext CSmMode
-```
+See [Context](/advanced/context.html).
 
-`#RequireContext` defines the context of a script. This basically defines if the script is game mode, an editor plugin and so on. In the example, the value `CSmMode` means that the script is a game mode. Using this script for a different purpose than it was written for, e.g. as an editor plugin, will automatically throw an error. Depending on the context, you will have different built-in global variables and functions available.
+## Struct
+
+See [Struct](/basics/types.html#struct).
 
 ## Const
 
@@ -16,10 +16,6 @@ Directives are special statements in the global scope a script, usually at the t
 ```
 
 `#Const` declares a constant with a value. It will be accessible everywhere like a global variable, but its value cannot be modified at runtime. Specifying a value is mandatory, as the constants type will be resolved from it, in the example the constant would be of type `Boolean` with the value `True`.
-
-## Struct
-
-See [Struct](/basics/types.html#struct).
 
 ## Include
 `#Include` loads another script and binds its constants and functions to a namespace (global variables are not included). It is the same concept as what's often called an "import" in other programming languages.

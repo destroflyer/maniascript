@@ -48,7 +48,7 @@ export default {
             { text: "Directives", link: "/advanced/directives.md" },
             { text: "Libraries", link: "/advanced/libraries.md" },
             { text: "Extension properties", link: "/advanced/extension_properties.md" },
-            { text: "Contexts", link: "/advanced/contexts.md" },
+            { text: "Context", link: "/advanced/context.md" },
             { text: "Debugger", link: "/advanced/debugger.md" },
             { text: "Network", link: "/advanced/network.md" },
             { text: "Persistence", link: "/advanced/persistence.md" },
