@@ -166,6 +166,33 @@ A = MyObject.MyProperty + 123;
 A = MyObject.MyFunction();
 ```
 
+### Cast
+Casting an object from one class to another class can either be done with the keyword `as` or the function `cast`.
+
+```ManiaScript
+declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
+```
+
+```ManiaScript
+declare MyQuad = cast(Page.GetFirstChild("myQuad"), CMlQuad);
+```
+
+This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching ManiaLink elements).
+
+```ManiaScript
+// Value will be cast from CMlControl to CMlQuad
+declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
+// BgColor is only declared in the CMlQuad class, not in CMlControl
+MyQuad.BgColor = <0, 0, 0>;
+```
+
+### Is
+To check if an object is an instance of a certain class, you can use the keyword `is` (results in a `Boolean`).
+
+```ManiaScript
+declare IsQuad = Page.GetFirstChild("myQuad") is CMlQuad;
+```
+
 ## Ident
 Every class in ManiaScript has an `Id` property of the type `Ident`. Its value can be used to uniquely identify the according object. Default value is `NullId`.
 
@@ -321,23 +348,3 @@ Parameter array methods:
 
 ## Void
 `Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.
-
-## Casting
-Casting a value from one type to another type can either be done with the keyword `as` or the function `cast`.
-
-```ManiaScript
-declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
-```
-
-```ManiaScript
-declare MyQuad = cast(Page.GetFirstChild("myQuad"), CMlQuad);
-```
-
-This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching ManiaLink elements).
-
-```ManiaScript
-// Value will be cast from CMlControl to CMlQuad
-declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
-// BgColor is only declared in the CMlQuad class, not in CMlControl
-MyQuad.BgColor = <0, 0, 0>;
-```
