@@ -1,5 +1,5 @@
 # Log
-Logging is an important tool to find out what is happening in your program. ManiaScript offers a function `log` that prints any value passed to it to the console.
+Logging is an important tool to find out what is happening in your program. ManiaScript offers a function `log` that prints any value passed to it to a console.
 
 ```ManiaScript
 log(MyVariable);
