@@ -126,6 +126,17 @@ foreach (MyIndex => MyElement in [1, 2, 3]) {
 }
 ```
 
+## Meanwhile
+Sadly, the `meanwhile` loop isn't fully understood yet. It seems to be a `while` loop that automatically [yields](/advanced/time.html#yield) and re-executes everything before it when exiting the loop body. However, the full extent of this re-execution is not known. Therefore, it is strongly recommended to not use `meanwhile`, in order to avoid unknown side effects.
+
+```ManiaScript
+// Before
+meanwhile (Condition) {
+    // Body
+}
+// After
+```
+
 ## Skipping loop iterations
 In every type of loop you can use the keywords `break` to stop and completely exit the loop, and `continue` to cancel further execution of the current iteration and to start with the next iteration of the loop.
 
