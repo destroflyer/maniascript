@@ -69,13 +69,7 @@ while (expression) {
 }
 ```
 
-This means if the expression directly evaluates to `False`, the code will not be executed at all. To execute it at least once, it's possible to use a `do` `while` loop :
-
-```ManiaScript
-do {
-  // Executed once and then again as long as expression is True
-} while (expression)
-```
+So, if the expression directly evaluates to `False`, the code will not be executed at all.
 
 ## For
 To execute code a set number of times, a `for` loop can be used:
