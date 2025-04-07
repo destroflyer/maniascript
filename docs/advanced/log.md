@@ -9,7 +9,7 @@ log("Players count: " ^ Players.count);
 Non-primitive values such as vectors, structs or objects will be printed as human-readable text, including all of their properties (if existing).
 
 ## Game client
-When running a script in the game client (including local servers), the log output can be found in the [debug window](/introduction/development_setup.html#debug-window).
+When running a script in the game client (including local servers), the log output can be found in the [output window](/introduction/development_setup.html#output-window).
 
 ## Dedicated server
 On dedicated servers, the log will be printed to the default console output (`stdout`).

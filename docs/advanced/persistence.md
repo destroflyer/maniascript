@@ -6,7 +6,7 @@ ManiaScript allows persisting variables, which means storing them across context
 declare persistent Boolean MyGameMode_ConfigA;
 ```
 
-Note, that the name `MyGameMode_ConfigA` above is not simply a very exhaustive example name - Persisted variables are shared across all scripts of the game, which means you should always add a custom prefix (unique to your program) in order to avoid conflicts and therefore unpredictable behaviour.
+Note, that the name `MyGameMode_ConfigA` above was specifically named in this very exhaustive way - Persisted variables are shared across all scripts of the game, which means you should always add a custom prefix (unique to your program) in order to avoid conflicts and therefore unpredictable behaviour.
 
 Assigning values to `persistent` variable works the same way as it does for [extension properties](/advanced/extension_properties.html): The "initial" value after the `=` in the declaration (or the types default value if not specified) only represents the initial value if no value already has been set. This means when you persisted this variable before, the stored value will be loaded and used. After the declaration, the variable can be used to read the current value and assignments via `=` work as usual. Consider the following code:
 
@@ -31,7 +31,7 @@ MyGameMode_CounterA += 1;
 UserMgr.MainUser.PersistentSave();
 ```
 
-The important part here is `UserMgr.MainUser.PersistentSave();`, which stores the current properties of `UserMgr.MainUser` (including our extension property) in a way that survives a game restart. Without the call to this method, the variable would be deleted when your current session is closed. Again, make sure you always use a custom prefix for your variable in order to avoid conflicts with other properties.
+The important part here is `UserMgr.MainUser.PersistentSave();`, which stores the current properties of `UserMgr.MainUser` (including our extension property) in a way that survives a game restart. Without the call to this method, the variable would be deleted when your current session is closed. Again, make sure you always use a custom prefix for your variable in order to avoid conflicts with properties from other scripts.
 
 TODO: Check how this behaves on server.
 

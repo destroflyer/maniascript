@@ -18,4 +18,4 @@ log(_("Time limit"));
 
 When running this code in an English or German game client, the log will show neither `Time limit` nor `Zeitlimit`, but instead `̺ Time limit` in both.
 
-Note that `̺ ` is not a simple underscore `_` (like the translate function itself), but the unicode character [Combining Inverted Bridge Below](https://unicode-table.com/en/033A/) (U+033A).
+Note that the `̺` in this prefix is not a simple underscore `_` (like the translate function itself), but the unicode character [Combining Inverted Bridge Below](https://unicode-table.com/en/033A/) (U+033A).

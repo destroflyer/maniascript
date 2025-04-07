@@ -54,3 +54,5 @@ Void MyFunction() {
 ```
 
 When trying to compile the code above, you would receive an error that the variable `Tmp` has already been declared before. Wrapping the label call `+++ MyLabel +++` in curly braces will result in the `Tmp` variable of the `MyLabel` implementation to not exist in the scope of `MyFunction` and therefore to not cause any further error.
+
+TODO: Check the above snippet about "leaking" - It probably should be a different example where actual leaking is involved? Or the description should be adapted.

@@ -87,8 +87,8 @@ Internally, every instance of a class in ManiaScript has a unique `Id` property.
 ## Tricky alias cases
 Unfortunately, there are some edge cases where aliases can become tricky.
 
-### Aliases in arrays
-Imagine an array of class instances, that are read from an API array.
+### Aliases in parameter arrays
+Imagine an array of class instances, that are read from a [parameter array](/basics/types.html#parameter-array).
 
 ```ManiaScript
 // Players[0] => Alice, Players[1] => Bob
@@ -104,9 +104,9 @@ When writing `MyValue <=> MyArray[0]`, it means "take the alias that is stored i
 
 ### Functions returning class instances
 
-As with API arrays, handling API functions and functions declared in your script behaves differently.
+As with API parameter arrays, handling API functions behaves differently from handling functions declared in your script.
 
-When you call an API function, the result will be a "simplified" alias. Those are unambiguous aliases referring to the objects `Id`, inside of an API-defined array.
+When you call an API function, the result will be a "simplified" alias. Those are unambiguous aliases referring to the objects `Id`, inside of an API-defined parameter array.
 
 ```ManiaScript
 // MyLabel is an alias to Page.MainFrame.Controls[IdOfTheFirstChildFound]
@@ -135,3 +135,5 @@ log(BestPlayer.Login);
 When dealing with script-defined functions, the aliases are directly copied (the same way they are when using script-defined arrays). Therefore, if `GetBestPlayer` in the previous example was a function defined in your script, it would log "Bob" instead.
 
 In both cases, using a class instance you obtained from a function call will never call the function again when resolving the alias.
+
+TODO: Check if this is just for API functions that return class instances or also custom functions that return class instances (which means the title should change)

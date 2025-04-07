@@ -49,7 +49,7 @@ export default {
             { text: "Libraries", link: "/advanced/libraries.md" },
             { text: "Extension properties", link: "/advanced/extension_properties.md" },
             { text: "Context", link: "/advanced/context.md" },
-            { text: "Debugger", link: "/advanced/debugger.md" },
+            { text: "Script viewer", link: "/advanced/script_viewer.md" },
             { text: "Network", link: "/advanced/network.md" },
             { text: "Persistence", link: "/advanced/persistence.md" },
             { text: "Translations", link: "/advanced/translations.md" },

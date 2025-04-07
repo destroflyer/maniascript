@@ -7,7 +7,9 @@ Since you can't declare new classes in ManiaScript, the primary usecase of this 
 declare Integer RespawnCounter for Player;
 ```
 
-After declaring a variable `for` an object (in this case the object `Player`), the object will contain a corresponding property for the remaining program execution. This is independent of the scope that the declaration happened in: You can declare a new property this way at any point and even after existing your current scope, any other code that has access to this object will still be able to use it afterwards.
+After declaring a variable `for` an object (in this case the object `Player`), the object will contain a corresponding property for the remaining program execution. This is independent of the scope that the declaration happened in: You can declare a new property this way at any point and even after exiting your current scope, any other code that has access to this object will still be able to use it afterwards.
+
+It's not allowed to add an extension property with the same name as an already existing (non-extension) property of an object.
 
 ## Writing
 To write a value into such an extension property, you can simply assign a value to it via `=`. However, the syntax can be a bit confusing because ManiaScript offers a way to declare a custom default value (assigned if the object does not have the property yet).

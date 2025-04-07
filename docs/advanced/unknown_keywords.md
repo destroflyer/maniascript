@@ -4,6 +4,3 @@ There are a few reserved keywords in ManiaScript that are not fully understood y
 - `cloudisready`
 - `cloudrequestsave`
 - `reverse`
-- `tuningstart`
-- `tuningend`
-- `tuningmark`

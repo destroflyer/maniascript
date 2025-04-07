@@ -9,7 +9,7 @@ conflict with existing properties on the object - It is still strongly suggested
 declare metadata Text MyValue for Map = "Hello";
 ```
 
-When saving this map, its metadata properties will also be stored in the map file. That way, when loading this file the next time, even on a different machine like a server or your friends pc, the metadata property will be available again and even accessible by other scripts that have access to the map object, such as game modes.
+When saving this map in the editor, its metadata properties will also be stored in the map file. That way, when loading it the next time, even on a different machine like a server or your friends pc, the metadata property will be available again and even accessible by other scripts that have access to the map object, such as game modes.
 
 A good usecase for this mechanism would be a custom game mode that supports putting actual configuration in the maps themselves, for example some locations on the map where something special happens if a player drives near them.
 

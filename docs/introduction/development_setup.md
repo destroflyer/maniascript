@@ -8,9 +8,9 @@ While Trackmania offers an ingame editor with a lot of features that external ap
 ### Editor
 The easiest way to edit and debug scripts is to use the ingame editor. It is accessible through different ways depending on the kind of script:
 
-- Rules: Create an ingame server (online or LAN) and select a mode. Once you're playing on the server, press the `Scroll lock` key to open the editor.
-- Map type: Launch the map editor, select a map type on the top left of the screen and then press the `Scroll lock` key.
-- Map editor plugin: Launch the map editor and click on the plugin icon on the bottom of the screen. Then click on the create button on the left. If you want to edit an existing plugin, click on the small `+` button above it and afterwards on the edit button on the left.
+- Game mode: While playing the mode (on an actual server or in the map editor), press the `Scroll lock` key to open the editor
+- Map type: Launch the map editor, select a map type on the top left of the screen and then press the `Scroll lock` key
+- Map editor plugin: Launch the map editor and click on the plugin icon on the bottom of the screen. Then click on the create button on the left. If you want to edit an existing plugin, click on the small `+` button above it and afterwards on the edit button on the left
 
 Features:
 - A main working area, this is where you will type your script (You can open up to five scripts at once and move between them via tabs)
@@ -45,14 +45,8 @@ Shortcuts:
 - `Ctrl` + `R`: Test the script and close the editor
 - `Esc`: Close the editor
 
-### Debug window
-While the editor is closed, you can press `Ctrl` + `G` to open the debug window, which will initially only display the log (Everything passed to the `log` function will be printed here). If you press `Ctrl` + `G` a second time, you will see full debug window. Pressing `Ctrl` + `G` a third time will close it.
-
-Features:
-- The log
-- The script you are currently debugging. If there is an error in the script, the window will display the line causing the error
-- A list of all currently running scripts (You can click on each script to open it in the left area - Scripts that contain an error will be displayed in red)
-- A list of all previous compilation errors (You can click on each error to see detailed information)
+### Output window
+While the editor is closed, you can press `Ctrl` + `G` to open the output window, which will initially only display the [log](/advanced/log.html). If you press `Ctrl` + `G` a second time, you will see full window, now also showing the [script viewer](/advanced/script_viewer.html). Both are tools that will be helpful when executing code and trying to find out what's happening. Pressing `Ctrl` + `G` a third time will close the window.
 
 ## External
 Be aware that Trackmania caches some resources, including scripts. Therefore, when updating a script with an external editor, it won't be reloaded in the game.

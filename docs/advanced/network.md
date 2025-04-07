@@ -2,7 +2,9 @@
 When developing a custom game mode that displays something to the player, you have to keep in mind that different parts of your script will run on different machines: The actual game mode will be running on the server, while the script displaying the information will run on each players' computer. These parts of the code need to communicate with each other over the network.
 
 ## Synchronizing variables
-ManiaScript handles networking by synchronizing variables. Adding the keyword `netwrite` to an [extension property](/advanced/extension_properties.html) of an object on the server will enable it to be sent and read to/by the clients. Of course, you cannot choose a name for which a property already exists on said object. To which player/s the variable gets sent to, depends on the object that the property was added to. It's possible to either send a variable value to all players or only to one specific player.
+ManiaScript handles networking by synchronizing variables. Adding the keyword `netwrite` to an [extension property](/advanced/extension_properties.html) of an object on the server will enable it to be sent and read to/by the clients.
+
+To which player/s the variable gets sent to, depends on the object that the property was added to. It's possible to either send a variable value to all players or only to one specific player.
 
 To send a variable to all players, add the property to `This`, `Teams[0]` or `Teams[1]`:
 
