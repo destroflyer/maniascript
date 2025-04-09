@@ -41,7 +41,21 @@ log(MyLib::MyConstant);
 MyLib::MyFunction();
 ```
 
-The namespace (in the example above `MyLib`) is freely definable, but of course it's not allowed to specify one that's conflicting with other names.
+The namespace (in the example above `MyLib`) is freely definable, but of course it's not allowed to specify a name that's conflicting with another one.
+
+While heavily discouraged, it's possible to include a script without binding it to a namespace:
+
+```ManiaScript
+#Include "MyPath/Library.Script.txt"
+
+// ...
+
+MyFunction();
+```
+
+The reasons why this is discouraged:
+- Worse traceability: It's hard to understand where `MyFunction` is coming from
+- Unexpected behavior: If a function named `MyFunction` already exists in the script (either directly declared there or indirectly via another included script), the one we want to include from our `MyPath/Library.Script.txt` will not replace it. Even worse, ManiaScript will not throw an error but simply ignore this conflict and keep using the very first `MyFunction` that was declared/imported, even if the signatures are different. The non-conflicting functions from the library will however be included just fine, which can lead to even more confusion or unpredictable behavior. In total, this can result in a lot of (potentially undetected) issues that can be avoided by simply always specifying a namespace.
 
 Included scripts are not allowed to have a [main function](/basics/functions.html#main) and the included constants and functions are only available in the script that directly includes them (i.e. not in scripts that include a script that includes them).
 
