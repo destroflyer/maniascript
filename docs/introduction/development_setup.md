@@ -12,17 +12,19 @@ The easiest way to edit and debug scripts is to use the ingame editor. It is acc
 - Map type: Click on `Map Options` at the bottom right and select `Set map type` and your map type. While in the editor, press the `Scroll lock` key to open the editor and select your map type on the right.
 - Map editor plugin: Click on `Plugins Mode [P]` at the bottom center. Then click on the `Create` button on the left to open the editor. If you want to edit an existing plugin, click on the small `+` button above it and afterwards on the edit button on the left.
 
-Features:
+Components:
 - A main working area, this is where you will type your script (You can open up to five scripts at once and move between them via tabs)
-- An include panel that displays all external scripts used by your own script and an "Include" button that displays or hides it
 - A "Compile" button to check if there are no compilation errors in your script
 - A "Save" button to save all modified scripts
 - A "Save as" button to save the current script at a specific location with a new file name
-- A debugger including the possibility to set breakpoints
 - A "Test" and "Test & close" button that restarts the context, e.g. your game mode on the server
 - A "Close" button to exit the editor, losing all unsaved modifications
+- An include panel where you can navigate all external scripts included by your own script
+- A debugger panel including the possibility to set breakpoints
+- A search and replace panel
 
 Shortcuts:
+- `Ctrl` + `Space`: Autocomplete
 - `Ctrl` + `A`: Select all
 - `Ctrl` + `C`: Copy line/selection
 - `Ctrl` + `X`: Cut line/selection
