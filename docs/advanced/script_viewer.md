@@ -30,21 +30,19 @@ Below the list of scripts, you can also see a list of the past compilation error
 ## Tuning
 ManiaScripts offers a tuning tool to check what parts slow down your script the most (works in both server and client scripts).
 
-Note for plugin developers: This will not work for ManiaLinks injected directly to a `CGameUILayer`. It will only work if you can read the contents of the script in the script viewer.
+Note:
+- It will only work if you can read the contents of the script in the script viewer
+- It will not work for ManiaLinks injected directly to a `CGameUILayer`
 
 How to do it:
 
 1. Add `tuningstart();` and `tuningend();` to your code
 2. Start your script
-3. Let the script run for some time (at least 15s) to gather a fair amount of data. If your tuning only occur on some event, or once in a while, be sure to meet the conditions multiple times (the more the better)
-4. Open the "Script Debugger" (with `Ctrl` + `G` twice)
-5. Select the script you are tuning in the "Instances" list
-6. The full tuning log has the been copied to your clipboard!
-7. You can then paste it in your preferred text editor to see the results.
-
-Troubleshooting
-- Is the script content viewable in the script viewer? (Required)
-- Are `tuningstart();` and `tuningend();` in the main function? (This might be required) (TODO: Check)
+3. Let the script run for some time (at least 15s) to gather a fair amount of data. If your tuning only occurs on some event, or once in a while, be sure to meet these conditions multiple times (the more the better)
+4. Open the script viewer
+5. Click on the script you are tuning in the "Instances" list
+6. The full tuning log has now been copied to your clipboard!
+7. You can paste it in your preferred text editor to see the results
 
 Example result:
 
@@ -72,12 +70,11 @@ Average time spent per frame in units of 10ns
 
 To check the most expensive part of your script, find the highest number in the columns `%age` and `line`/`function`:
 
-- `%age` is the percentage of load of the line or function, depending if you are inside the main function or another function (TODO: Check how this interacts). In the example above, it's line 21 which is consuming the most resources.
+- `%age` is the percentage of load of the line or function, depending if you are inside the main function or another function (TODO: Check the difference). In the example above, it's line 21 which is consuming the most resources.
 - `line`/`function` is the time spent in the respective line or function (TODO: Unit?). The `line` column should usually not have values > 0.25 (with writing network variables being an exception). High values here can create lags.
 
 ### tuningmark
-
-You can use the `tuningmark()` function to add blocks to the tuning graph. Each call to `tuningmark()` creates a new block measuring the time spent until the next `tuningmark()`, `yield` or context.
+You can use the `tuningmark` function to add blocks to the tuning graph. Each call to `tuningmark` creates a new block measuring the time spent until the next `tuningmark`, `yield` or context.
 
 ```ManiaScript
 Void SomeFunction() {
@@ -87,8 +84,17 @@ Void SomeFunction() {
 }
 ```
 
-This will add a block named SomeFunction measuring the time spent between `tuningmark("SomeFunction_Start");` and `tuningmark("SomeFunction_End");`.
+This will add a block named "SomeFunction" measuring the time spent between `tuningmark("SomeFunction_Start");` and `tuningmark("SomeFunction_End");`.
 
-### TODO: Extend documentation by checking:
-- Openplanet discord messages from Eole, referring to the Ctrl+F7 profiler
-- Openplanet discord messages from Beu, regarding profiling/performance tips
+TODO: Check and describe the need for the "_Start" and "_End" suffixes.
+
+## Profiler
+The profiler can be accessed via `Ctrl` + `F7` in game. It is the most advanced tool for debugging performance and is useful when e.g. having a big gamemode and needing to optimize it to limit client lag.
+
+- Each yellow column is the time spent to generate a frame - The bottom ones are from the CPU, the top ones are from the GPU
+- Right click to pause the profiler, then left click on a yellow line to select a frame
+- You can zoom in it using `Shift` + middle mouse button click + moving your mouse on the right
+- you can move in it using Middle mouse button click + moving your mouse
+- The line named `Update_AfterMainLoop` will contain the scripts updates, and if you zoom enough in it, you will have the name of the script that took time to update
+
+TODO: Check/improve Profiler section and provide images.

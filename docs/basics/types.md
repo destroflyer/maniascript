@@ -157,7 +157,9 @@ A = B > C; // Greater than
 Comparing texts via operators such as `>` will alphabetically compare them character by character. A character occurring later in the alphabet will be considered greater than a character occurring earlier.
 
 ## Class
-While classes do exist in ManiaScript and can be used, there is no way to create custom classes. When a variable of a class type does not have an instance assigned to it, its value is `Null`. Default value is `Null`.
+While classes do exist in ManiaScript and can be used, there is no way to create custom classes or create instances of a class (also called objects) yourself. In other words, all classes and objects are coming from the ingame API.
+
+When a variable of a class type does not have an instance assigned to it, its value is `Null`. Default value is `Null`.
 
 Object properties and methods can be accessed via `.`:
 
@@ -230,88 +232,112 @@ Struct methods:
 | `fromjson(Text)` | StructType  | Deserializes a JSON string into this struct. |
 
 ## Array
-An array can store multiple values of a specific type. It is declared via square brackets `[]` after the value type:
+An array can store multiple values of a specific type. There are three types of arrays in ManiaScript:
+
+- Lists (arrays without keys)
+- Associative arrays (arrays with keys)
+- API arrays (object arrays coming from the ingame API)
+
+### List
+A list can store multiple values, indexed by a number. They are declared via square brackets `[]` after the value type:
 
 ```ManiaScript
 declare Integer[] A = [1, 3, 5, 7];
 ```
 
-Default value is an empty array.
+Default value is an empty list.
 
-Array elements are accessed via square brackets `[]` and index, starting at 0. Accessing an invalid index will throw an error.
-
-```ManiaScript
-B = A[0]; // First element
-```
-
-Array properties:
-
-| Property | Type      | Description         |
-|:---------|:----------|:--------------------|
-| `count`  | `Integer` | Length of the array |
-
-Array methods:
-
-| Method                      | Return Type | Description                                                                                                                                                                                  |
-|:----------------------------|:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `add(Value)`                | `Void`      | Adds `Value` as last element                                                                                                                                                                 |
-| `addfirst(Value)`           | `Void`      | Adds `Value` as first element                                                                                                                                                                |
-| `remove(Value)`             | `Boolean`   | Removes first occurrence of `Value`                                                                                                                                                          |
-| `exists(Value)`             | `Boolean`   | Returns if `Value` is present in array                                                                                                                                                       |
-| `keyof(Value)`              | `Integer`   | Returns index of `Value`                                                                                                                                                                     |
-| `clear()`                   | `Void`      | Removes all elements                                                                                                                                                                         |
-| `containsonly(OtherArray)`  | `Boolean`   | Returns if the array contains exactly the values in `OtherArray`                                                                                                                             |
-| `containsoneof(OtherArray)` | `Boolean`   | Returns if at least one value of `OtherArray` is present in this array                                                                                                                       |
-| `sort()`                    | ValueType[] | Returns a copy of this array, sorted ascending by value                                                                                                                                      |
-| `sortreverse()`             | ValueType[] | Returns a copy of this array, sorted descending by value                                                                                                                                     |
-| `slice(Index)`              | ValueType[] | Returns a subarray from index `Index` to the end                                                                                                                                             |
-| `slice(Index, Count)`       | ValueType[] | If `Count` >= 0, returns a subarray from index `Index` to `Index + Count`.<br/>If `Count` < 0, returns a subarray beginning at `Index` and excluding the last `Count` elements of the array. |
-
-## Associative array
-An associative array can store multiple values of a specific type, indexed via keys. It is declared via the key type in square brackets `[]` after the value type:
+List elements can be read and written via square brackets `[]` and index, starting at 0. Accessing an invalid index will throw an error.
 
 ```ManiaScript
-// Text values indexed by Integers
-declare Text[Integer] A = [1 => "Hello", 1337 => "World"];
+B = A[0]; // Reads first element
+A[1] = 42; // Updates second element
 ```
 
-Default value is an empty array.
+When iterating over the list, the elements are handled in the list order, i.e. the order of their indices.
+
+List properties:
+
+| Property | Type      | Description        |
+|:---------|:----------|:-------------------|
+| `count`  | `Integer` | Length of the list |
+
+List methods:
+ 
+| Method                     | Return Type | Description                                                                                                                                                                                |
+|:---------------------------|:------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `get(Index)`               | ValueType   | Gets the value at the index `Index` (equal to reading via square brackets)                                                                                                                 |
+| `get(Index, Default)`      | ValueType   | Returns the value at the index `Key` or `Default` if not existing                                                                                                                          |
+| `add(Value)`               | `Void`      | Adds `Value` as last element                                                                                                                                                               |
+| `addfirst(Value)`          | `Void`      | Adds `Value` as first element                                                                                                                                                              |
+| `remove(Value)`            | `Boolean`   | Removes the first occurrence of an element with value `Value`                                                                                                                              |
+| `removekey(Index)`         | `Boolean`   | Removes the element with index `Index`                                                                                                                                                     |
+| `exists(Value)`            | `Boolean`   | Returns if an element with value `Value` is present in this list                                                                                                                           |
+| `existskey(Index)`         | `Boolean`   | Returns if an element with index `Index` is present in this list                                                                                                                           |
+| `keyof(Value)`             | `Integer`   | Returns the first index of an element with value `Value`                                                                                                                                   |
+| `clear()`                  | `Void`      | Removes all elements                                                                                                                                                                       |
+| `containsonly(OtherList)`  | `Boolean`   | Returns if this list contains exactly the values in `OtherList`                                                                                                                            |
+| `containsoneof(OtherList)` | `Boolean`   | Returns if at least one value of `OtherList` is present in this list                                                                                                                       |
+| `sort()`                   | ValueType[] | Returns a copy of this list, sorted ascending by value                                                                                                                                     |
+| `sortreverse()`            | ValueType[] | Returns a copy of this list, sorted descending by value                                                                                                                                    |
+| `slice(Index)`             | ValueType[] | Returns a sublist from index `Index` to the end                                                                                                                                            |
+| `slice(Index, Count)`      | ValueType[] | If `Count` >= 0, returns a sublist from index `Index` to `Index + Count`.<br/>If `Count` < 0, returns a sublist beginning at `Index` and excluding the last `Count` elements of this list. |
+
+### Associative array
+An associative array can store multiple values, indexed via freely definable keys. They are declared via the key type in square brackets `[]` after the value type:
+
+```ManiaScript
+declare Integer[Text] A = ["Hello" => 1, "World" => 1337];
+```
+
+Default value is an empty associative array.
+
+TODO: Describe supported key types.
 
 Associative arrays don't have an `add` method, instead values are directly assigned to keys:
 
 ```ManiaScript
-A[42] = "The answer";
+A["The answer"] = 42;
 ```
+
+Associative arrays store the elements in the order in which they were added. Therefore, when iterating over an associative array, the elements are handled in this order and not in the order of their keys. If required, iterating in key order can be achieved by using `sortkey`/`sortkeyreverse` (see methods table below).
 
 Associative array properties:
 
-| Property | Type      | Description         |
-|:---------|:----------|:--------------------|
-| `count`  | `Integer` | Length of the array |
+| Property | Type      | Description                     |
+|:---------|:----------|:--------------------------------|
+| `count`  | `Integer` | Length of the associative array |
 
 Associative array methods:
 
-| Method                 | Return Type | Description                                                            |
-|:-----------------------|:------------|:-----------------------------------------------------------------------|
-| `get(Key)`             | ValueType   | Gets the element at the `Key` index                                    |
-| `get(Key, Default)`    | ValueType   | Returns value at the `Key` index or `Default` if not existing          |
-| `keyof(Value)`         | KeyType     | Return the first key of an element with value `Value`                  |
-| `remove(Value)`        | `Boolean`   | Removes first element with value `Value`                               |
-| `removekey(Key)`       | `Boolean`   | Removes element with key `Key`                                         |
-| `exists(Value)`        | `Boolean`   | Returns if an element with value `Value` is present in array           |
-| `existskey(Key)`       | `Integer`   | Returns if an element with key `Key` is present in array               |
-| `clear()`              | `Void`      | Removes all elements                                                   |
-| `containsonly(Array)`  | `Boolean`   | Returns if the array contains exactly the values in `OtherArray`       |
-| `containsoneof(Array)` | `Boolean`   | Returns if at least one value of `OtherArray` is present in this array |
-| `sort()`               | ValueType[] | Returns a copy of this array, sorted ascending by value                |
-| `sortreverse()`        | ValueType[] | Returns a copy of this array, sorted descending by value               |
-| `sortkey()`            | ValueType[] | Returns a copy of this array, sorted ascending by key                  |
-| `sortkeyreverse()`     | ValueType[] | Returns a copy of this array, sorted descending by key                 |
+| Method                      | Return Type | Description                                                            |
+|:----------------------------|:------------|:-----------------------------------------------------------------------|
+| `get(Key)`                  | ValueType   | Gets the value at the key `Key` (equal to reading via square brackets) |
+| `get(Key, Default)`         | ValueType   | Returns the value at the key `Key` or `Default` if not existing        |
+| `remove(Value)`             | `Boolean`   | Removes the first occurrence of an element with value `Value`          |
+| `removekey(Key)`            | `Boolean`   | Removes the element with key `Key`                                     |
+| `exists(Value)`             | `Boolean`   | Returns if an element with value `Value` is present in this array      |
+| `existskey(Key)`            | `Integer`   | Returns if an element with key `Key` is present in this array          |
+| `keyof(Value)`              | KeyType     | Returns the first key of an element with value `Value`                 |
+| `clear()`                   | `Void`      | Removes all elements                                                   |
+| `containsonly(OtherArray)`  | `Boolean`   | Returns if the array contains exactly the values in `OtherArray`       |
+| `containsoneof(OtherArray)` | `Boolean`   | Returns if at least one value of `OtherArray` is present in this array |
+| `sort()`                    | ValueType[] | Returns a copy of this array, sorted ascending by value                |
+| `sortreverse()`             | ValueType[] | Returns a copy of this array, sorted descending by value               |
+| `sortkey()`                 | ValueType[] | Returns a copy of this array, sorted ascending by key                  |
+| `sortkeyreverse()`          | ValueType[] | Returns a copy of this array, sorted descending by key                 |
 
-## Parameter array
-A parameter array is an array containing objects, that has a few unique behaviours. It supports multiple types of keys, namely `Integer`, `Ident` or objects (in which case the objects `Id` property is used as key). Therefore, you can think of them as sorted object lists that still offer the possibility to access a specific element using its `Id`.
+### API array
+An API array is an array containing objects, that has a few unique behaviours:
 
-Parameter arrays are read-only and are exclusively offered by ingame APIs (they are not declarable yourself). Usually, they contain objects like the players on a server.
+- It is read-only
+- It supports multiple types of keys, namely `Integer`, `Ident` or objects (in which case the objects `Id` property is used as key). Therefore, you can think of them as sorted object arrays that still offer the possibility to access a specific element using its `Id`.
+
+TODO: Check and describe the sorting part, some documentation hints to the fact that e.g. `Players` is always sorted by score.
+
+While it's possible to create a list or associative array of objects, it's not possible to create an API array yourself. In other words, all API arrays are coming from the ingame API.
+
+Usually, they contain objects like the players on a server.
 
 ```ManiaScript
 PlayerIdA = Players[0].Id;
@@ -321,7 +347,7 @@ PlayerIdA = Players[0].Id;
 PlayerA = Players[PlayerIdA];
 ```
 
-As stated, parameter arrays also accept the actual object as key (instead of its `Id`). However, there isn't really a good usecase for this, as you would just receive the object back that you passed in.
+As stated, API arrays also accept the actual object as key (instead of its `Id`). However, there isn't really a good usecase for this, as you would just receive the object back that you passed in.
 
 ```ManiaScript
 PlayerA = Players[0];
@@ -331,20 +357,20 @@ PlayerA = Players[0];
 TheSamePlayerA = Players[PlayerA];
 ```
 
-Parameter array properties:
+API array properties:
 
-| Property | Type      | Description         |
-|:---------|:----------|:--------------------|
-| `count`  | `Integer` | Length of the array |
+| Property | Type      | Description             |
+|:---------|:----------|:------------------------|
+| `count`  | `Integer` | Length of the API array |
 
-Parameter array methods:
+API array methods:
 
-| Method           | Return Type | Description                                                  |
-|:-----------------|:------------|:-------------------------------------------------------------|
-| `get(Key)`       | ValueType   | Gets the element at the `Key` index                          |
-| `keyof(Value)`   | `Integer`   | Return the first key of an element with value `Value`        |
-| `exists(Value)`  | `Boolean`   | Returns if an element with value `Value` is present in array |
-| `existskey(Key)` | `Integer`   | Returns if an element with key `Key` is present in array     |
+| Method           | Return Type | Description                                                           |
+|:-----------------|:------------|:----------------------------------------------------------------------|
+| `get(Key)`       | ValueType   | Gets the value at the key `Key`                                       |
+| `keyof(Value)`   | `Integer`   | Return the first key of an element with value `Value`                 |
+| `exists(Value)`  | `Boolean`   | Returns if an element with value `Value` is present in this API array |
+| `existskey(Key)` | `Integer`   | Returns if an element with key `Key` is present in this API array     |
 
 ## Void
 `Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.

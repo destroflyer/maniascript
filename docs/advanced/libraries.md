@@ -7,6 +7,9 @@ TODO
 ## TextLib
 TODO
 
+## ColorLib
+TODO
+
 ## TimeLib
 TODO
 

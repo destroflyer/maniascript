@@ -50,3 +50,5 @@ main() {
   // Your program
 }
 ```
+
+If your code is simple enough to fit entirely in the `main` function, you can omit its function declaration and write the instructions without any enclosing brackets.

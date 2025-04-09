@@ -2,7 +2,7 @@
 
 Aliases are a special type of pointer that are assigned via `<=>`. They are fast and quite powerful, yet their behaviour can be surprising, especially if you are used to common pointer programming. 
 
-Here's an example: There's a [parameter array](/basics/types.html#parameter-array) of players called `Players`, which is offered by the ingame APIs and sorted descending by score. You can write:
+Here's an example: There's an [API array](/basics/types.html#api-array) of players called `Players`, which is offered by the ingame APIs and sorted descending by score. You can write:
 
 ```ManiaScript
 declare BestPlayer <=> Players[0];
@@ -87,8 +87,8 @@ Internally, every instance of a class in ManiaScript has a unique `Id` property.
 ## Tricky alias cases
 Unfortunately, there are some edge cases where aliases can become tricky.
 
-### Aliases in parameter arrays
-Imagine an array of class instances, that are read from a [parameter array](/basics/types.html#parameter-array).
+### Aliases in API arrays
+Consider the following example where an [API array](/basics/types.html#api-array) `Players` is used:
 
 ```ManiaScript
 // Players[0] => Alice, Players[1] => Bob
@@ -96,17 +96,17 @@ declare MyArray = [Players[0], Players[1]];
 declare MyValue <=> MyArray[0];
 MyArray = [Players[1], Players[0]];
 
-// Will log "Alice", not what you may expect
+// Will log Alice, not what you may expect
 log(MyValue.Login);
 ```
 
 When writing `MyValue <=> MyArray[0]`, it means "take the alias that is stored in `MyArray[0]` and copy it into `MyValue`". Therefore, `MyValue` is an alias to `Player[0]` and not `MyArray[0]`. This is because the value stored in `MyArray` is already an alias, which gets copied directly, instead of creating an alias to the alias. In fact, creating an alias to an alias is not possible in ManiaScript due to technical limitations.
 
-### Functions returning class instances
+### API functions returning objects
 
-As with API parameter arrays, handling API functions behaves differently from handling functions declared in your script.
+As with API arrays, handling API functions behaves differently from handling functions declared in your script.
 
-When you call an API function, the result will be a "simplified" alias. Those are unambiguous aliases referring to the objects `Id`, inside of an API-defined parameter array.
+When you call an API function that returns an object, the result will be a "simplified" alias. Those are unambiguous aliases referring to the objects `Id`, inside of an API array.
 
 ```ManiaScript
 // MyLabel is an alias to Page.MainFrame.Controls[IdOfTheFirstChildFound]
@@ -132,8 +132,6 @@ Players[1].Score += 1000;
 log(BestPlayer.Login); 
 ```
 
-When dealing with script-defined functions, the aliases are directly copied (the same way they are when using script-defined arrays). Therefore, if `GetBestPlayer` in the previous example was a function defined in your script, it would log "Bob" instead.
+When dealing with script-defined functions, the aliases are directly copied (the same way they are when using script-defined arrays). Therefore, if `GetBestPlayer` in the previous example was a function defined in your script, it would log Bob instead.
 
-In both cases, using a class instance you obtained from a function call will never call the function again when resolving the alias.
-
-TODO: Check if this is just for API functions that return class instances or also custom functions that return class instances (which means the title should change)
+In both cases, using an object you obtained from a function call will never call the function again when resolving the alias.

@@ -43,9 +43,11 @@ The following types can be persisted:
 - `Text`
 - Vectors
 - Structs
-- Arrays and associative arrays of a supported type
+- Lists (of a supported type)
+- Associative arrays (of a supported type)
 
 The following types can not be persisted:
 - `Ident`
 - Classes
-- Parameter arrays
+- Objects
+- API arrays

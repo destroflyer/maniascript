@@ -1,4 +1,4 @@
-# Dumps
+# Dumping
 Dumping something in ManiaScript converts it to a `Text` representing ManiaScript code that would express it. This is an important difference to the usual text conversion that is for example done by concatenation (`^`) or `log`, which can omit a few characters like quotes for readability.
 
 ## Dump
@@ -17,14 +17,15 @@ MyText = dump(["A" => 1, "B" => 2]); // ["A"=>1, "B"=>2]
 - `Vector`
 - `Text`
 - `Ident`
-- `Array`
-- `Associative array`
 - Vectors
+- Lists (of a supported type)
+- Associative arrays (of a supported type)
 
 `dump` does not support the following types:
-- `Parameter array`
-- Classes
 - Structs
+- Classes
+- Objects
+- API arrays
 
 ## Dumptype
 The function `dumptype` returns a `Text` representing ManiaScript code that would declare the passed [struct](/basics/types.html#struct) type.

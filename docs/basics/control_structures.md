@@ -71,6 +71,8 @@ while (expression) {
 
 So, if the expression directly evaluates to `False`, the code will not be executed at all.
 
+TOOD: Add do-while
+
 ## For
 To execute code a set number of times, a `for` loop can be used:
 
@@ -96,32 +98,45 @@ for (MyIndex, 1, 3) {
 When iterating over an array, it's often easier to use a `foreach` loop:
 
 ```ManiaScript
-foreach (MyElement in MyArray) {
-  // Your code that can use MyElement
+foreach (MyValue in MyArray) {
+  // Your code that can use MyValue
 }
 ```
 
-It also allows accessing the current index (or key in case of an associative array):
+It also allows accessing the current index/key:
 
 ```ManiaScript
-foreach (MyIndex => MyElement in MyArray) {
-  // Your code that can use MyIndex and MyElement
+foreach (MyIndex => MyValue in MyArray) {
+  // Your code that can use MyIndex and MyValue
 }
 ```
 
-While being bad practice, it's possible for the key or value variable to have the same name as an already declared variable in the same scope. In this edge case, instead of a compilation error, the loop variable is prioritized when the name is evaluated:
+While being bad practice, it's possible for the index or value variable to have the same name as an already declared variable in the scope outside of the loop. In this edge case, instead of a compilation error, the loop variable is prioritized when the name is evaluated:
 
 ```ManiaScript
 declare Text MyIndex = "Hello";
-declare Text MyElement = "World";
-foreach (MyIndex => MyElement in [1, 2, 3]) {
+declare Text MyValue = "World";
+foreach (MyIndex => MyValue in [1, 2, 3]) {
   // Will still compile and log the values 1, 3, and 5
-  log(MyIndex + MyElement);
+  log(MyIndex + MyValue);
+}
+```
+
+### Reverse
+The `reverse` keyword allows iterating arrays in reverse order:
+
+```ManiaScript
+foreach (MyValue in MyArray reverse) {
+  // Your code that can use MyValue
+}
+
+foreach (MyIndex => MyValue in MyArray reverse) {
+  // Your code that can use MyIndex and MyValue
 }
 ```
 
 ## Meanwhile
-Sadly, the `meanwhile` loop isn't fully understood yet. It seems to be a `while` loop that automatically [yields](/advanced/time.html#yield) and re-executes everything before it when exiting the loop body. However, the full extent of this re-execution is not known. Therefore, it is strongly recommended to not use `meanwhile`, in order to avoid unknown side effects.
+Sadly, the `meanwhile` loop isn't fully understood yet. It seems to be a `while` loop that automatically [yields](/advanced/time.html#yield) and re-executes everything when it exits the loop body. However, the full extent of this re-execution is not known. Therefore, it is strongly recommended to not use `meanwhile`, in order to avoid unknown side effects.
 
 ```ManiaScript
 // Before

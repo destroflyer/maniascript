@@ -61,7 +61,9 @@ However, settings can be modified from outside the script. This can for example 
 #Extends "Libs/Nadeo/TMNext/TrackMania/Modes/TMNextBase.Script.txt"
 ```
 
-`#Extends` defines that the current script is an extension of another script, meaning it should share the same `main()` method, constants, settings, variables, functions, etc. as its "parent" and will simply extend its functionality (usually by adding new implementations of [labels](/advanced/labels.html)). Since the parent script could also be extending another script, it is possible to build a hierarchy. Due to this mechanism, it is for example common (but not necessary) for all game modes to ultimately extend Nadeos lowest level game mode script `Libs/Nadeo/ModeLibs/Common/ModeBase.Script.txt` and start customizing from there.
+`#Extends` defines that the current script is an extension of another script, meaning it should share the same `main()` method, constants, settings, variables, functions, etc. as its "parent" and will simply extend its functionality (usually by adding new implementations of [labels](/advanced/labels.html)). Since the parent script could also be extending another script, it is possible to build a hierarchy. Due to this mechanism, it is for example common (but not necessary) for all game modes to ultimately extend Nadeos lowest level game mode script `Modes/Nadeo/TMGame/Base/ModeBase.Script.txt` and start customizing from there.
+
+Scripts that extend other scripts are not allowed to declare a `main()` method or global variables.
 
 ## Command
 `#Command` is only available in game modes (TODO: Check if correct). Commands are declared by specifying a name, a value type (in round brackets `()`) and an optional description (of type `Text`, via `as`).

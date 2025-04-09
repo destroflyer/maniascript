@@ -12,10 +12,15 @@ Implementing a label (i.e. defining the code that should be executed when callin
 *** MyLabel ***
 ***
 // Your custom implementation
+log("Hello");
 ***
 ```
 
-Label implementations can only be declared in the global scope (alongside your directives, global variables and function definitions). The code inside the block has the scope of the label when it's called, meaning that (only) the variables and functions known at the place of `+++ MyLabel +++`/`--- MyLabel ---` can be accessed. But since labels can be called multiple times (and even from different contexts), their scope is in fact the intersection of those calling scopes:
+Label implementations can only be declared in the [global scope](/advanced/global_scope.html).
+
+They require some executable code in their body, meaning that if you would remove the `log` call (or both the `log` call and the comment) in the example above, the compiler would throw an error.
+
+The code inside the body has the scope of the label when it's called, meaning that (only) the variables and functions known at the place of `+++ MyLabel +++`/`--- MyLabel ---` can be accessed. But since labels can be called multiple times (and even from different contexts), their scope is in fact the intersection of those calling scopes:
 
 ```ManiaScript
 Void MyFunction1() {
@@ -53,6 +58,4 @@ Void MyFunction() {
 }
 ```
 
-When trying to compile the code above, you would receive an error that the variable `Tmp` has already been declared before. Wrapping the label call `+++ MyLabel +++` in curly braces will result in the `Tmp` variable of the `MyLabel` implementation to not exist in the scope of `MyFunction` and therefore to not cause any further error.
-
-TODO: Check the above snippet about "leaking" - It probably should be a different example where actual leaking is involved? Or the description should be adapted.
+When trying to compile the code above, the line `declare Tmp = "tmp";` in the function would throw an error that the variable `Tmp` has already been declared in the same block (it was already declared in the label that was called). Wrapping the label call `+++ MyLabel +++` in curly braces will result in the `Tmp` variable of the `MyLabel` implementation to not exist in the scope of `MyFunction` and therefore to not cause any further error.

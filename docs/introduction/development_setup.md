@@ -6,11 +6,11 @@ While Trackmania offers an ingame editor with a lot of features that external ap
 ## Ingame
 
 ### Editor
-The easiest way to edit and debug scripts is to use the ingame editor. It is accessible through different ways depending on the kind of script:
+The easiest way to edit and debug scripts is to use the ingame editor. It is accessible through different ways in the map editor, depending on the kind of script:
 
-- Game mode: While playing the mode (on an actual server or in the map editor), press the `Scroll lock` key to open the editor
-- Map type: Launch the map editor, select a map type on the top left of the screen and then press the `Scroll lock` key
-- Map editor plugin: Launch the map editor and click on the plugin icon on the bottom of the screen. Then click on the create button on the left. If you want to edit an existing plugin, click on the small `+` button above it and afterwards on the edit button on the left
+- Game mode: Click on `Map Options` at the bottom right and select `Test the map with mode` and your mode. While playing, press the `Scroll lock` key to open the editor.
+- Map type: Click on `Map Options` at the bottom right and select `Set map type` and your map type. While in the editor, press the `Scroll lock` key to open the editor and select your map type on the right.
+- Map editor plugin: Click on `Plugins Mode [P]` at the bottom center. Then click on the `Create` button on the left to open the editor. If you want to edit an existing plugin, click on the small `+` button above it and afterwards on the edit button on the left.
 
 Features:
 - A main working area, this is where you will type your script (You can open up to five scripts at once and move between them via tabs)
@@ -48,8 +48,11 @@ Shortcuts:
 ### Output window
 While the editor is closed, you can press `Ctrl` + `G` to open the output window, which will initially only display the [log](/advanced/log.html). If you press `Ctrl` + `G` a second time, you will see full window, now also showing the [script viewer](/advanced/script_viewer.html). Both are tools that will be helpful when executing code and trying to find out what's happening. Pressing `Ctrl` + `G` a third time will close the window.
 
+### Ingame
+While playing a map to test a game mode, you can restart the server by pressing `Shift` + `Scroll lock` (using the up-to-date saved script).
+
 ## External
-Be aware that Trackmania caches some resources, including scripts. Therefore, when updating a script with an external editor, it won't be reloaded in the game.
+Be aware that Trackmania caches some resources, including scripts. Therefore, when updating a script with an external editor, it won't necessarily be reloaded in the game.
 
 ### IDE extensions
 - Visual Studio Code: [maniascript-support](https://marketplace.visualstudio.com/items?itemName=reaby.maniascript-support)
