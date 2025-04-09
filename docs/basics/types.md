@@ -133,7 +133,7 @@ E = True;
 F = A ^ B ^ C ^ D ^ E; // HelloWorld12.3True
 ```
 
-You can concatenate values of type `Text`, `Integer`, `Real`,  `Boolean`, `Ident` and arrays or associative arrays (of one these types) to a `Text`. In this case, they are converted to a readable text, depending on the type.
+You can concatenate values of all types to a `Text`, converting them to a readable text (depending on the type).
 
 ManiaScript also offers text blocks via `"""`, where you don't have to escape `"` and can use string interpolation to insert values.
 

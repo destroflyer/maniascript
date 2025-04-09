@@ -48,6 +48,5 @@ The following types can be persisted:
 
 The following types can not be persisted:
 - `Ident`
-- Classes
 - Objects
 - API arrays

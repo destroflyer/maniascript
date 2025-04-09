@@ -14,7 +14,6 @@ MyText = dump(["A" => 1, "B" => 2]); // ["A"=>1, "B"=>2]
 - `Boolean`
 - `Integer`
 - `Real`
-- `Vector`
 - `Text`
 - `Ident`
 - Vectors
@@ -23,7 +22,6 @@ MyText = dump(["A" => 1, "B" => 2]); // ["A"=>1, "B"=>2]
 
 `dump` does not support the following types:
 - Structs
-- Classes
 - Objects
 - API arrays
 
