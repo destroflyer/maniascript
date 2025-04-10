@@ -69,7 +69,6 @@ Average time spent per frame in units of 10ns
 ```
 
 To check the most expensive part of your script, find the highest number in the columns `%age` and `line`/`function`:
-
 - `%age` is the percentage of load of the line or function, depending if you are inside the main function or another function (TODO: Check the difference). In the example above, it's line 21 which is consuming the most resources.
 - `line`/`function` is the time spent in the respective line or function (TODO: Unit?). The `line` column should usually not have values > 0.25 (with writing network variables being an exception). High values here can create lags.
 

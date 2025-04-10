@@ -232,8 +232,7 @@ Struct methods:
 | `fromjson(Text)` | StructType  | Deserializes a JSON string into this struct. |
 
 ## Array
-An array can store multiple values of a specific type. There are three types of arrays in ManiaScript:
-
+An array can store multiple values of equal type. There are three types of arrays in ManiaScript:
 - Lists (arrays without keys)
 - Associative arrays (arrays with keys)
 - API arrays (object arrays coming from the ingame API)
@@ -328,14 +327,11 @@ Associative array methods:
 | `sortkeyreverse()`          | ValueType[] | Returns a copy of this array, sorted descending by key                 |
 
 ### API array
-An API array is an array containing objects, that has a few unique behaviours:
+An API array is an array containing objects, provided by the ingame API. While it's possible to create a list or associative array of objects yourself, it's not possible to create an API array yourself. In other words, all API arrays are coming exclusively from the ingame API. These API-provided arrays have a few unique behaviours:
+- They are read-only
+- They support multiple types of keys, namely `Integer`, `Ident` or objects (in which case the objects `Id` property is used as key). Therefore, you can think of them as sorted object arrays that still offer the possibility to access a specific element using its `Id`.
 
-- It is read-only
-- It supports multiple types of keys, namely `Integer`, `Ident` or objects (in which case the objects `Id` property is used as key). Therefore, you can think of them as sorted object arrays that still offer the possibility to access a specific element using its `Id`.
-
-TODO: Check and describe the sorting part, some documentation hints to the fact that e.g. `Players` is always sorted by score.
-
-While it's possible to create a list or associative array of objects, it's not possible to create an API array yourself. In other words, all API arrays are coming from the ingame API.
+TODO: Check and describe the sorting part.
 
 Usually, they contain objects like the players on a server.
 
@@ -371,6 +367,18 @@ API array methods:
 | `keyof(Value)`   | `Integer`   | Return the first key of an element with value `Value`                 |
 | `exists(Value)`  | `Boolean`   | Returns if an element with value `Value` is present in this API array |
 | `existskey(Key)` | `Integer`   | Returns if an element with key `Key` is present in this API array     |
+
+### Multidimensional arrays
+Arrays can store other arrays as values, leading to a nested hierarchy:
+
+```ManiaScript
+declare Integer[] A = [1, 2, 3];
+declare Integer[][] B = [[1, 2, 3], [4, 5, 6]];
+declare Integer[][Text] C = ["A" => [1,2,3], "B" => [4,5,6]];
+declare Integer[Text] D = ["A" => 1, "B" => 2];
+declare Integer[Text][] E = [["A" => 1, "B" => 2], ["C" => 3, "D" => 4]];
+declare Integer[Text][Boolean] F = [False => ["A" => 1, "B" => 2], True => ["C" => 3, "D" => 4]];
+```
 
 ## Void
 `Void` is a type that represents the absence of an actual type. It's not possible to create variables of this type, it is only used when declaring functions that return nothing.

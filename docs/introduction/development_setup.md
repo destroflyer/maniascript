@@ -7,7 +7,6 @@ While Trackmania offers an ingame editor with a lot of features that external ap
 
 ### Editor
 The easiest way to edit and debug scripts is to use the ingame editor. It is accessible through different ways in the map editor, depending on the kind of script:
-
 - Game mode: Click on `Map Options` at the bottom right and select `Test the map with mode` and your mode. While playing, press the `Scroll lock` key to open the editor.
 - Map type: Click on `Map Options` at the bottom right and select `Set map type` and your map type. While in the editor, press the `Scroll lock` key to open the editor and select your map type on the right.
 - Map editor plugin: Click on `Plugins Mode [P]` at the bottom center. Then click on the `Create` button on the left to open the editor. If you want to edit an existing plugin, click on the small `+` button above it and afterwards on the edit button on the left.
