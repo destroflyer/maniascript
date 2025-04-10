@@ -71,8 +71,6 @@ while (expression) {
 
 So, if the expression directly evaluates to `False`, the code will not be executed at all.
 
-TOOD: Add do-while
-
 ## For
 To execute code a set number of times, a `for` loop can be used:
 

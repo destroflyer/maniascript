@@ -249,8 +249,8 @@ Default value is an empty list.
 List elements can be read and written via square brackets `[]` and index, starting at 0. Accessing an invalid index will throw an error.
 
 ```ManiaScript
-B = A[0]; // Reads first element
-A[1] = 42; // Updates second element
+B = A[0];
+A[1] = 42;
 ```
 
 When iterating over the list, the elements are handled in the list order, i.e. the order of their indices.
@@ -283,7 +283,7 @@ List methods:
 | `slice(Index, Count)`      | ValueType[] | If `Count` >= 0, returns a sublist from index `Index` to `Index + Count`.<br/>If `Count` < 0, returns a sublist beginning at `Index` and excluding the last `Count` elements of this list. |
 
 ### Associative array
-An associative array can store multiple values, indexed via freely definable keys. They are declared via the key type in square brackets `[]` after the value type:
+An associative array can store multiple values, indexed via freely definable keys (all types except arrays can be used as keys). They are declared via the key type in square brackets `[]` after the value type:
 
 ```ManiaScript
 declare Integer[Text] A = ["Hello" => 1, "World" => 1337];
@@ -291,12 +291,11 @@ declare Integer[Text] A = ["Hello" => 1, "World" => 1337];
 
 Default value is an empty associative array.
 
-TODO: Describe supported key types.
-
-Associative arrays don't have an `add` method, instead values are directly assigned to keys:
+Associative arrays elements can be read and written via square brackets `[]` and key. Accessing an invalid key will throw an error.
 
 ```ManiaScript
-A["The answer"] = 42;
+B = A["Hello"];
+A["World"] = 42;
 ```
 
 Associative arrays store the elements in the order in which they were added. Therefore, when iterating over an associative array, the elements are handled in this order and not in the order of their keys. If required, iterating in key order can be achieved by using `sortkey`/`sortkeyreverse` (see methods table below).
