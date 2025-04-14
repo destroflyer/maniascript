@@ -39,3 +39,33 @@ foreach(HttpEvent in Http.PendingEvents) {
 ```
 
 This approach is a bit more complex in that you might have to remember/recognize what this specific request was for, but is ultimately needed for proper asynchronous handling.
+
+## Headers
+
+ManiaScript automatically attaches some headers to your request, which can be used on the server to identify and handle it.
+
+GET requests contain the following headers:
+
+| Header                 | Example value                                                                 |
+|:-----------------------|:------------------------------------------------------------------------------|
+| `Accept`               | \*/\*                                                                         |
+| `Accept-Encoding`      | gzip,deflate                                                                  |
+| `Accept-Language`      | en-US,en                                                                      |
+| `Nadeo-Game-Build`     | 2024-12-12_15_15                                                              |
+| `Nadeo-Game-Crossplay` | 1                                                                             |
+| `Nadeo-Game-Lang`      | en-US                                                                         |
+| `Nadeo-Game-Name`      | ManiaPlanet                                                                   |
+| `Nadeo-Game-Platform`  | PC_Windows                                                                    |
+| `Nadeo-Game-Version`   | 3.3.0                                                                         |
+| `User-Agent`           | ManiaPlanet/3.3.0 (Win64; rv: 2024-12-12_15_15; context: none; distro: AZURO) |
+| `X-Amzn-Trace-Id`      | Root-1-67fd4144-2fd6831f52da666e33998bfd                                      |
+
+POST requests also contain the following additional headers: 
+
+| Header               | Example value                       |
+|:---------------------|:------------------------------------|
+| `Cache-Control`      | no-cache, no-store, must-revalidate |
+| `Content-Length`     | 123                                 |
+| `Content-Type`       | application/binary                  |
+| `Pragma`             | no-cache                            |
+ 
