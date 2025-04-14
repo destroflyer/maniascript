@@ -55,6 +55,7 @@ export default {
             { text: "Persistence", link: "/advanced/persistence.md" },
             { text: "Translations", link: "/advanced/translations.md" },
             { text: "Metadata", link: "/advanced/metadata.md" },
+            { text: "Http requests", link: "/advanced/http_requests.md" },
             { text: "Unknown keywords", link: "/advanced/unknown_keywords.md" },
             { text: "Reference generation", link: "/advanced/reference_generation.md" },
           ],

@@ -9,6 +9,8 @@ declare Integer RespawnCounter for Player;
 
 After declaring a variable `for` an object (in this case the object `Player`), the object will contain a corresponding property for the remaining program execution. This is independent of the scope that the declaration happened in: You can declare a new property this way at any point and even after exiting your current scope, any other code that has access to this object will still be able to use it afterwards.
 
+In the example above, the property will be initialized with the declared types default value (e.g. 0 in case of `Integer`).
+
 It's not allowed to add an extension property with the same name as an already existing (non-extension) property of an object.
 
 ## Writing

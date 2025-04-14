@@ -44,6 +44,12 @@ Shortcuts:
 - `Ctrl` + `S`: Save all modified files
 - `Ctrl` + `T`: Test the script without closing the editor
 - `Ctrl` + `R`: Test the script and close the editor
+- `Ctrl` + `Home`: Jump to the files start
+- `Ctrl` + `End`: Jump to the files end
+- `Ctrl` + `F3`: Search for the selection and jump to next result
+- `Ctrl` + `Shift` + `F3`: Search for the selection and jump to previous result
+- `F3`: Jump to next search result
+- `Shift` + `F3`: Jump to previous search result
 - `Esc`: Close the editor
 
 ### Output window
