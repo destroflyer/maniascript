@@ -3,8 +3,8 @@
 ManiaScript allows you to send http requests via `Http`:
 
 ```ManiaScript
-Http.CreateGet(Url);
-Http.CreatePost(Url, Body);
+Http.CreateGet("test.com");
+Http.CreatePost("test.com", "{\"score\":123}");
 ```
 
 There also is `Http.CreatePostFile`, but its signature is unknown.
