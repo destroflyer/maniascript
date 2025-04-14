@@ -3,12 +3,14 @@
 ManiaScript allows persisting variables, which means storing them across contexts (like different game modes) or even application restarts. To persist a variable, simply add the keyword `persistent` to its declaration.
 
 ```ManiaScript
-declare persistent Boolean MyGameMode_ConfigA;
+declare persistent Boolean MyGameMode_ConfigFeatureX;
 ```
 
-Note, that the name `MyGameMode_ConfigA` above was specifically named in this very exhaustive way - Persisted variables are shared across all scripts of the game, which means you should always add a custom prefix (unique to your program) in order to avoid conflicts and therefore unpredictable behaviour.
+Note, that the variable `MyGameMode_ConfigFeatureX` above was specifically named in this very exhaustive way, for the following reasons:
+- Persisted variables are shared across all scripts of the game, which means you should always add a custom prefix (unique to your program) in order to avoid conflicts and therefore unpredictable behaviour
+- You cannot change the type of a persisted variable as long as its still stored
 
-Assigning values to `persistent` variable works the same way as it does for [extension properties](/advanced/extension_properties.html): The "initial" value after the `=` in the declaration (or the types default value if not specified) only represents the initial value if no value already has been set. This means when you persisted this variable before, the stored value will be loaded and used. After the declaration, the variable can be used to read the current value and assignments via `=` work as usual. Consider the following code:
+Assigning values to `persistent` variables works the same way as it does for [extension properties](/advanced/extension_properties.html): The "initial" value after the `=` in the declaration (or the types default value if not specified) only represents the initial value if no value already has been set. This means when you persisted this variable before, the stored value will be loaded and used. After the declaration, the variable can be used to read the current value and assignments via `=` work as usual. Consider the following code:
 
 ```ManiaScript
 declare persistent Integer MyGameMode_ConfigA = 42;
