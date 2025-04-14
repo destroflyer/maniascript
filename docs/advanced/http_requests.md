@@ -3,11 +3,12 @@
 ManiaScript allows you to send http requests via `Http`:
 
 ```ManiaScript
-Http.CreateGet("test.com");
-Http.CreatePost("test.com", "{\"score\":123}");
+Http.CreateGet("https://test.com");
+Http.CreatePost("https://test.com", "{\"score\":123}");
+// There also is Http.CreatePostFile, but its signature is unknown
 ```
 
-There also is `Http.CreatePostFile`, but its signature is unknown.
+Both `http://` and `https://` are supported, but there is no default - In other words, the protocol need to be explicitly stated in / be part of the URL.
 
 "Creating" a request will immediately send it and return an object that can be used to observe the status (e.g. waiting until `IsCompleted` is True) and finally access the response:
 
