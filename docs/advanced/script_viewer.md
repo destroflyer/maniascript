@@ -4,7 +4,7 @@ The script viewer is part of the [output window](/introduction/development_setup
 ## Instances
 The "Instances" panel on the right shows all loaded scripts.
 
-![Reference Graph](/images/script_instances.png)
+![Script instances](/images/script_instances.png)
 
 The script names are color coded:
 - Grey scripts are currently not executed
