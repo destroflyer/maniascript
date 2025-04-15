@@ -162,3 +162,6 @@ foreach (Control in Page.MainFrame.Controls) {
   }
 }
 ```
+
+## Omitting curly braces
+TODO: Describe that they can be omitted for single-line instructions.
