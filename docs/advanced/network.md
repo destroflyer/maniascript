@@ -2,24 +2,24 @@
 When developing a custom game mode that displays something to the player, you have to keep in mind that different parts of your script will run on different machines: The actual game mode will be running on the server, while the script displaying the information will run on each players' computer. These parts of the code need to communicate with each other over the network.
 
 ## Synchronizing variables
-ManiaScript handles networking by synchronizing variables. Adding the keyword `netwrite` to an [extension property](/advanced/extension_properties.html) of an object on the server will enable it to be sent and read to/by the clients.
+ManiaScript handles networking by synchronizing variables. Adding the keyword `netwrite` to an [extension variable](/advanced/extension_variables.html) of an object on the server will enable it to be sent and read to/by the clients.
 
-To which player/s the variable gets sent to, depends on the object that the property was added to. It's possible to either send a variable value to all players or only to one specific player.
+To which player/s the variable gets sent to, depends on the object that it was added to. It's possible to either send a variable to all players or only to one specific player.
 
-To send a variable to all players, add the property to `This`, `Teams[0]` or `Teams[1]`:
+To send a variable to all players, add it to `This`, `Teams[0]` or `Teams[1]`:
 
 ```ManiaScript
 declare netwrite Integer MyVariableForAll for This;
 ```
 
-To send a variable to only one player, add the property to this players `UI`:
+To send a variable to only one player, add it to this players `UI`:
 
 ```ManiaScript
 declare UI <=> UIManager.GetUI(Player);
 declare netwrite Integer MyVariableForOne for UI;
 ```
 
-Reading a network variable on the client side works similar - You declare a variable with the same name as property for the same object, and add the `netread` keyword. Then, the game will automatically keep the value in sync for you.
+Reading a network variable on the client side works similar - You declare an extension variable with the same name for the same object, and add the `netread` keyword. Then, the game will automatically keep the value in sync for you.
 
 ```ManiaScript
 declare netwrite Integer MyVariableForAll for This;
@@ -32,7 +32,7 @@ declare netwrite Integer MyVariableForOne for UI;
 It's not possible to manually assign a new value to a `netread` variable.
 
 ## Analysis
-Note that more data being sent to clients through the network means more bandwidth being used, which can cause lag on both client and server side. To analyze how much data you are sending, you can use a function called `Dbg_DumpDeclareForVariables`. It returns a `Text` including every network property for a given object and the according total amount of data in bytes.
+Note that more data being sent to clients through the network means more bandwidth being used, which can cause lag on both client and server side. To analyze how much data you are sending, you can use a function called `Dbg_DumpDeclareForVariables`. It returns a `Text` including every network variable for a given object and the according total amount of data in bytes.
 
 ```ManiaScript
 log(Dbg_DumpDeclareForVariables(This, False));

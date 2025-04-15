@@ -48,7 +48,7 @@ export default {
             { text: "Aliases", link: "/advanced/aliases.md" },
             { text: "Directives", link: "/advanced/directives.md" },
             { text: "Libraries", link: "/advanced/libraries.md" },
-            { text: "Extension properties", link: "/advanced/extension_properties.md" },
+            { text: "Extension variables", link: "/advanced/extension_variables.md" },
             { text: "Context", link: "/advanced/context.md" },
             { text: "Script viewer", link: "/advanced/script_viewer.md" },
             { text: "Network", link: "/advanced/network.md" },

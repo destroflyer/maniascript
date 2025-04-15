@@ -10,7 +10,7 @@ Note, that the variable `MyGameMode_ConfigFeatureX` above was specifically named
 - Persisted variables are shared across all scripts of the game, which means you should always add a custom prefix (unique to your program) in order to avoid conflicts and therefore unpredictable behaviour
 - You cannot change the type of a persisted variable as long as its still stored
 
-Assigning values to `persistent` variables works the same way as it does for [extension properties](/advanced/extension_properties.html): The "initial" value after the `=` in the declaration (or the types default value if not specified) only represents the initial value if no value already has been set. This means when you persisted this variable before, the stored value will be loaded and used. After the declaration, the variable can be used to read the current value and assignments via `=` work as usual. Consider the following code:
+Assigning values to `persistent` variables works the same way as it does for [extension variables](/advanced/extension_variables.html): The "initial" value after the `=` in the declaration (or the types default value if not specified) only represents the initial value if no value already has been set. This means when you persisted this variable before, the stored value will be loaded and used. After the declaration, the variable can be used to read the current value and assignments via `=` work as usual. Consider the following code:
 
 ```ManiaScript
 declare persistent Integer MyGameMode_ConfigA = 42;
@@ -25,7 +25,7 @@ ManiaScripts default behaviour is to only keep `persistent` variables stored dur
 TODO: Check how this behaves on server.
 
 ## Profile
-To keep a variable persisted across game restarts, the `persistent` variable needs to be declared as an [extension property](/advanced/extension_properties.html) of `UserMgr.MainUser`, followed by a call of `UserMgr.MainUser.PersistentSave();`.
+To keep a variable persisted across game restarts, the `persistent` variable needs to be declared as an [extension variable](/advanced/extension_variables.html) of `UserMgr.MainUser`, followed by a call of `UserMgr.MainUser.PersistentSave();`.
 
 ```ManiaScript
 declare persistent Integer MyGameMode_CounterA for UserMgr.MainUser;
@@ -33,7 +33,7 @@ MyGameMode_CounterA += 1;
 UserMgr.MainUser.PersistentSave();
 ```
 
-The important part here is `UserMgr.MainUser.PersistentSave();`, which stores the current properties of `UserMgr.MainUser` (including our extension property) in a way that survives a game restart. Without the call to this method, the variable would be deleted when your current session is closed. Again, make sure you always use a custom prefix for your variable in order to avoid conflicts with properties from other scripts.
+The important part here is `UserMgr.MainUser.PersistentSave();`, which stores the current state of `UserMgr.MainUser` (including our extension variable) in a way that survives a game restart. Without the call to this method, the variable would be deleted when your current session is closed. Again, make sure you always use a custom prefix for your variable in order to avoid conflicts with variables from other scripts.
 
 TODO: Check how this behaves on server.
 

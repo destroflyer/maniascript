@@ -18,7 +18,9 @@ log("Hello");
 
 Label implementations can only be declared in the [global scope](/advanced/global_scope.html).
 
-They require some executable code in their body, meaning that if you would remove the `log` call (or both the `log` call and the comment) in the example above, the compiler would throw an error.
+Note that declaring a label implementation does not require the script to have some code that actually calls it. Likewise, you can call a label that has no implementation in the script. Therefore, typos in label names are a source of issues that is easy to overlook.
+
+The implementation block requires some executable code in its body, meaning that if you would remove the `log` call (or both the `log` call and the comment) in the example above, the compiler would throw an error.
 
 The code inside the body has the scope of the label when it's called, meaning that (only) the variables and functions known at the place of `+++ MyLabel +++`/`--- MyLabel ---` can be accessed. But since labels can be called multiple times (and even from different contexts), their scope is in fact the intersection of those calling scopes:
 
