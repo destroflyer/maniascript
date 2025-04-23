@@ -1,5 +1,4 @@
 # Labels
-
 Labels are a way to abstract your code and make it more reusable. They are similar to functions as calling a label executes code that is defined somewhere else. A good comparison would be abstract functions in other programming languages (requiring an external implementation).
 
 There are two variations of labels:

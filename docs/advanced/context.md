@@ -1,5 +1,5 @@
 # Context
-Each ManiaScript can only run in one specific context, which can be a game mode, a ManiaLink, an editor plugin or something else. This context is declared by the `#RequireContext` [directive](/advanced/directives.html) specifying a class:
+Each ManiaScript can only run in one specific context, which can be a game mode, a Manialink, an editor plugin or something else. This context is declared by the `#RequireContext` [directive](/advanced/directives.html) specifying a class:
 
 ```ManiaScript
 #RequireContext CSmMode
@@ -9,7 +9,7 @@ In the example above, the class `CSmMode` means that the script is a game mode. 
 
 Context class examples:
 - Game mode -> `CSmMode`
-- ManiaLink -> `CMlScriptIngame`
+- Manialink -> `CMlScriptIngame`
 - Map editor plugin ->`CMapEditorPlugin`
 
 You can find these classes and their definition in the generated [reference](/advanced/reference_generation.html).

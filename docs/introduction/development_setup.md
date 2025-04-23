@@ -1,4 +1,4 @@
-# Development Setup
+# Development setup
 ManiaScript files are text files with a `.Script.txt` extension. Therefore, they can be edited with any text editor.
 
 While Trackmania offers an ingame editor with a lot of features that external application can't compete with, you can still use an external editor if it fits your usecase better.

@@ -60,7 +60,7 @@ while (!MyExpression) {
 }
 ```
 
-A specific use case of `wait` is a script that reacts to a list of global events (e.g. ManiaLink or game mode scripts) - If you would `sleep(Duration)` in such a script, you will miss the events which occurred during the `sleep` pause. This is happening because one event is only valid during 1 script "frame", i.e. the time between two consecutive `yield`. To avoid this behaviour, you can construct a `wait` call similar to the following one:
+A specific use case of `wait` is a script that reacts to a list of global events (e.g. Manialink or game mode scripts) - If you would `sleep(Duration)` in such a script, you will miss the events which occurred during the `sleep` pause. This is happening because one event is only valid during 1 script "frame", i.e. the time between two consecutive `yield`. To avoid this behaviour, you can construct a `wait` call similar to the following one:
 
 ```ManiaScript
 Start = Now;

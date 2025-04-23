@@ -1,4 +1,4 @@
-# Control Structures
+# Control structures
 
 ## If
 An `if` statement contains code that only gets executed if the given expression evaluates to `True`.

@@ -17,7 +17,7 @@ You can select a script by clicking on it, which will display details about it b
 - The `Pool mem` value is the total size of all variables stored inside the script
 - If existing, you can also see the number of layers and audio sources created by the script
 
-To identify scripts easier, it's possible to assign a name to them that will be displayed in this list. For scripts in ManiaLinks, this can be done via the attribute `name` on the `manialink` tag:
+To identify scripts easier, it's possible to assign a name to them that will be displayed in this list. For scripts in Manialinks, this can be done via the attribute `name` on the `manialink` tag:
 
 ```xml
 <manialink name="TMFL/UI_MapInfos3D" version="3">
@@ -32,7 +32,7 @@ ManiaScripts offers a tuning tool to check what parts slow down your script the 
 
 Note:
 - It will only work if you can read the contents of the script in the script viewer
-- It will not work for ManiaLinks injected directly to a `CGameUILayer`
+- It will not work for Manialinks injected directly to a `CGameUILayer`
 
 How to do it:
 

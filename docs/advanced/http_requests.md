@@ -1,5 +1,4 @@
 # Http requests
-
 ManiaScript allows you to send http requests via `Http`:
 
 ```ManiaScript

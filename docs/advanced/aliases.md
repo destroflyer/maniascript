@@ -1,5 +1,4 @@
 # Aliases
-
 Aliases are a special type of pointer that are assigned via `<=>`. They are fast and quite powerful, yet their behaviour can be surprising, especially if you are used to common pointer programming. 
 
 Here's an example: There's an [API array](/basics/types.html#api-array) of players called `Players`, which is always sorted descending by score. You can write:

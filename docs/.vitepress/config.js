@@ -22,7 +22,7 @@ export default {
           text: "Introduction",
           items: [
             { text: "ManiaScript", link: "/introduction/maniascript.md" },
-            { text: "Development Setup", link: "/introduction/development_setup.md" },
+            { text: "Development setup", link: "/introduction/development_setup.md" },
           ],
         },
         {
@@ -32,7 +32,7 @@ export default {
             { text: "Variables", link: "/basics/variables.md" },
             { text: "Types", link: "/basics/types.md" },
             { text: "Functions", link: "/basics/functions.md" },
-            { text: "Control Structures", link: "/basics/control_structures.md" },
+            { text: "Control structures", link: "/basics/control_structures.md" },
           ],
         },
         {
@@ -58,6 +58,14 @@ export default {
             { text: "Http requests", link: "/advanced/http_requests.md" },
             { text: "Unknown keywords", link: "/advanced/unknown_keywords.md" },
             { text: "Reference generation", link: "/advanced/reference_generation.md" },
+          ],
+        },
+        {
+          text: "Manialinks",
+          items: [
+            { text: "Manialinks", link: "/manialinks/manialinks.md" },
+            { text: "Development setup", link: "/manialinks/development_setup.md" },
+            { text: "Elements", link: "/manialinks/elements.md" },
           ],
         },
       ]

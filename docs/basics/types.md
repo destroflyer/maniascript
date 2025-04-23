@@ -1,5 +1,4 @@
 # Types
-
 ManiaScript is a strongly typed language, meaning every value has to be of a certain type and a value of a different type will not be accepted in its place. No implicit conversions are made.
 
 ## Boolean
@@ -179,7 +178,7 @@ declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
 declare MyQuad = cast(Page.GetFirstChild("myQuad"), CMlQuad);
 ```
 
-This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching ManiaLink elements).
+This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching Manialink elements).
 
 ```ManiaScript
 // Value will be cast from CMlControl to CMlQuad

@@ -1,5 +1,4 @@
 # Persistence
-
 ManiaScript allows persisting variables, which means storing them across contexts (like different game modes) or even application restarts. To persist a variable, simply add the keyword `persistent` to its declaration.
 
 ```ManiaScript

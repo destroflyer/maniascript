@@ -1,5 +1,4 @@
 # Comments
-
 ManiaScripts supports both single-line and multi-line comments:
 
 ```ManiaScript
