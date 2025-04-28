@@ -299,6 +299,31 @@ TODO: Document available styles.
 - [Basic attributes](#basic-attributes)
 - [Size & alignment attributes](#size-alignment-attributes)
 
+### Graph attributes
+
+| Attribute | Type    | Description                                                | Default |
+|:----------|:--------|:-----------------------------------------------------------|:--------|
+| `min`     | Numbers | Minimum x and y-axis value of the graphs coordinate system | 0 0     |
+| `max`     | Numbers | Maximum x and y-axis value of the graphs coordinate system | 10 10   |
+
+### Graph children
+
+Each line in the graph is defined by a `curve`, made out of `point`s.
+
+### Curve attributes
+
+| Attribute | Type   | Description                                                                                                                                                                             | Default |
+|:----------|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| `color`   | Color  | Line color                                                                                                                                                                              | FFF     |
+| `width`   | Number | Line width (No matter how small this value is, the drawn line will always be at least 1 pixel wide)                                                                                     | 0.5     |
+| `style`   | Text   | Predefined width (One of `thin` (1 pixel width, independent of screen resolution), TODO: Document other styles) (Note: If both `width` and `style` are specified, `style` will be used) | *none*  |
+
+### Point attributes
+
+| Attribute | Type    | Description                                                                              | Default                                   |
+|:----------|:--------|:-----------------------------------------------------------------------------------------|:------------------------------------------|
+| `coords`  | Numbers | Position of the point in the graphs coordinate system                                    | *If not provided, no point will be drawn* |
+
 ### Usage
 
 ```xml
@@ -316,8 +341,6 @@ TODO: Document available styles.
 ```
 
 ![Graph](/images/graph.png)
-
-TODO: Describe graph attributes and children.
 
 ## Colorpicker
 
@@ -353,7 +376,7 @@ TODO: Describe graph attributes and children.
 | `cursorcolor`      | Color  | Color of the current time cursor                                                                                        | F00                                                |
 | `keycolor`         | Color  | Color of the keyframes (TODO: Check)                                                                                    | TODO (based on replay editor, it's probably cyan?) |
 
-TODO: Check and describe if/how to add blocks (with keyframes?) to the timeline (either via XML or Maniascript).
+TODO: Check and describe if/how to add blocks (with keyframes?) to the timeline (either via XML (children like for `graph`?) or Maniascript).
 
 ## Frame
 
