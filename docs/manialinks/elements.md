@@ -75,14 +75,114 @@ An elements origin is its top left corner (important for position, rotation and 
 
 | Attribute         | Type   | Description                                                                                                                                                                                                                                                                                              | Default        |
 |:------------------|:-------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
-| `style`           | Text   | Predefined style                                                                                                                                                                                                                                                                                         | *none*         |
+| `style`           | Text   | Predefined [text style](#text-styles)                                                                                                                                                                                                                                                                    | *none*         |
 | `textsize`        | Number | Text size                                                                                                                                                                                                                                                                                                | 3              |
 | `textcolor`       | Color  | Text color                                                                                                                                                                                                                                                                                               | `E8F2FC`       |
 | `textfont`        | Text   | Text font (One of `GameFontBlack`, `GameFontBlack`, `GameFontExtraBold`, `GameFontRegular`, `GameFontSemiBold`, `Oswald`, `OswaldMono`, `RajdhaniMono`, `RobotoCondensed`, `RobotoCondensedBold`, `Nadeo/Trackmania/BebasNeueRegular`) (If the specified font is invalid, the default font will be used) | *default font* |
 | `focusareacolor1` | Color  | Background color when not hovered (requires `scriptevents`)                                                                                                                                                                                                                                              | *none*         |
 | `focusareacolor2` | Color  | Background color when hovered (requires `scriptevents`)                                                                                                                                                                                                                                                  | *none*         |
 
-TODO: Document available styles.
+#### Text styles
+
+- AvatarButtonNormal
+- BgMainMenuTitleHeader
+- Default
+- FrameTransitionFromLeft
+- FrameTransitionsFromRight
+- ListItemMedal
+- Manialink_Body
+- ProgressBar
+- ProgressBarSmall 
+- SliderSmall
+- SliderVolume
+- StyleTextScriptEditor
+- StyleValueYellowSmall
+- TextActionMaker
+- TextButtonBig
+- TextButtonMedium
+- TextButtonNav
+- TextButtonNavBack
+- TextButtonSmall
+- TextCardInfoSmall
+- TextCardInfoVerySmall
+- TextCardMedium
+- TextCardMediumWhite
+- TextCardRaceRank
+- TextCardScores2
+- TextCardSmall
+- TextCardSmallScores2
+- TextCardSmallScores2Rank
+- TextChallengeNameMedal
+- TextChallengeNameMedalNone
+- TextChallengeNameMedium
+- TextChallengeNameSmall
+- TextCongratsBig
+- TextCredits
+- TextCreditsTitle
+- TextEditorArticle
+- TextInfoMedium
+- TextInfoSmall
+- TextPlayerCardName
+- TextPlayerCardScore
+- TextRaceChat
+- TextRaceChrono
+- TextRaceChronoError
+- TextRaceChronoOfficial
+- TextRaceChronoWarning
+- TextRaceMessage
+- TextRaceMessageBig
+- TextRaceStaticSmall
+- TextRaceValueSmall
+- TextRankingsBig
+- TextSPScoreBig
+- TextSPScoreMedium
+- TextSPScoreSmall
+- TextStaticMedium
+- TextStaticSmall
+- TextStaticVerySmall
+- TextSubTitle1
+- TextSubTitle2
+- TextTips
+- TextTitle1
+- TextTitle2
+- TextTitle2Blink
+- TextTitle3
+- TextTitle3Header
+- TextTitleError
+- TextToolTipAM
+- TextToolTipAMBig
+- TextValueBig
+- TextValueMedium
+- TextValueMediumSm
+- TextValueSmall
+- TextValueSmallSm
+- TrackerText
+- TrackerTextBig
+- TrackListItem
+- TrackListLine
+- UiDriving_BgBottom
+- UiDriving_BgCard
+- UiDriving_BgCenter
+- CardButtonMedium
+- CardButtonMediumL
+- CardButtonMediumS
+- CardButtonMediumWide
+- CardButtonMediumXL
+- CardButtonMediumXS
+- CardButtonMediumXXL
+- CardButtonMediumXXXL
+- CardButtonSmall
+- CardButtonSmallL
+- CardButtonSmallS
+- CardButtonSmallWide
+- CardButtonSmallXL
+- CardButtonSmallXS
+- CardButtonSmallXXL
+- CardButtonSmallXXXL
+- CardMain_Quit
+- CardMain_Tool
+- CardMain_Tool_NoBg
+- CardMain_Tool_NoBg2
 
 ### Media attributes
 
@@ -149,9 +249,9 @@ TODO: Check why audio of media can't be heard when testing.
 | `bgcolor`             | Color   | Background color                                                                                                                                                                                                                                                     | *none*     |
 | `image`               | URL     | Background image URL ([supported file types](#supported-file-types))                                                                                                                                                                                                 | *none*     |
 | `imagefocus`          | URL     | Background image URL when hovered ([supported file types](#supported-file-types)) (requires `scriptevents`)                                                                                                                                                          | *none*     |
-| `style`               | Text    | Predefined style (requires `substyle` to be set)                                                                                                                                                                                                                     | *none*     |
-| `substyle`            | Text    | Predefined substyle (requires `style` to be set)                                                                                                                                                                                                                     | *none*     |
-| `styleselected`       | Boolean | Use the hover state of the selected `style`                                                                                                                                                                                                                          | 0          |
+| `style`               | Text    | Predefined [quad style](#quad-styles) (requires `substyle` to be set)                                                                                                                                                                                                | *none*     |
+| `substyle`            | Text    | Predefined [quad substyle](#quad-styles) (requires `style` to be set)                                                                                                                                                                                                | *none*     |
+| `styleselected`       | Boolean | Use the hover state of the selected predefined [quad style](#quad-styles)                                                                                                                                                                                            | 0          |
 | `autoscale`           | Boolean | Defines if the image should get stretched in both axes to fit the entire elements size                                                                                                                                                                               | 1          |
 | `autoscalefixedwidth` | Boolean | Defines if the image should get stretched in the x-axis to fit the entire elements width, while the y-axis is getting stretched so that the original image ratio is kept                                                                                             | 0          |
 | `keepratio`           | Text    | Image ratio behaviour when resizing (One of `Inactive`, `Fit`, `Clip`)                                                                                                                                                                                               | `Inactive` |
@@ -161,7 +261,582 @@ TODO: Check why audio of media can't be heard when testing.
 | `alphamask`           | URL     | Alphamask image URL (Technically only the green channel is considered, but of course this also allows using grayscale images (black = transparent, white = opaque)) ([supported file types](#supported-file-types))                                                  | *none*     |
 | `blend`               | Text    | Blending mode (One of `default`, `add`)                                                                                                                                                                                                                              | `default`  |
 
-TODO: Document available styles and substyles.
+### Quad styles
+
+| Style                  | Substyle                  |
+|:-----------------------|:--------------------------|
+| 321Go                  | 3                         |
+| 321Go                  | 2                         |
+| 321Go                  | 1                         |
+| 321Go                  | Go!                       |
+| Bgs1                   | ArrowDown                 |
+| Bgs1                   | ArrowLeft                 |
+| Bgs1                   | ArrowRight                |
+| Bgs1                   | ArrowUp                   |
+| Bgs1                   | BgButton                  |
+| Bgs1                   | BgButtonBig               |
+| Bgs1                   | BgButtonGlow              |
+| Bgs1                   | BgButtonGrayed            |
+| Bgs1                   | BgButtonOff               |
+| Bgs1                   | BgButtonShadow            |
+| Bgs1                   | BgButtonSmall             |
+| Bgs1                   | BgCard                    |
+| Bgs1                   | BgCard1                   |
+| Bgs1                   | BgCard2                   |
+| Bgs1                   | BgCard3                   |
+| Bgs1                   | BgCardBuddy               |
+| Bgs1                   | BgCardChallenge           |
+| Bgs1                   | BgCardFolder              |
+| Bgs1                   | BgCardInventoryItem       |
+| Bgs1                   | BgCardList                |
+| Bgs1                   | BgCardOnline              |
+| Bgs1                   | BgCardPlayer              |
+| Bgs1                   | BgCardProperty            |
+| Bgs1                   | BgCardSystem              |
+| Bgs1                   | BgCardZone                |
+| Bgs1                   | BgColorContour            |
+| Bgs1                   | BgDialogBlur              |
+| Bgs1                   | BgEmpty                   |
+| Bgs1                   | BgGlow2                   |
+| Bgs1                   | BgGradBottom              |
+| Bgs1                   | BgGradLeft                |
+| Bgs1                   | BgGradRight               |
+| Bgs1                   | BgGradTop                 |
+| Bgs1                   | BgGradV                   |
+| Bgs1                   | BgHealthBar               |
+| Bgs1                   | BgIconBorder              |
+| Bgs1                   | BgList                    |
+| Bgs1                   | BgListLine                |
+| Bgs1                   | BgMetalBar                |
+| Bgs1                   | BgPager                   |
+| Bgs1                   | BgProgressBar             |
+| Bgs1                   | BgShadow                  |
+| Bgs1                   | BgSlider                  |
+| Bgs1                   | BgSystemBar               |
+| Bgs1                   | BgTitle                   |
+| Bgs1                   | BgTitle2                  |
+| Bgs1                   | BgTitle3                  |
+| Bgs1                   | BgTitle3_1                |
+| Bgs1                   | BgTitle3_2                |
+| Bgs1                   | BgTitle3_3                |
+| Bgs1                   | BgTitle3_4                |
+| Bgs1                   | BgTitle3_5                |
+| Bgs1                   | BgTitleGlow               |
+| Bgs1                   | BgTitlePage               |
+| Bgs1                   | BgTitleShadow             |
+| Bgs1                   | BgWindow1                 |
+| Bgs1                   | BgWindow2                 |
+| Bgs1                   | BgWindow3                 |
+| Bgs1                   | BgWindow4                 |
+| Bgs1                   | EnergyBar                 |
+| Bgs1                   | EnergyTeam2               |
+| Bgs1                   | Glow                      |
+| Bgs1                   | HealthBar                 |
+| Bgs1                   | NavButton                 |
+| Bgs1                   | NavButtonBlink            |
+| Bgs1                   | NavButtonQuit             |
+| Bgs1                   | ProgressBar               |
+| Bgs1                   | ProgressBarSmall          |
+| Bgs1                   | Shadow                    |
+| Bgs1InRace             | ArrowDown                 |
+| Bgs1InRace             | ArrowLeft                 |
+| Bgs1InRace             | ArrowRight                |
+| Bgs1InRace             | ArrowUp                   |
+| Bgs1InRace             | BgButton                  |
+| Bgs1InRace             | BgButtonBig               |
+| Bgs1InRace             | BgButtonGlow              |
+| Bgs1InRace             | BgButtonGrayed            |
+| Bgs1InRace             | BgButtonOff               |
+| Bgs1InRace             | BgButtonShadow            |
+| Bgs1InRace             | BgButtonSmall             |
+| Bgs1InRace             | BgCard                    |
+| Bgs1InRace             | BgCard1                   |
+| Bgs1InRace             | BgCard2                   |
+| Bgs1InRace             | BgCard3                   |
+| Bgs1InRace             | BgCardBuddy               |
+| Bgs1InRace             | BgCardChallenge           |
+| Bgs1InRace             | BgCardFolder              |
+| Bgs1InRace             | BgCardInventoryItem       |
+| Bgs1InRace             | BgCardList                |
+| Bgs1InRace             | BgCardOnline              |
+| Bgs1InRace             | BgCardPlayer              |
+| Bgs1InRace             | BgCardProperty            |
+| Bgs1InRace             | BgCardSystem              |
+| Bgs1InRace             | BgCardZone                |
+| Bgs1InRace             | BgColorContour            |
+| Bgs1InRace             | BgDialogBlur              |
+| Bgs1InRace             | BgEmpty                   |
+| Bgs1InRace             | BgGlow2                   |
+| Bgs1InRace             | BgGradBottom              |
+| Bgs1InRace             | BgGradLeft                |
+| Bgs1InRace             | BgGradRight               |
+| Bgs1InRace             | BgGradTop                 |
+| Bgs1InRace             | BgGradV                   |
+| Bgs1InRace             | BgHealthBar               |
+| Bgs1InRace             | BgIconBorder              |
+| Bgs1InRace             | BgList                    |
+| Bgs1InRace             | BgListLine                |
+| Bgs1InRace             | BgMetalBar                |
+| Bgs1InRace             | BgPager                   |
+| Bgs1InRace             | BgProgressBar             |
+| Bgs1InRace             | BgShadow                  |
+| Bgs1InRace             | BgSlider                  |
+| Bgs1InRace             | BgSystemBar               |
+| Bgs1InRace             | BgTitle                   |
+| Bgs1InRace             | BgTitle2                  |
+| Bgs1InRace             | BgTitle3                  |
+| Bgs1InRace             | BgTitle3_1                |
+| Bgs1InRace             | BgTitle3_2                |
+| Bgs1InRace             | BgTitle3_3                |
+| Bgs1InRace             | BgTitle3_4                |
+| Bgs1InRace             | BgTitle3_5                |
+| Bgs1InRace             | BgTitleGlow               |
+| Bgs1InRace             | BgTitlePage               |
+| Bgs1InRace             | BgTitleShadow             |
+| Bgs1InRace             | BgWindow1                 |
+| Bgs1InRace             | BgWindow2                 |
+| Bgs1InRace             | BgWindow3                 |
+| Bgs1InRace             | BgWindow4                 |
+| Bgs1InRace             | EnergyBar                 |
+| Bgs1InRace             | EnergyTeam2               |
+| Bgs1InRace             | Glow                      |
+| Bgs1InRace             | HealthBar                 |
+| Bgs1InRace             | NavButton                 |
+| Bgs1InRace             | NavButtonBlink            |
+| Bgs1InRace             | NavButtonQuit             |
+| Bgs1InRace             | ProgressBar               |
+| Bgs1InRace             | ProgressBarSmall          |
+| Bgs1InRace             | Shadow                    |
+| BgsChallengeMedals     | BgBronze                  |
+| BgsChallengeMedals     | BgGold                    |
+| BgsChallengeMedals     | BgNadeo                   |
+| BgsChallengeMedals     | BgNotPlayed               |
+| BgsChallengeMedals     | BgPlayed                  |
+| BgsChallengeMedals     | BgSilver                  |
+| BgsPlayerCard          | BgActivePlayerCard        |
+| BgsPlayerCard          | BgActivePlayerName        |
+| BgsPlayerCard          | BgActivePlayerScore       |
+| BgsPlayerCard          | BgCard                    |
+| BgsPlayerCard          | BgCardSystem              |
+| BgsPlayerCard          | BgMediaTracker            |
+| BgsPlayerCard          | BgPlayerCard              |
+| BgsPlayerCard          | BgPlayerCardBig           |
+| BgsPlayerCard          | BgPlayerCardSmall         |
+| BgsPlayerCard          | BgPlayerName              |
+| BgsPlayerCard          | BgPlayerScore             |
+| BgsPlayerCard          | BgRacePlayerLine          |
+| BgsPlayerCard          | BgRacePlayerName          |
+| BgsPlayerCard          | ProgressBar               |
+| Copilot                | Down                      |
+| Copilot                | DownGood                  |
+| Copilot                | DownWrong                 |
+| Copilot                | Left                      |
+| Copilot                | LeftGood                  |
+| Copilot                | LeftWrong                 |
+| Copilot                | Right                     |
+| Copilot                | RightGood                 |
+| Copilot                | RightWrong                |
+| Copilot                | Up                        |
+| Copilot                | UpGood                    |
+| Copilot                | UpWrong                   |
+| Emblems                | #0                        |
+| Emblems                | #1                        |
+| Emblems                | #2                        |
+| EnergyBar              | BgText                    |
+| EnergyBar              | EnergyBar                 |
+| EnergyBar              | EnergyBar_0.25            |
+| EnergyBar              | EnergyBar_Thin            |
+| EnergyBar              | HeaderGaugeLeft           |
+| EnergyBar              | HeaderGaugeRight          |
+| Hud3dEchelons          | EchelonBronze1            |
+| Hud3dEchelons          | EchelonBronze2            |
+| Hud3dEchelons          | EchelonBronze3            |
+| Hud3dEchelons          | EchelonGold1              |
+| Hud3dEchelons          | EchelonGold2              |
+| Hud3dEchelons          | EchelonGold3              |
+| Hud3dEchelons          | EchelonSilver1            |
+| Hud3dEchelons          | EchelonSilver2            |
+| Hud3dEchelons          | EchelonSilver3            |
+| Hud3dIcons             | Cross                     |
+| Hud3dIcons             | CrossTargeted             |
+| Hud3dIcons             | Player1                   |
+| Hud3dIcons             | Player2                   |
+| Hud3dIcons             | Player3                   |
+| Hud3dIcons             | PointA                    |
+| Hud3dIcons             | PointB                    |
+| Hud3dIcons             | PointC                    |
+| Icons128x128_1         | Advanced                  |
+| Icons128x128_1         | Back                      |
+| Icons128x128_1         | BackFocusable             |
+| Icons128x128_1         | Beginner                  |
+| Icons128x128_1         | Browse                    |
+| Icons128x128_1         | Buddies                   |
+| Icons128x128_1         | Challenge                 |
+| Icons128x128_1         | ChallengeAuthor           |
+| Icons128x128_1         | Coppers                   |
+| Icons128x128_1         | Create                    |
+| Icons128x128_1         | Credits                   |
+| Icons128x128_1         | Custom                    |
+| Icons128x128_1         | CustomStars               |
+| Icons128x128_1         | Default                   |
+| Icons128x128_1         | Download                  |
+| Icons128x128_1         | Easy                      |
+| Icons128x128_1         | Editor                    |
+| Icons128x128_1         | Event                     |
+| Icons128x128_1         | Extreme                   |
+| Icons128x128_1         | Forever                   |
+| Icons128x128_1         | GhostEditor               |
+| Icons128x128_1         | Hard                      |
+| Icons128x128_1         | Hotseat                   |
+| Icons128x128_1         | Inputs                    |
+| Icons128x128_1         | Invite                    |
+| Icons128x128_1         | LadderPoints              |
+| Icons128x128_1         | Lan                       |
+| Icons128x128_1         | Launch                    |
+| Icons128x128_1         | Load                      |
+| Icons128x128_1         | LoadTrack                 |
+| Icons128x128_1         | Manialink                 |
+| Icons128x128_1         | ManiaZones                |
+| Icons128x128_1         | MedalCount                |
+| Icons128x128_1         | MediaTracker              |
+| Icons128x128_1         | Medium                    |
+| Icons128x128_1         | Multiplayer               |
+| Icons128x128_1         | Nations                   |
+| Icons128x128_1         | NewTrack                  |
+| Icons128x128_1         | Options                   |
+| Icons128x128_1         | Padlock                   |
+| Icons128x128_1         | Paint                     |
+| Icons128x128_1         | Platform                  |
+| Icons128x128_1         | PlayerPage                |
+| Icons128x128_1         | Profile                   |
+| Icons128x128_1         | ProfileAdvanced           |
+| Icons128x128_1         | ProfileVehicle            |
+| Icons128x128_1         | Puzzle                    |
+| Icons128x128_1         | Quit                      |
+| Icons128x128_1         | Race                      |
+| Icons128x128_1         | Rankings                  |
+| Icons128x128_1         | Replay                    |
+| Icons128x128_1         | Save                      |
+| Icons128x128_1         | ServersAll                |
+| Icons128x128_1         | ServersFavorites          |
+| Icons128x128_1         | ServersSuggested          |
+| Icons128x128_1         | Share                     |
+| Icons128x128_1         | ShareBlink                |
+| Icons128x128_1         | SkillPoints               |
+| Icons128x128_1         | Solo                      |
+| Icons128x128_1         | Statistics                |
+| Icons128x128_1         | Stunts                    |
+| Icons128x128_1         | United                    |
+| Icons128x128_1         | Upload                    |
+| Icons128x128_1         | Vehicles                  |
+| Icons128x128_Blink     | Advanced                  |
+| Icons128x128_Blink     | Back                      |
+| Icons128x128_Blink     | BackFocusable             |
+| Icons128x128_Blink     | Beginner                  |
+| Icons128x128_Blink     | Browse                    |
+| Icons128x128_Blink     | Buddies                   |
+| Icons128x128_Blink     | Challenge                 |
+| Icons128x128_Blink     | ChallengeAuthor           |
+| Icons128x128_Blink     | Coppers                   |
+| Icons128x128_Blink     | Create                    |
+| Icons128x128_Blink     | Credits                   |
+| Icons128x128_Blink     | Custom                    |
+| Icons128x128_Blink     | CustomStars               |
+| Icons128x128_Blink     | Default                   |
+| Icons128x128_Blink     | Download                  |
+| Icons128x128_Blink     | Easy                      |
+| Icons128x128_Blink     | Editor                    |
+| Icons128x128_Blink     | Event                     |
+| Icons128x128_Blink     | Extreme                   |
+| Icons128x128_Blink     | Forever                   |
+| Icons128x128_Blink     | GhostEditor               |
+| Icons128x128_Blink     | Hard                      |
+| Icons128x128_Blink     | Hotseat                   |
+| Icons128x128_Blink     | Inputs                    |
+| Icons128x128_Blink     | Invite                    |
+| Icons128x128_Blink     | LadderPoints              |
+| Icons128x128_Blink     | Lan                       |
+| Icons128x128_Blink     | Launch                    |
+| Icons128x128_Blink     | Load                      |
+| Icons128x128_Blink     | LoadTrack                 |
+| Icons128x128_Blink     | Manialink                 |
+| Icons128x128_Blink     | ManiaZones                |
+| Icons128x128_Blink     | MedalCount                |
+| Icons128x128_Blink     | MediaTracker              |
+| Icons128x128_Blink     | Medium                    |
+| Icons128x128_Blink     | Multiplayer               |
+| Icons128x128_Blink     | Nations                   |
+| Icons128x128_Blink     | NewTrack                  |
+| Icons128x128_Blink     | Options                   |
+| Icons128x128_Blink     | Padlock                   |
+| Icons128x128_Blink     | Paint                     |
+| Icons128x128_Blink     | Platform                  |
+| Icons128x128_Blink     | PlayerPage                |
+| Icons128x128_Blink     | Profile                   |
+| Icons128x128_Blink     | ProfileAdvanced           |
+| Icons128x128_Blink     | ProfileVehicle            |
+| Icons128x128_Blink     | Puzzle                    |
+| Icons128x128_Blink     | Quit                      |
+| Icons128x128_Blink     | Race                      |
+| Icons128x128_Blink     | Rankings                  |
+| Icons128x128_Blink     | Replay                    |
+| Icons128x128_Blink     | Save                      |
+| Icons128x128_Blink     | ServersAll                |
+| Icons128x128_Blink     | ServersFavorites          |
+| Icons128x128_Blink     | ServersSuggested          |
+| Icons128x128_Blink     | Share                     |
+| Icons128x128_Blink     | ShareBlink                |
+| Icons128x128_Blink     | SkillPoints               |
+| Icons128x128_Blink     | Solo                      |
+| Icons128x128_Blink     | Statistics                |
+| Icons128x128_Blink     | Stunts                    |
+| Icons128x128_Blink     | United                    |
+| Icons128x128_Blink     | Upload                    |
+| Icons128x128_Blink     | Vehicles                  |
+| Icons128x32_1          | ArrowUp                   |
+| Icons128x32_1          | BgQuadWhite               |
+| Icons128x32_1          | Empty                     |
+| Icons128x32_1          | ManiaLinkHome             |
+| Icons128x32_1          | ManiaLinkSwitch           |
+| Icons128x32_1          | ManiaPlanet               |
+| Icons128x32_1          | Minimize                  |
+| Icons128x32_1          | Music                     |
+| Icons128x32_1          | PainterBrush              |
+| Icons128x32_1          | PainterFill               |
+| Icons128x32_1          | PainterLayer              |
+| Icons128x32_1          | PainterMirror             |
+| Icons128x32_1          | PainterSticker            |
+| Icons128x32_1          | PainterTeam               |
+| Icons128x32_1          | RT_Cup                    |
+| Icons128x32_1          | RT_Laps                   |
+| Icons128x32_1          | RT_Rounds                 |
+| Icons128x32_1          | RT_Script                 |
+| Icons128x32_1          | RT_Team                   |
+| Icons128x32_1          | RT_TimeAttack             |
+| Icons128x32_1          | RT_Stunts                 |
+| Icons128x32_1          | Settings                  |
+| Icons128x32_1          | SliderBar                 |
+| Icons128x32_1          | SliderBar2                |
+| Icons128x32_1          | SliderCursor              |
+| Icons128x32_1          | Sound                     |
+| Icons128x32_1          | UrlBg                     |
+| Icons128x32_1          | Windowed                  |
+| Icons64x64_1           | 3DStereo                  |
+| Icons64x64_1           | Add                       |
+| Icons64x64_1           | ArrowBlue                 |
+| Icons64x64_1           | ArrowDisabled             |
+| Icons64x64_1           | ArrowDown                 |
+| Icons64x64_1           | ArrowFastNext             |
+| Icons64x64_1           | ArrowFastPrev             |
+| Icons64x64_1           | ArrowFirst                |
+| Icons64x64_1           | ArrowGreen                |
+| Icons64x64_1           | ArrowLast                 |
+| Icons64x64_1           | ArrowNext                 |
+| Icons64x64_1           | ArrowPrev                 |
+| Icons64x64_1           | ArrowRed                  |
+| Icons64x64_1           | ArrowUp                   |
+| Icons64x64_1           | Browser                   |
+| Icons64x64_1           | Buddy                     |
+| Icons64x64_1           | ButtonLeagues             |
+| Icons64x64_1           | Camera                    |
+| Icons64x64_1           | CameraLocal               |
+| Icons64x64_1           | Check                     |
+| Icons64x64_1           | ClipPause                 |
+| Icons64x64_1           | ClipPlay                  |
+| Icons64x64_1           | ClipRewind                |
+| Icons64x64_1           | Close                     |
+| Icons64x64_1           | Empty                     |
+| Icons64x64_1           | Finish                    |
+| Icons64x64_1           | FinishGrey                |
+| Icons64x64_1           | First                     |
+| Icons64x64_1           | GenericButton             |
+| Icons64x64_1           | Green                     |
+| Icons64x64_1           | IconLeaguesLadder         |
+| Icons64x64_1           | IconPlayers               |
+| Icons64x64_1           | IconPlayersLadder         |
+| Icons64x64_1           | IconServers               |
+| Icons64x64_1           | Inbox                     |
+| Icons64x64_1           | LvlGreen                  |
+| Icons64x64_1           | LvlRed                    |
+| Icons64x64_1           | LvlYellow                 |
+| Icons64x64_1           | ManiaLinkNext             |
+| Icons64x64_1           | ManiaLinkPrev             |
+| Icons64x64_1           | Maximize                  |
+| Icons64x64_1           | MediaAudioDownloading     |
+| Icons64x64_1           | MediaPlay                 |
+| Icons64x64_1           | MediaStop                 |
+| Icons64x64_1           | MediaVideoDownloading     |
+| Icons64x64_1           | NewMessage                |
+| Icons64x64_1           | NotBuddy                  |
+| Icons64x64_1           | OfficialRace              |
+| Icons64x64_1           | Opponents                 |
+| Icons64x64_1           | Outbox                    |
+| Icons64x64_1           | QuitRace                  |
+| Icons64x64_1           | RedHigh                   |
+| Icons64x64_1           | RedLow                    |
+| Icons64x64_1           | Refresh                   |
+| Icons64x64_1           | RestartRace               |
+| Icons64x64_1           | Save                      |
+| Icons64x64_1           | Second                    |
+| Icons64x64_1           | ShowDown                  |
+| Icons64x64_1           | ShowDown2                 |
+| Icons64x64_1           | ShowLeft                  |
+| Icons64x64_1           | ShowLeft2                 |
+| Icons64x64_1           | ShowRight                 |
+| Icons64x64_1           | ShowRight2                |
+| Icons64x64_1           | ShowUp                    |
+| Icons64x64_1           | ShowUp2                   |
+| Icons64x64_1           | ShowUpChanging            |
+| Icons64x64_1           | SliderCursor              |
+| Icons64x64_1           | SliderCursor2             |
+| Icons64x64_1           | StateFavourite            |
+| Icons64x64_1           | StatePrivate              |
+| Icons64x64_1           | StateSuggested            |
+| Icons64x64_1           | Sub                       |
+| Icons64x64_1           | TagTypeBronze             |
+| Icons64x64_1           | TagTypeGold               |
+| Icons64x64_1           | TagTypeNadeo              |
+| Icons64x64_1           | TagTypeNone               |
+| Icons64x64_1           | TagTypeSilver             |
+| Icons64x64_1           | Third                     |
+| Icons64x64_1           | ToolLeague1               |
+| Icons64x64_1           | ToolRoot                  |
+| Icons64x64_1           | ToolTree                  |
+| Icons64x64_1           | ToolUp                    |
+| Icons64x64_1           | TrackInfo                 |
+| Icons64x64_1           | TV                        |
+| Icons64x64_1           | YellowHigh                |
+| Icons64x64_1           | YellowLow                 |
+| Icons64x64_2           | ArrowElimination          |
+| Icons64x64_2           | ArrowHit                  |
+| Icons64x64_2           | Calendar                  |
+| Icons64x64_2           | Disconnected              |
+| Icons64x64_2           | DisconnectedLight         |
+| Icons64x64_2           | LaserElimination          |
+| Icons64x64_2           | LaserHit                  |
+| Icons64x64_2           | NucleusElimination        |
+| Icons64x64_2           | NucleusHit                |
+| Icons64x64_2           | RocketElimination         |
+| Icons64x64_2           | RocketHit                 |
+| Icons64x64_2           | ServerNotice              |
+| Icons64x64_2           | SortBy                    |
+| Icons64x64_2           | UnknownElimination        |
+| Icons64x64_2           | UnknownHit                |
+| ManiaPlanetLogos       | IconPlanets               |
+| ManiaPlanetLogos       | IconPlanetsPerspective    |
+| ManiaPlanetLogos       | IconPlanetsSmall          |
+| ManiaPlanetLogos       | ManiaPlanetLogoBlack      |
+| ManiaPlanetLogos       | ManiaPlanetLogoBlackSmall |
+| ManiaPlanetLogos       | ManiaPlanetLogoWhite      |
+| ManiaPlanetLogos       | ManiaPlanetLogoWhiteSmall |
+| ManiaPlanetMainMenu    | BottomBar                 |
+| ManiaPlanetMainMenu    | Highlight                 |
+| ManiaPlanetMainMenu    | IconAdd                   |
+| ManiaPlanetMainMenu    | IconHome                  |
+| ManiaPlanetMainMenu    | IconPlay                  |
+| ManiaPlanetMainMenu    | IconQuit                  |
+| ManiaPlanetMainMenu    | IconSettings              |
+| ManiaPlanetMainMenu    | IconStore                 |
+| ManiaPlanetMainMenu    | MainBg                    |
+| ManiaPlanetMainMenu    | TitleBg                   |
+| ManiaPlanetMainMenu    | TopBar                    |
+| ManiaplanetSystem      | BgDialog                  |
+| ManiaplanetSystem      | BgDialogAnchor            |
+| ManiaplanetSystem      | BgFloat                   |
+| ManiaplanetSystem      | Events                    |
+| ManiaplanetSystem      | Medals                    |
+| ManiaplanetSystem      | Statistics                |
+| MedalsBig              | MedalBronze               |
+| MedalsBig              | MedalGold                 |
+| MedalsBig              | MedalGoldPerspective      |
+| MedalsBig              | MedalNadeo                |
+| MedalsBig              | MedalNadeoPerspective     |
+| MedalsBig              | MedalSilver               |
+| MedalsBig              | MedalSlot                 |
+| TitleLogos             | Author                    |
+| TitleLogos             | Title                     |
+| UIConstruction_Buttons | ActionMaker               |
+| UIConstruction_Buttons | Add                       |
+| UIConstruction_Buttons | AirMapping                |
+| UIConstruction_Buttons | Author                    |
+| UIConstruction_Buttons | AuthorTime                |
+| UIConstruction_Buttons | BgEditors                 |
+| UIConstruction_Buttons | BgIcons                   |
+| UIConstruction_Buttons | BgMain                    |
+| UIConstruction_Buttons | BgTools                   |
+| UIConstruction_Buttons | BlockEditor               |
+| UIConstruction_Buttons | Camera                    |
+| UIConstruction_Buttons | Challenge                 |
+| UIConstruction_Buttons | CopyPaste                 |
+| UIConstruction_Buttons | DecalEditor               |
+| UIConstruction_Buttons | Delete                    |
+| UIConstruction_Buttons | Directory                 |
+| UIConstruction_Buttons | Down                      |
+| UIConstruction_Buttons | Drive                     |
+| UIConstruction_Buttons | Erase                     |
+| UIConstruction_Buttons | FreeItems                 |
+| UIConstruction_Buttons | GhostBlocks               |
+| UIConstruction_Buttons | Help                      |
+| UIConstruction_Buttons | Item                      |
+| UIConstruction_Buttons | Left                      |
+| UIConstruction_Buttons | MacroBlockEditor          |
+| UIConstruction_Buttons | MediaTracker              |
+| UIConstruction_Buttons | ObjectEditor              |
+| UIConstruction_Buttons | OffZone                   |
+| UIConstruction_Buttons | Options                   |
+| UIConstruction_Buttons | Paint                     |
+| UIConstruction_Buttons | Pick                      |
+| UIConstruction_Buttons | Plugins                   |
+| UIConstruction_Buttons | Quit                      |
+| UIConstruction_Buttons | Redo                      |
+| UIConstruction_Buttons | Reload                    |
+| UIConstruction_Buttons | Right                     |
+| UIConstruction_Buttons | Save                      |
+| UIConstruction_Buttons | SaveAs                    |
+| UIConstruction_Buttons | ScriptEditor              |
+| UIConstruction_Buttons | SpotModelClearUnused      |
+| UIConstruction_Buttons | SpotModelDuplicate        |
+| UIConstruction_Buttons | SpotModelNew              |
+| UIConstruction_Buttons | SpotModelRename           |
+| UIConstruction_Buttons | Square                    |
+| UIConstruction_Buttons | Stats                     |
+| UIConstruction_Buttons | Sub                       |
+| UIConstruction_Buttons | TerrainEditor             |
+| UIConstruction_Buttons | TestSm                    |
+| UIConstruction_Buttons | Text                      |
+| UIConstruction_Buttons | Tools                     |
+| UIConstruction_Buttons | Underground               |
+| UIConstruction_Buttons | Undo                      |
+| UIConstruction_Buttons | Up                        |
+| UIConstruction_Buttons | Validate                  |
+| UIConstruction_Buttons | Validate_Step1            |
+| UIConstruction_Buttons | Validate_Step2            |
+| UIConstruction_Buttons | Validate_Step3            |
+| UiSMSpectatorScoreBig  | BotLeft                   |
+| UiSMSpectatorScoreBig  | BotRight                  |
+| UiSMSpectatorScoreBig  | CenterShield              |
+| UiSMSpectatorScoreBig  | CenterShieldSmall         |
+| UiSMSpectatorScoreBig  | HandleLeft                |
+| UiSMSpectatorScoreBig  | HandleRight               |
+| UiSMSpectatorScoreBig  | PlayerIconBg              |
+| UiSMSpectatorScoreBig  | PlayerJunction            |
+| UiSMSpectatorScoreBig  | PlayerSlot                |
+| UiSMSpectatorScoreBig  | PlayerSlotCenter          |
+| UiSMSpectatorScoreBig  | PlayerSlotRev             |
+| UiSMSpectatorScoreBig  | PlayerSlotSmall           |
+| UiSMSpectatorScoreBig  | PlayerSlotSmallRev        |
+| UiSMSpectatorScoreBig  | TableBgHoriz              |
+| UiSMSpectatorScoreBig  | TableBgVert               |
+| UiSMSpectatorScoreBig  | Top                       |
+| UiSMSpectatorScoreBig  | UIRange1Bg                |
+| UiSMSpectatorScoreBig  | UIRange2Bg                |
+| BgsButtons             | BgButtonLarge             |
+| BgsButtons             | BgButtonMedium            |
+| BgsButtons             | BgButtonMediumSelector    |
+| BgsButtons             | BgButtonMediumSpecial     |
+| BgsButtons             | BgButtonSmall             |
+| BgsButtons             | BgButtonSmall2            |
+| BgsButtons             | BgButtonXSmall            |
 
 ## Entry
 
@@ -236,7 +911,7 @@ Class: `CMlFileEntry`
 
 ## Slider
 
-TODO: Add slider image.
+![Gauge](/images/slider.png)
 
 ### Common attributes
 
@@ -266,7 +941,7 @@ By default, sliders will have the minimum `range` as initial value. While it's n
 | Attribute     | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Default |
 |:--------------|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
 | `ratio`       | Number   | Progress value (between 0 and 1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 0       |
-| `style`       | Text     | Predefined style                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | *none*  |
+| `style`       | Text     | Predefined [gauge style](#gauge-styles)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | *none*  |
 | `color`       | Color    | Color for both the covered progress (brighter variant) and the non-covered progress (darker variant)                                                                                                                                                                                                                                                                                                                                                                                                                    | FFF     |
 | `drawbg`      | Boolean  | Defines if the background (everything except the progress) is displayed                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 1       |
 | `drawblockbg` | Boolean  | Defines if the non-covered progress is displayed                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 1       |
@@ -274,7 +949,9 @@ By default, sliders will have the minimum `range` as initial value. While it's n
 | `grading`     | Number   | Splits the progress into multiple sections, by defining the section width (between 0 and 1). If `centered` is active, the resulting number of sections is applied to both halves, with the most center section of each half getting merged.<br/><br/>Example: A `grading` value of 0.25 will result in the progress being displayed in 4 sections (equally wide) if `centered` is inactive, or 7 sections (3 small ones on the left, 1 bigger one in the center and 3 small ones on the right) if `centered` is active. | 1       |
 | `clan`        | Number   | TODO: Check what this does                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | TODO    |
 
-TODO: Document available styles.
+### Gauge styles
+
+TODO: Document available gauge styles.
 
 ## Video
 
@@ -312,11 +989,11 @@ Each line in the graph is defined by a `curve`, made out of `point`s.
 
 ### Curve attributes
 
-| Attribute | Type   | Description                                                                                                                                                                             | Default |
-|:----------|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| `color`   | Color  | Line color                                                                                                                                                                              | FFF     |
-| `width`   | Number | Line width (No matter how small this value is, the drawn line will always be at least 1 pixel wide)                                                                                     | 0.5     |
-| `style`   | Text   | Predefined width (One of `thin` (1 pixel width, independent of screen resolution), TODO: Document other styles) (Note: If both `width` and `style` are specified, `style` will be used) | *none*  |
+| Attribute | Type   | Description                                                                                                                                                                                                    | Default |
+|:----------|:-------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| `color`   | Color  | Line color                                                                                                                                                                                                     | FFF     |
+| `width`   | Number | Line width (No matter how small this value is, the drawn line will always be at least 1 pixel wide)                                                                                                            | 0.5     |
+| `style`   | Text   | Predefined curve style (One of `thin` (1 pixel width, independent of screen resolution), TODO: Document other curve styles) (Note: If both `width` and `style` are specified, the `style`s width will be used) | *none*  |
 
 ### Point attributes
 
