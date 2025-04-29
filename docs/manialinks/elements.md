@@ -1,24 +1,24 @@
 # Elements
 
-| Tag             | Description                                                  |
-|:----------------|:-------------------------------------------------------------|
-| `label`         | Displays a text                                              |
-| `quad`          | Displays a rectangle (color or image)                        |
-| `entry`         | Displays a single-line textfield                             |
-| `textedit`      | Displays a multi-line textfield                              |
-| `fileentry`     | Displays an input to select a local file                     |
-| `slider`        | Displays a slider                                            |
-| `gauge`         | Displays a progress bar                                      |
-| `video`         | Displays a video                                             |
-| `audio`         | Displays an icon to play audio                               |
-| `graph`         | Displays a line graph                                        |
-| `colorpicker`   | Displays a color picker                                      |
-| `timeline`      | Displays a timeline                                          |
-| `frame`         | Wraps elements in a container (to transformed them together) |
-| `framemodel`    | Defines a reusable template                                  |
-| `frameinstance` | Adds an instance of a `framemodel` template                  |
-| `dico`          | Defines a multi-language text dictionary                     |
-| `include`       | Includes another Manialink file                              |
+| Tag             | Description                                                |
+|:----------------|:-----------------------------------------------------------|
+| `label`         | Displays a text                                            |
+| `quad`          | Displays a rectangle (color or image)                      |
+| `entry`         | Displays a single-line textfield                           |
+| `textedit`      | Displays a multi-line textfield                            |
+| `fileentry`     | Displays an input to select a local file                   |
+| `slider`        | Displays a slider                                          |
+| `gauge`         | Displays a progress bar                                    |
+| `video`         | Displays a video                                           |
+| `audio`         | Displays an icon to play audio                             |
+| `graph`         | Displays a line graph                                      |
+| `colorpicker`   | Displays a color picker                                    |
+| `timeline`      | Displays a timeline                                        |
+| `frame`         | Wraps elements in a container (to transform them together) |
+| `framemodel`    | Defines a reusable template                                |
+| `frameinstance` | Adds an instance of a `framemodel` template                |
+| `dico`          | Defines a multi-language text dictionary                   |
+| `include`       | Includes another Manialink file                            |
 
 ## Coordinate system
 Manialinks use a coordinate system which is optimized for 16:9 screens. The origin (0, 0) is defined at the center of the screen, while the x-axis reaches from -160 to 160 and the y-axis from -90 to 90. The content is then stretched to match the actual proportions of the screen.
@@ -52,14 +52,14 @@ While each element has different [attributes](https://www.w3schools.com/xml/xml_
 
 ### Basic attributes
 
-| Attribute | Type    | Description                                                                                           | Default |
-|:----------|:--------|:------------------------------------------------------------------------------------------------------|:--------|
-| `id`      | Text    | No functional effect, annotates the element to access it via ManiaScript (should be unique)           | *none*  |
-| `class`   | Texts   | No functional effect, annotates the element to access it via ManiaScript                              | *none*  |
-| `z-index` | Number  | Z position (Elements with higher z position are displayed on top of elements with smaller z position) | 0       |
-| `rot`     | Number  | Rotation in degrees (clockwise)                                                                       | 0       |
-| `scale`   | Number  | Scale                                                                                                 | 1       |
-| `hidden`  | Boolean | Hides the element                                                                                     | 0       |
+| Attribute | Type    | Description                                                                                                                                                   | Default |
+|:----------|:--------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| `id`      | Text    | No functional effect, annotates the element to access it via ManiaScript (should be unique)                                                                   | *none*  |
+| `class`   | Texts   | No functional effect, annotates the element to access it via ManiaScript                                                                                      | *none*  |
+| `z-index` | Number  | Elements with higher `z-index` are displayed on top of elements with smaller `z-index` (There is no guaranteed order if two elements have the same `z-index`) | 0       |
+| `rot`     | Number  | Rotation in degrees (clockwise)                                                                                                                               | 0       |
+| `scale`   | Number  | Scale                                                                                                                                                         | 1       |
+| `hidden`  | Boolean | Hides the element                                                                                                                                             | 0       |
 
 An elements origin is its top left corner (important for position, rotation and scale).
 
@@ -1071,6 +1071,17 @@ TODO: Check and describe if/how to add blocks (with keyframes?) to the timeline 
 ```
 
 Transforming a `frame` applies the transformation to all of its children, meaning in the example above the `quad` will be positioned at `10 25` and the label at `12 17`.
+
+This includes adding the `z-index` of the frame to its children:
+
+```xml
+<frame z-index="3">
+  <quad pos="-1 -1" z-index="-1" size="10 10" bgcolor="FFF"/>
+</frame>
+<quad pos="1 1" z-index="1" size="10 10" bgcolor="F00"/>
+```
+
+In this example, the white quad will be drawn in front of the red quad, because its resulting z-index will be 3 + (-1) = 2.
 
 ## Framemodel
 
