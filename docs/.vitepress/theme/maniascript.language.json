@@ -4,7 +4,7 @@
     ],
     "firstLineMatch": "#RequireContext",
     "keyEquivalent": "^~M",
-    "name": "ManiaScript",
+    "name": "maniascript",
     "scopeName": "source.ms",
     "patterns": [
         {

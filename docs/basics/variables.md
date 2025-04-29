@@ -3,23 +3,23 @@
 ## Declaration
 Variables are declared with they keyword `declare`, a [type](/basics/types.html) and a name. The following code declares a variable named `MyNumber` of type `Integer`:
 
-```ManiaScript
+```maniascript
 declare Integer MyNumber;
 ```
 
 It is also possible to declare a variable with an initial value using `=`. If no value is specified (as above), the default value of its type will be used.
-```ManiaScript
+```maniascript
 declare Integer MyNumber = 42;
 ```
 
 In this case, you can omit the type as it will be resolved automatically based on the initial value:
-```ManiaScript
+```maniascript
 declare MyNumber = 42;
 ```
 
 Once declared, you can of course change the value of a variable via `=` at any time:
 
-```ManiaScript
+```maniascript
 MyNumber = 42;
 ```
 

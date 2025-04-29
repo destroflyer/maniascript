@@ -11,7 +11,7 @@ See [Struct](/basics/types.html#struct).
 
 ## Const
 
-```ManiaScript
+```maniascript
 #Const MyConstant True
 ```
 
@@ -22,7 +22,7 @@ See [Struct](/basics/types.html#struct).
 
 An example would be a script located in `MyPath/Library.Script.txt` with the following content:
 
-```ManiaScript
+```maniascript
 #Const MyConstant 1.23
 
 Void MyFunction() {
@@ -32,7 +32,7 @@ Void MyFunction() {
 
 To include and use this script in another one:
 
-```ManiaScript
+```maniascript
 #Include "MyPath/Library.Script.txt" as MyLib
 
 // ...
@@ -45,7 +45,7 @@ The namespace (in the example above `MyLib`) is freely definable, but of course 
 
 For the same reason (and likewise discouraged), it's possible to include a script without binding it to a specific namespace (and therefore binding it to the global namespace):
 
-```ManiaScript
+```maniascript
 #Include "MyPath/Library.Script.txt"
 
 // ...
@@ -63,7 +63,7 @@ Included scripts are not allowed to have a [main function](/basics/functions.htm
 
 ## Setting
 
-```ManiaScript
+```maniascript
 #Setting MySetting 123 as "MySettingDescription"
 ```
 
@@ -73,7 +73,7 @@ However, settings can be modified from outside the script. This can for example 
 
 ## Extends
 
-```ManiaScript
+```maniascript
 #Extends "Libs/Nadeo/TMNext/TrackMania/Modes/TMNextBase.Script.txt"
 ```
 
@@ -84,13 +84,13 @@ Scripts that extend other scripts are not allowed to declare a `main()` method o
 ## Command
 `#Command` is only available in game modes (TODO: Check if correct). Commands are declared by specifying a name, a value type (in round brackets `()`) and an optional description (of type `Text`, via `as`).
 
-```ManiaScript
+```maniascript
 #Command MyCommand(Boolean) as "MyCommandDescription"
 ```
 
 Commands can be sent to the server and will appear as events in `PendingEvents`. The game mode can identify command events via their `Type` and `CommandName` properties:
 
-```ManiaScript
+```maniascript
 foreach (Event in PendingEvents) {
   if (Event.Type == CTmModeEvent::EType::OnCommand) {
     switch (Event.CommandName) {

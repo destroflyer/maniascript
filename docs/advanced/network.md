@@ -8,24 +8,24 @@ To which player/s the variable gets sent to, depends on the object that it was a
 
 To send a variable to all players, add it to `This`, `Teams[0]` or `Teams[1]`:
 
-```ManiaScript
+```maniascript
 declare netwrite Integer MyVariableForAll for This;
 ```
 
 To send a variable to only one player, add it to this players `UI`:
 
-```ManiaScript
+```maniascript
 declare UI <=> UIManager.GetUI(Player);
 declare netwrite Integer MyVariableForOne for UI;
 ```
 
 Reading a network variable on the client side works similar - You declare an extension variable with the same name for the same object, and add the `netread` keyword. Then, the game will automatically keep the value in sync for you.
 
-```ManiaScript
+```maniascript
 declare netwrite Integer MyVariableForAll for This;
 ```
 
-```ManiaScript
+```maniascript
 declare netwrite Integer MyVariableForOne for UI;
 ```
 
@@ -34,7 +34,7 @@ It's not possible to manually assign a new value to a `netread` variable.
 ## Analysis
 Note that more data being sent to clients through the network means more bandwidth being used, which can cause lag on both client and server side. To analyze how much data you are sending, you can use a function called `Dbg_DumpDeclareForVariables`. It returns a `Text` including every network variable for a given object and the according total amount of data in bytes.
 
-```ManiaScript
+```maniascript
 log(Dbg_DumpDeclareForVariables(This, False));
 ```
 

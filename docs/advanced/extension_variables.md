@@ -3,7 +3,7 @@ In ManiaScript, it is possible to (basically) add new properties to existing obj
 
 Since you can't declare new classes in ManiaScript, the primary usecase of this mechanism is to store custom data in important game objects like a player, to later access it in other places where said object is passed to. An example would be a respawn counter that is being written onto the player at the point of respawning and then later read when generating a custom scoreboard, where you have the Player object available.
 
-```ManiaScript
+```maniascript
 declare Integer RespawnCounter for Player;
 ```
 
@@ -13,7 +13,7 @@ In the example above, the variable will be initialized with the declared types d
 
 While the variable is attached to the object (like a property), it's not a real property, meaning it's not possible to access it via the `.` operator. While not encouraged, this difference allows extension variables to use the same name as an already existing property of an object:
 
-```ManiaScript
+```maniascript
 declare Real Speed for Player;
 // Speed and Player.Speed are separate variables and can have different values
 ```
@@ -21,7 +21,7 @@ declare Real Speed for Player;
 ## Writing
 To write a value into such an extension variable, you can simply assign a value to it via `=`. However, the syntax can be a bit confusing because ManiaScript offers a way to declare a custom default value (assigned if the object does not have the extension variable yet).
 
-```ManiaScript
+```maniascript
 declare Integer MyVariable for Player = 2;
 Player.MyVariable += 1;
 ```
@@ -30,7 +30,7 @@ At first sight, the code above seems suboptimal because it looks like we assign 
 
 It is not mandatory to declare a default value. If not specified, the default value of the specified type will be used. Likewise, if a default value is specified, it's not mandatory to specify the type as it can be resolved automatically.
 
-```ManiaScript
+```maniascript
 declare MyIntegerVariable for Player = 2;
 declare MyTextVariable for Player = "Hello";
 ```
@@ -38,7 +38,7 @@ declare MyTextVariable for Player = "Hello";
 ## Reading
 To read from an extension variable, you need to declare it in your current scope, so the program is aware of its existence. This will create a local variable in your scope with the same name.
 
-```ManiaScript
+```maniascript
 declare Integer MyVariable for Player;
 log(MyVariable);
 ```
@@ -47,7 +47,7 @@ Notice how this is the exact same declaration as writing, meaning it will create
 
 If your current scope already happens to have a variable with the same name, you can use the `as` keyword to give the extension variable a custom name in the current scope.
 
-```ManiaScript
+```maniascript
 declare Integer MyScore = 2;
 declare Integer MyScore as MyPlayerScore for Player;
 MyScore += MyPlayerScore;
@@ -55,7 +55,7 @@ MyScore += MyPlayerScore;
 
 A more realistic scenario would be reading the same extension variable from multiple objects into different variables:
 
-```ManiaScript
+```maniascript
 declare Integer MyScore as MyScore1 for Players[0];
 declare Integer MyScore as MyScore2 for Players[1];
 ```

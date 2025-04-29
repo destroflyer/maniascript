@@ -1,11 +1,11 @@
 # Comments
 ManiaScripts supports both single-line and multi-line comments:
 
-```ManiaScript
+```maniascript
 // This is a single-line comment
 ```
 
-```ManiaScript
+```maniascript
 /* This is a
 multi-line comment */
 ```

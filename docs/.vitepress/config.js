@@ -1,18 +1,12 @@
-import { BUNDLED_LANGUAGES } from 'shiki';
-import maniascriptGrammar from './theme/maniascript.tmLanguage.json';
-
-BUNDLED_LANGUAGES.push({
-  id: 'maniascript',
-  scopeName: 'source.ms',
-  grammar: maniascriptGrammar,
-});
+import maniascriptLanguage from './theme/maniascript.language.json';
 
 export default {
   lang: 'en-US',
   title: "ManiaScript Docs",
   description: "Documentation for ManiaScript.",
   markdown: {
-    lineNumbers: true
+    lineNumbers: true,
+    languages: [maniascriptLanguage],
   },
   themeConfig: {
     logo: '/maniascript.png',

@@ -75,7 +75,7 @@ To check the most expensive part of your script, find the highest number in the 
 ### tuningmark
 You can use the `tuningmark` function to add blocks to the tuning graph. Each call to `tuningmark` creates a new block measuring the time spent until the next `tuningmark`, `yield` or context.
 
-```ManiaScript
+```maniascript
 Void SomeFunction() {
   tuningmark("SomeFunction_Start");
   // ... do things

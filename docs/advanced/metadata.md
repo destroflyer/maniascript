@@ -3,7 +3,7 @@ Some objects support storing additional metadata on them. So far, this is only k
 
 It works by simply declaring additional [extension variables](/advanced/extension_variables.html) via the keyword `metadata` for them:
 
-```ManiaScript
+```maniascript
 declare metadata Text MyValue for Map = "Hello";
 ```
 

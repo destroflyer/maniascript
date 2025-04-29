@@ -3,7 +3,7 @@
 ## If
 An `if` statement contains code that only gets executed if the given expression evaluates to `True`.
 
-```ManiaScript
+```maniascript
 if (expression) {
   // Your code
 }
@@ -11,7 +11,7 @@ if (expression) {
 
 You can follow up with an `else` statement without further arguments to handle the case where the expression evaluates to `False`.
 
-```ManiaScript
+```maniascript
 if (expression) {
   // Executed when expression is True
 } else {
@@ -21,7 +21,7 @@ if (expression) {
 
 When asking for an alternative condition, we don't have to nest the next `if` and `else` statement in the respective `else` block, but instead use as many `else if` constructs as needed:
 
-```ManiaScript
+```maniascript
 if (expression1) {
   // Your code when expression1 is True
 } else if (expression2) {
@@ -34,7 +34,7 @@ if (expression1) {
 ## Switch
 To avoid a lot of chained `else if` statements that all check for different values of the same expression, we can use a `switch` statement. It contains multiple `case`s for each value to be checked and an optional `default`, which gets executed when none of the checked values was matching.
 
-```ManiaScript
+```maniascript
 switch (expression) {
   case value1: {
     // Executed when expression is value1
@@ -52,7 +52,7 @@ The different blocks are tested in their order of declaration - This includes th
 
 A special version of the `switch` statement is `switchtype`. It checks whether the given expression, evaluating to an object, is an instance of one of the classes provided in the `case` statements.
 
-```ManiaScript
+```maniascript
 switchtype (Control) {
   case CMlEntry: log((Control as CMlEntry).Value);
   case CMlTextEdit: log((Control as CMlTextEdit).Value);
@@ -63,7 +63,7 @@ switchtype (Control) {
 ## While
 A `while` loop executes code as long as a given condition evaluates to `True`:
 
-```ManiaScript
+```maniascript
 while (expression) {
   // Executed as long as expression is True
 }
@@ -74,7 +74,7 @@ So, if the expression directly evaluates to `False`, the code will not be execut
 ## For
 To execute code a set number of times, a `for` loop can be used:
 
-```ManiaScript
+```maniascript
 for (MyIndex, 2, 5) {
   // Executed with MyIndex = 2, 3, 4 and then 5 (a total of 4 times)
 }
@@ -84,7 +84,7 @@ This will declare an `Integer` variable `MyIndex` (name can be customized), whic
 
 While being bad practice, it's possible for the index variable to have the same name as an already declared variable in the same scope. In this edge case, instead of a compilation error, the loop variable is prioritized when the name is evaluated:
 
-```ManiaScript
+```maniascript
 declare Text MyIndex = "Hello";
 for (MyIndex, 1, 3) {
   // Will still compile and log the values 2, 3 and 4
@@ -95,7 +95,7 @@ for (MyIndex, 1, 3) {
 ## Foreach
 When iterating over an array, it's often easier to use a `foreach` loop:
 
-```ManiaScript
+```maniascript
 foreach (MyValue in MyArray) {
   // Your code that can use MyValue
 }
@@ -103,7 +103,7 @@ foreach (MyValue in MyArray) {
 
 It also allows accessing the current index/key:
 
-```ManiaScript
+```maniascript
 foreach (MyIndex => MyValue in MyArray) {
   // Your code that can use MyIndex and MyValue
 }
@@ -111,7 +111,7 @@ foreach (MyIndex => MyValue in MyArray) {
 
 While being bad practice, it's possible for the index or value variable to have the same name as an already declared variable in the scope outside of the loop. In this edge case, instead of a compilation error, the loop variable is prioritized when the name is evaluated:
 
-```ManiaScript
+```maniascript
 declare Text MyIndex = "Hello";
 declare Text MyValue = "World";
 foreach (MyIndex => MyValue in [1, 2, 3]) {
@@ -123,7 +123,7 @@ foreach (MyIndex => MyValue in [1, 2, 3]) {
 ### Reverse
 The `reverse` keyword allows iterating arrays in reverse order:
 
-```ManiaScript
+```maniascript
 foreach (MyValue in MyArray reverse) {
   // Your code that can use MyValue
 }
@@ -136,7 +136,7 @@ foreach (MyIndex => MyValue in MyArray reverse) {
 ## Meanwhile
 Sadly, the `meanwhile` loop isn't fully understood yet. It seems to be a `while` loop that automatically [yields](/advanced/time.html#yield) and re-executes everything when it exits the loop body. However, the full extent of this re-execution is not known. Therefore, it is strongly recommended to not use `meanwhile`, in order to avoid unknown side effects.
 
-```ManiaScript
+```maniascript
 // Before
 meanwhile (Condition) {
     // Body
@@ -149,7 +149,7 @@ In every type of loop you can use the keywords `break` to stop and completely ex
 
 An example would be iterating over some data to find an element with a specific property, using `continue` when the current element can be skipped and `break` when finding a matching element to exit out of the loop:
 
-```ManiaScript
+```maniascript
 declare CMlLabel LabelWithValueX;
 foreach (Control in Page.MainFrame.Controls) {
   if (!(Control is CMlLabel)) {

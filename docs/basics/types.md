@@ -4,13 +4,13 @@ ManiaScript is a strongly typed language, meaning every value has to be of a cer
 ## Boolean
 A `Boolean` can be either `True` or `False`. Default value is `False`.
 
-```ManiaScript
+```maniascript
 declare Boolean A = True;
 ```
 
 Operators:
 
-```ManiaScript
+```maniascript
 A = B && C; // And
 A = B || C; // Or
 A = B == C; // Equal to
@@ -22,7 +22,7 @@ ManiaScript does not offer boolean compound assignments (`A |= B`, `A &= B`), yo
 ## Numerics
 There are two numeric types `Integer` and `Real`, depending on precision and range. Both of them support basic arithmetic operations:
 
-```ManiaScript
+```maniascript
 A = B + C; // Addition
 A = B - C; // Subtraction
 A = B * C; // Multiplication
@@ -31,7 +31,7 @@ A = B / C; // Division
 
 ManiaScript offers basic arithmetic compound assignments:
 
-```ManiaScript
+```maniascript
 A += B; // A = A + B;
 A -= B; // A = A - B;
 A *= B; // A = A * B;
@@ -44,7 +44,7 @@ ManiaScript does not offer atomic increment/decrement operations (`A++`, `A--`),
 
 It's also possible to compare numerics via comparison operators.
 
-```ManiaScript
+```maniascript
 A = B < C; // Less than
 A = B <= C; // Less than or equal to
 A = B == C; // Equal to
@@ -58,12 +58,12 @@ The result of a comparison operation is a `Boolean`.
 ## Integer
 An `Integer` is an integer between -2<sup>31</sup> (-2147483648) and 2<sup>31</sup>-1 (2147483647). Default value is `0`.
 
-```ManiaScript
+```maniascript
 declare Integer A = 42;
 ```
 
 The `Integer` type also offers a modulo operator (Not available for `Real`):
-```ManiaScript
+```maniascript
 A = B % C;
 A %= B; // A = A % B
 ```
@@ -71,7 +71,7 @@ A %= B; // A = A % B
 ## Real
 A `Real` is a real number between 1e-45 and 1e+38. Default value is `0.0`. Comparison threshold for `Real` values is 1e-5 (0.00001).
 
-```ManiaScript
+```maniascript
 declare Real A = 1.23;
 ```
 
@@ -89,7 +89,7 @@ ManiaScript offers a few numeric vector types, which represent a container inclu
 
 The values can either be accessed via the properties `X`, `Y` and `Z` (if three-dimensional) or via array indices `0`, `1` and `2` (if three-dimensional):
 
-```ManiaScript
+```maniascript
 declare Int2 A = <1, 2>;
 declare Vec3 B = <3.4, 0, -5>;
 
@@ -99,7 +99,7 @@ C = A[0] + A[1] + B[2];
 
 Operators:
 
-```ManiaScript
+```maniascript
 A = B + C; // Addition (<B.X + C.X, B.Y + C.Y, B.Z + C.Z>)
 A = B - C; // Subtraction (<B.X - C.X, B.Y - C.Y, B.Z - C.Z>)
 A = B == C; // Equal to (B.X == C.X && B.Y == C.Y && B.Z == C.Z)
@@ -109,13 +109,13 @@ A = B != C; // Not equal to (B.X != C.X || B.Y != C.Y || B.Z != C.Z)
 ## Text
 A `Text` is a string of characters and is defined via quotes `"`. Default value is empty `""`.
 
-```ManiaScript
+```maniascript
 declare Text A = "Hello World";
 ```
 
 Special characters can be escaped via `\`:
 
-```ManiaScript
+```maniascript
 A = "Me: \"Hello World\"";
 B = "This is a backslash: \\";
 C = "Line1\nLine2";
@@ -123,7 +123,7 @@ C = "Line1\nLine2";
 
 A `Text` can be concatenated with another value via the `^` operator:
 
-```ManiaScript
+```maniascript
 A = "Hello";
 B = "World";
 C = 1;
@@ -136,7 +136,7 @@ You can concatenate values of all types to a `Text`, converting them to a readab
 
 ManiaScript also offers text blocks via `"""`, where you don't have to escape `"` and can use string interpolation to insert values.
 
-```ManiaScript
+```maniascript
 A = "destroflyer";
 B = 42.157;
 C = """Player "{{{ A }}}": {{{ B }}}"""; // Player "destroflyer": 42.157"
@@ -144,7 +144,7 @@ C = """Player "{{{ A }}}": {{{ B }}}"""; // Player "destroflyer": 42.157"
 
 Operators:
 
-```ManiaScript
+```maniascript
 A = B < C; // Less than
 A = B <= C; // Less than or equal to
 A = B == C; // Equal to
@@ -162,7 +162,7 @@ When a variable of a class type does not have an instance assigned to it, its va
 
 Object properties and methods can be accessed via `.`:
 
-```ManiaScript
+```maniascript
 A = MyObject.MyProperty + 123;
 A = MyObject.MyFunction();
 ```
@@ -170,17 +170,17 @@ A = MyObject.MyFunction();
 ### Cast
 Casting an object from one class to another class can either be done with the keyword `as` or the function `cast`.
 
-```ManiaScript
+```maniascript
 declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
 ```
 
-```ManiaScript
+```maniascript
 declare MyQuad = cast(Page.GetFirstChild("myQuad"), CMlQuad);
 ```
 
 This can especially be necessary when working with APIs, where results are returned in a common parent class type (e.g. fetching Manialink elements).
 
-```ManiaScript
+```maniascript
 // Value will be cast from CMlControl to CMlQuad
 declare MyQuad = Page.GetFirstChild("myQuad") as CMlQuad;
 // BgColor is only declared in the CMlQuad class, not in CMlControl
@@ -190,7 +190,7 @@ MyQuad.BgColor = <0, 0, 0>;
 ### Is
 To check if an object is an instance of a certain class, you can use the keyword `is` (results in a `Boolean`).
 
-```ManiaScript
+```maniascript
 declare IsQuad = Page.GetFirstChild("myQuad") is CMlQuad;
 ```
 
@@ -200,7 +200,7 @@ Every class in ManiaScript has an `Id` property of the type `Ident`. Its value c
 ## Struct
 While a script can't declare custom classes, it's possible to define structs, which are pure data objects containing multiple variables as properties. Struct types can only be declared via a [directive](/advanced/directives.html) `#Struct` in the global scope:
 
-```ManiaScript
+```maniascript
 #Struct MyStruct {
   Integer MyNumber;
   Text MyText;
@@ -209,7 +209,7 @@ While a script can't declare custom classes, it's possible to define structs, wh
 
 At this point, you only defined what this specific struct type looks like. To create a variable of this type, you need to declare it as you would do with any other type. A complete struct is expressed by specifying the struct name, curly braces `{}` and (not mandatory) property name and value pairs. Omitting a property inside the curly braces will assign the default value of its type to it. In the same way, the default value for a struct type is a struct with each property having its types default value assigned to it.
 
-```ManiaScript
+```maniascript
 declare MyStruct MyDefaultValues1;
 declare MyStruct MyDefaultValues2 = MyStruct{};
 declare MyStruct MyCustomValues = MyStruct{ MyNumber = 1, MyText = "Example" };
@@ -217,7 +217,7 @@ declare MyStruct MyCustomValues = MyStruct{ MyNumber = 1, MyText = "Example" };
 
 Of course, it's also possible to set the whole struct or access single properties via `.` at a later point:
 
-```ManiaScript
+```maniascript
 MyCustomValues = MyStruct{ MyNumber = 2, MyText = "Another example" };
 MyCustomValues.MyNumber *= 2;
 log(MyCustomValues.MyNumber);
@@ -239,7 +239,7 @@ An array can store multiple values of equal type. There are three types of array
 ### List
 A list can store multiple values, indexed by a number. They are declared via square brackets `[]` after the value type:
 
-```ManiaScript
+```maniascript
 declare Integer[] A = [1, 3, 5, 7];
 ```
 
@@ -247,7 +247,7 @@ Default value is an empty list.
 
 List elements can be read and written via square brackets `[]` and index, starting at 0. Accessing an invalid index will throw an error.
 
-```ManiaScript
+```maniascript
 B = A[0];
 A[1] = 42;
 ```
@@ -284,7 +284,7 @@ List methods:
 ### Associative array
 An associative array can store multiple values, indexed via freely definable keys (all types except arrays can be used as keys). They are declared via the key type in square brackets `[]` after the value type:
 
-```ManiaScript
+```maniascript
 declare Integer[Text] A = ["Hello" => 1, "World" => 1337];
 ```
 
@@ -292,7 +292,7 @@ Default value is an empty associative array.
 
 Associative arrays elements can be read and written via square brackets `[]` and key. Accessing an invalid key will throw an error.
 
-```ManiaScript
+```maniascript
 B = A["Hello"];
 A["World"] = 42;
 ```
@@ -333,7 +333,7 @@ TODO: Check and describe the sorting part.
 
 Usually, they contain objects like the players on a server.
 
-```ManiaScript
+```maniascript
 PlayerIdA = Players[0].Id;
 
 // ...
@@ -343,7 +343,7 @@ PlayerA = Players[PlayerIdA];
 
 As stated, API arrays also accept the actual object as key (instead of its `Id`). However, there isn't really a good usecase for this, as you would just receive the object back that you passed in.
 
-```ManiaScript
+```maniascript
 PlayerA = Players[0];
 
 // ...
@@ -369,7 +369,7 @@ API array methods:
 ### Multidimensional arrays
 Arrays can store other arrays as values, leading to a nested hierarchy:
 
-```ManiaScript
+```maniascript
 declare Integer[] A = [1, 2, 3];
 declare Integer[][] B = [[1, 2, 3], [4, 5, 6]];
 declare Integer[][Text] C = ["A" => [1,2,3], "B" => [4,5,6]];

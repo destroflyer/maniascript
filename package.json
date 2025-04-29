@@ -12,6 +12,6 @@
   "author": "destroflyer",
   "license": "ISC",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.35"
+    "vitepress": "^2.0.0-alpha.5"
   }
 }

@@ -7,7 +7,7 @@ There are two variations of labels:
 
 Implementing a label (i.e. defining the code that should be executed when calling it) can be done as follows:
 
-```ManiaScript
+```maniascript
 *** MyLabel ***
 ***
 // Your custom implementation
@@ -23,7 +23,7 @@ The implementation block requires some executable code in its body, meaning that
 
 The code inside the body has the scope of the label when it's called, meaning that (only) the variables and functions known at the place of `+++ MyLabel +++`/`--- MyLabel ---` can be accessed. But since labels can be called multiple times (and even from different contexts), their scope is in fact the intersection of those calling scopes:
 
-```ManiaScript
+```maniascript
 Void MyFunction1() {
   declare V = 2;
   declare W = 3;
@@ -44,7 +44,7 @@ log(V); // logs 2 and 4 respectively
 
 Labels can only be called in a function. This means that you can only access function-level code in the label implementation (e.g. you can't define functions). Depending on your use case it might be a good idea to wrap your label call in curly braces `{}`, e.g. `{+++ MyLabel +++}`. This wraps your label call in a new scope - Therefore, while still being able to read and write all variables available at that point, you can't leak (internal) variables of your label implementation. Consider the following example:
 
-```ManiaScript
+```maniascript
 *** MyLabel ***
 ***
 declare Tmp = MyVariable;

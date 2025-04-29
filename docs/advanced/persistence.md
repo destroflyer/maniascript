@@ -1,7 +1,7 @@
 # Persistence
 ManiaScript allows persisting variables, which means storing them across contexts (like different game modes) or even application restarts. To persist a variable, simply add the keyword `persistent` to its declaration.
 
-```ManiaScript
+```maniascript
 declare persistent Boolean MyGameMode_ConfigFeatureX;
 ```
 
@@ -11,7 +11,7 @@ Note, that the variable `MyGameMode_ConfigFeatureX` above was specifically named
 
 Assigning values to `persistent` variables works the same way as it does for [extension variables](/advanced/extension_variables.html): The "initial" value after the `=` in the declaration (or the types default value if not specified) only represents the initial value if no value already has been set. This means when you persisted this variable before, the stored value will be loaded and used. After the declaration, the variable can be used to read the current value and assignments via `=` work as usual. Consider the following code:
 
-```ManiaScript
+```maniascript
 declare persistent Integer MyGameMode_ConfigA = 42;
 MyGameMode_ConfigA += 1;
 ```
@@ -26,7 +26,7 @@ TODO: Check how this behaves on server.
 ## Profile
 To keep a variable persisted across game restarts, the `persistent` variable needs to be declared as an [extension variable](/advanced/extension_variables.html) of `UserMgr.MainUser`, followed by a call of `UserMgr.MainUser.PersistentSave();`.
 
-```ManiaScript
+```maniascript
 declare persistent Integer MyGameMode_CounterA for UserMgr.MainUser;
 MyGameMode_CounterA += 1;
 UserMgr.MainUser.PersistentSave();

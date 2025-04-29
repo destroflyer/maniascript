@@ -1,7 +1,7 @@
 # Translations
 ManiaScript offers accessing the ingame translations via the [function](/basics/functions.html) `_`.
 
-```ManiaScript
+```maniascript
 declare TranslatedTimeLimit = _("Time limit");
 ```
 
@@ -12,7 +12,7 @@ Therefore, when running the example above, `TranslatedTimeLimit` would be `Time 
 ## Logging
 Translations behave specially when [logged](/advanced/log.html). Instead of printing the actual translation, ManiaScript will log the original input with a leading `̺ ` to mark it:
 
-```ManiaScript
+```maniascript
 log(_("Time limit"));
 ```
 

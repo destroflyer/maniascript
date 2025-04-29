@@ -3,7 +3,7 @@
 ## Now
 ManiaScript offers a global constant `Now` to create logic that involves time. It will always be up-to-date and is an `Integer` specifying the number of milliseconds passed since the current "activity" has started (i.e. a value of 4213 means 4213 milliseconds or 4.213 seconds have passed). An example would be a custom game mode that was launched in the map editor - In this case, the value seems to be the time since the map editor was started. However, understanding the absolute value of `Now` is not too important, since it will mostly be used to recognize how much time (or if a certain amount of time) has passed since something happened.
 
-```ManiaScript
+```maniascript
 MyStart = Now;
 
 // Some long running code
@@ -20,7 +20,7 @@ There are multiple ways to pause the execution of your script. This can be neces
 ### Yield
 The keyword `yield` pauses the script for the shortest possible amount of time.
 
-```ManiaScript
+```maniascript
 yield;
 ```
 
@@ -29,13 +29,13 @@ The most obvious use case for `yield` is to cause a display update during a long
 ### Sleep
 The function `sleep` pauses the script for a certain amount of milliseconds.
 
-```ManiaScript
+```maniascript
 Sleep(1500); // 1.5 seconds
 ```
 
 Calling `sleep(0)` is equivalent to `yield;`, as `sleep` can be written as:
 
-```ManiaScript
+```maniascript
 Void Sleep(Integer Duration) {
   Start = Now;
   while (Now < (Start + Duration)) {
@@ -47,14 +47,14 @@ Void Sleep(Integer Duration) {
 ### Wait
 The function `wait` pauses the script until a `Boolean` expression evaluates to `True`.
 
-```ManiaScript
+```maniascript
 Sleep(A > 0);
 ```
 
 Please note that the expression as a whole will be evaluated repeatedly, meaning that if it's a function call, the function can potentially be called many times.
 
 The internal logic of `wait(MyExpression)` can be written as:
-```ManiaScript
+```maniascript
 while (!MyExpression) {
   yield;
 }
@@ -62,7 +62,7 @@ while (!MyExpression) {
 
 A specific use case of `wait` is a script that reacts to a list of global events (e.g. Manialink or game mode scripts) - If you would `sleep(Duration)` in such a script, you will miss the events which occurred during the `sleep` pause. This is happening because one event is only valid during 1 script "frame", i.e. the time between two consecutive `yield`. To avoid this behaviour, you can construct a `wait` call similar to the following one:
 
-```ManiaScript
+```maniascript
 Start = Now;
 wait(Now > (Start + 1000) || PendingEvents.count >= 1);
 ```

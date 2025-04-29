@@ -3,14 +3,14 @@ Aliases are a special type of pointer that are assigned via `<=>`. They are fast
 
 Here's an example: There's an [API array](/basics/types.html#api-array) of players called `Players`, which is always sorted descending by score. You can write:
 
-```ManiaScript
+```maniascript
 declare BestPlayer <=> Players[0];
 // Alice is the best player, so BestPlayer "points" to Alice
 ```
 
 You would probably expect that:
 
-```ManiaScript
+```maniascript
 // Alice is the best player, so BestPlayer "points" to Alice
 declare BestPlayer <=> Players[0];
 
@@ -22,7 +22,7 @@ log(BestPlayer.Login);
 
 But: Here, `BestPlayer` is an alias. Therefore, `BestPlayer` means "The player at the first position of the array `Players`". That's why, if scores would change (and therefore the order of our example API array), it would maybe not mean Alice anymore.
 
-```ManiaScript
+```maniascript
 // Alice is the best player, so BestPlayer "points" to Alice
 declare BestPlayer <=> Players[0];
 
@@ -41,7 +41,7 @@ In these cases, it becomes clear that instances of classes do not behave the sam
 
 Now what if you simply want to keep Alice (i.e. the best player at a certain point in time) in a variable to use later instead of the current best player? The following code will work "as expected":
 
-```ManiaScript
+```maniascript
 // BestPlayerId is an Ident: It will never change
 declare BestPlayerId = Players[0].Id;
 
@@ -56,7 +56,7 @@ But the `log` will be a bit more time-consuming than the previous example with a
 
 You could also rewrite the code to first fetch the `Id` of the current best player and then create an alias for this player `Id` in the API array:
 
-```ManiaScript
+```maniascript
 // Will be an alias to Players[AliceId] and not Players[0]. Huge difference!
 declare BestPlayer <=> Players[Players[0].Id];
 
@@ -69,7 +69,7 @@ log(BestPlayer.Login);
 
 And this mechanism is exactly what a simple `=` assignment on a class instance does. It is equivalent to the following code:
 
-```ManiaScript
+```maniascript
 // Note the difference: = instead of <=>
 // This does the same as: declare BestPlayer <=> Players[Players[0].Id]; 
 declare BestPlayer = Players[0];
@@ -89,7 +89,7 @@ Unfortunately, there are some edge cases where aliases can become tricky.
 ### Aliases in API arrays
 Consider the following example where an [API array](/basics/types.html#api-array) `Players` is used:
 
-```ManiaScript
+```maniascript
 // Players[0] => Alice, Players[1] => Bob
 declare MyArray = [Players[0], Players[1]];
 declare MyValue <=> MyArray[0];
@@ -107,20 +107,20 @@ As with API arrays, handling API functions behaves differently from handling fun
 
 When you call an API function that returns an object, the result will be a "simplified" alias. Those are unambiguous aliases referring to the objects `Id`, inside of an API array.
 
-```ManiaScript
+```maniascript
 // MyLabel is an alias to Page.MainFrame.Controls[IdOfTheFirstChildFound]
 declare MyLabel <=> GetFirstChild("Label"); 
 ```
 
 The code above is behaving exactly like:
 
-```ManiaScript
+```maniascript
 declare MyLabel <=> Page.MainFrame.Controls[GetFirstChild("Label").Id];
 ```
 
 So if there was an API function called `GetBestPlayer`, the following code would still log Alice, even though the best player changed between alias creation and logging.
 
-```ManiaScript
+```maniascript
 // Alice is the best player, so BestPlayer is an alias for Players[AliceId]
 declare BestPlayer <=> GetBestPlayer();
 

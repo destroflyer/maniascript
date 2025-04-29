@@ -4,7 +4,7 @@ Dumping something in ManiaScript converts it to a `Text` representing ManiaScrip
 ## Dump
 The function `dump` returns a `Text` representing ManiaScript code that would express the passed value.
 
-```ManiaScript
+```maniascript
 MyText = dump("Hello World"); // "Hello World"
 MyText = dump(<1.3, 2.0, -1.4>); // <1.3, 2., -1.4>
 MyText = dump(["A" => 1, "B" => 2]); // ["A"=>1, "B"=>2]
@@ -28,7 +28,7 @@ MyText = dump(["A" => 1, "B" => 2]); // ["A"=>1, "B"=>2]
 ## Dumptype
 The function `dumptype` returns a `Text` representing ManiaScript code that would declare the passed [struct](/basics/types.html#struct) type.
 
-```ManiaScript
+```maniascript
 #Struct MyStruct {
   Integer MyNumber;
   Text MyText;
