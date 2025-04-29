@@ -1,10 +1,10 @@
 import { BUNDLED_LANGUAGES } from 'shiki';
-import splunk_syntax from './theme/maniascript.tmLanguage.json';
+import maniascriptGrammar from './theme/maniascript.tmLanguage.json';
 
 BUNDLED_LANGUAGES.push({
   id: 'maniascript',
   scopeName: 'source.ms',
-  grammar: splunk_syntax,
+  grammar: maniascriptGrammar,
 });
 
 export default {
