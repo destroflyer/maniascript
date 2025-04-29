@@ -23,7 +23,7 @@
 ## Coordinate system
 Manialinks use a coordinate system which is optimized for 16:9 screens. The origin (0, 0) is defined at the center of the screen, while the x-axis reaches from -160 to 160 and the y-axis from -90 to 90. The content is then stretched to match the actual proportions of the screen.
 
-![Manialink coordinate system](/images/manialink_coordinate_system.png)
+![Manialink coordinate system](/assets/images/manialink_coordinate_system.png)
 
 ## Supported file types
 
@@ -911,7 +911,7 @@ Class: `CMlFileEntry`
 
 ## Slider
 
-![Gauge](/images/slider.png)
+![Gauge](/assets/images/slider.png)
 
 ### Common attributes
 
@@ -929,7 +929,7 @@ By default, sliders will have the minimum `range` as initial value. While it's n
 
 ## Gauge
 
-![Gauge](/images/gauge.png)
+![Gauge](/assets/images/gauge.png)
 
 ### Common attributes
 
@@ -1025,7 +1025,7 @@ Each line in the graph is defined by a `curve`, made out of `point`s.
 </graph>
 ```
 
-![Graph](/images/graph.png)
+![Graph](/assets/images/graph.png)
 
 ## Colorpicker
 
