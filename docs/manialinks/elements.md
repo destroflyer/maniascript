@@ -194,7 +194,7 @@ An elements origin is its top left corner (important for position, rotation and 
 | `loop`    | Boolean | Defines if the media plays in a loop.<br /><br />Note: The media seems to never loop, independent of the provided value.                                                                                                                                           | 1       |
 | `volume`  | Number  | Volume in [dBFS](https://en.wikipedia.org/wiki/DBFS) (0 for maximum, negative values for quiet)                                                                                                                                                                    | 0       |
 
-TODO: Check why audio of media can't be heard when testing.
+TODO: Check why audio of media can't be heard when testing (also when triggered via ManiaScript `.Play()`).
 
 ### Action attributes
 
@@ -961,6 +961,10 @@ TODO: Document available gauge styles.
 - [Size & alignment attributes](#size-alignment-attributes)
 - [Media attributes](#media-attributes)
 
+### ManiaScript
+
+Class: `CMlMediaPlayer`
+
 ## Audio
 
 ### Common attributes
@@ -968,6 +972,10 @@ TODO: Document available gauge styles.
 - [Basic attributes](#basic-attributes)
 - [Size & alignment attributes](#size-alignment-attributes)
 - [Media attributes](#media-attributes)
+
+### ManiaScript
+
+Class: `CMlMediaPlayer`
 
 ## Graph
 
