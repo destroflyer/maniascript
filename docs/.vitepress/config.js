@@ -60,6 +60,7 @@ export default {
             { text: "Manialinks", link: "/manialinks/manialinks.md" },
             { text: "Development setup", link: "/manialinks/development_setup.md" },
             { text: "Elements", link: "/manialinks/elements.md" },
+            { text: "Text styling", link: "/manialinks/text_styling.md" },
             { text: "Symbols", link: "/manialinks/symbols.md" },
           ],
         },
