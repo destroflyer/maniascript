@@ -233,6 +233,10 @@ TODO: Check why audio of media can't be heard when testing (also when triggered 
 | `opacity`     | Number  | Opacity (0 = transparent, 1 = opaque)                                                                                                                                                                                                                                                                                                                                            | 1       |
 | `italicslope` | Number  | Angle of the italic `$i` [text styling](/manialinks/text_styling.html) (between 0 and 1)                                                                                                                                                                                                                                                                                           | 0.2     |
 
+### ManiaScript
+
+Class: `CMlLabel`
+
 ## Quad
 
 ### Common attributes
@@ -838,6 +842,10 @@ TODO: Check why audio of media can't be heard when testing (also when triggered 
 | BgsButtons             | BgButtonSmall2            |
 | BgsButtons             | BgButtonXSmall            |
 
+### ManiaScript
+
+Class: `CMlQuad`
+
 ## Entry
 
 ### Common attributes
@@ -857,6 +865,10 @@ TODO: Check why audio of media can't be heard when testing (also when triggered 
 | `textformat` | Text    | How the text gets displayed (One of `Basic`, `Password`, `Newpassword`) (With `Password` and `Newpassword`, each characters is displayed as `*`)                                                                                                                                                                                                                                                                            | `Basic`      |
 | `selecttext` | Boolean | Defines if the text gets automatically selected when the element receives focus                                                                                                                                                                                                                                                                                                                                             | 0            |
 | `name`       | Text    | No functional effect, annotates the element to identify it via ManiaScript.<br/><br/>Note: In older games, using the `name` value as query parameter value in [links](#action-attributes) replaced it with the elements current text value (TODO: Check "POST request or dedicated server as xmlrpc array")                                                                                                                 | *none*       |
+
+### ManiaScript
+
+Class: `CMlEntry`
 
 ## Textedit
 
@@ -878,6 +890,10 @@ TODO: Check why audio of media can't be heard when testing (also when triggered 
 | `showlinenumbers` | Boolean | Defines if line numbers should be displayed to the left of the input (with the current lines number being color highlighted)                                                                                                                                                                                  | 0       |
 | `linespacing`     | Number  | Spacing between displayed lines, defined as the number of line heights that the y-axis progresses with each line (0 = all lines at the same height, 1 = lines directly below each other (without space between them), 2 = one empty line height between lines, 3 = two empty line height between lines, etc.) | 1       |
 | `name`            | Text    | No functional effect, annotates the element to identify it via ManiaScript.<br/><br/>Note: In older games, using the `name` value as query parameter value in [links](#action-attributes) replaced it with the elements current text value (TODO: Check "POST request or dedicated server as xmlrpc array")   | *none*  |
+
+### ManiaScript
+
+Class: `CMlTextEdit`
 
 ## Fileentry
 
@@ -927,6 +943,10 @@ Class: `CMlFileEntry`
 
 By default, sliders will have the minimum `range` as initial value. While it's not possible to specify a default value via XML, it's possible to set it via Maniascript (property `Value`).
 
+### ManiaScript
+
+Class: `CMlSlider`
+
 ## Gauge
 
 ![Gauge](/assets/images/gauge.png)
@@ -952,6 +972,10 @@ By default, sliders will have the minimum `range` as initial value. While it's n
 ### Gauge styles
 
 TODO: Document available gauge styles.
+
+### ManiaScript
+
+Class: `CMlGauge`
 
 ## Video
 
@@ -1027,6 +1051,10 @@ Each line in the graph is defined by a `curve`, made out of `point`s.
 
 ![Graph](/assets/images/graph.png)
 
+### ManiaScript
+
+Class: `CMlGraph` (+ `CMlGraphCurve`)
+
 ## Colorpicker
 
 ### Common attributes
@@ -1040,6 +1068,10 @@ Each line in the graph is defined by a `curve`, made out of `point`s.
 | Attribute      | Type  | Description   | Default |
 |:---------------|:------|:--------------|:--------|
 | `defaultcolor` | Color | Default color | 000     |
+
+### ManiaScript
+
+Class: `CMlColorPicker`
 
 ## Timeline
 
@@ -1062,6 +1094,10 @@ Each line in the graph is defined by a `curve`, made out of `point`s.
 | `keycolor`         | Color  | Color of the keyframes (TODO: Check)                                                                                    | TODO (based on replay editor, it's probably cyan?) |
 
 TODO: Check and describe if/how to add blocks (with keyframes?) to the timeline (either via XML (children like for `graph`?) or Maniascript).
+
+### ManiaScript
+
+Class: `CMlTimeLine`
 
 ## Frame
 
@@ -1090,6 +1126,10 @@ This includes adding the `z-index` of the frame to its children:
 ```
 
 In this example, the white quad will be drawn in front of the red quad, because its resulting z-index will be 3 + (-1) = 2.
+
+### ManiaScript
+
+Class: `CMlFrame`
 
 ## Framemodel
 
