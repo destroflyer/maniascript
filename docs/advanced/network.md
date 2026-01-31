@@ -1,18 +1,18 @@
 # Network
-When developing a custom game mode that displays something to the player, you have to keep in mind that different parts of your script will run on different machines: The actual game mode will be running on the server, while the script displaying the information will run on each players' computer. These parts of the code need to communicate with each other over the network.
+When developing a custom game mode that for example displays something to the player, you have to keep in mind that different parts of your script will run on different machines: The actual game mode will be running on the server, while the script displaying the information will run on each players' computer. These parts of the code need to communicate with each other over the network.
 
 ## Synchronizing variables
 ManiaScript handles networking by synchronizing variables. Adding the keyword `netwrite` to an [extension variable](/advanced/extension_variables.html) of an object on the server will enable it to be sent and read to/by the clients.
 
 To which player/s the variable gets sent to, depends on the object that it was added to. It's possible to either send a variable to all players or only to one specific player.
 
-To send a variable to all players, add it to `This`, `Teams[0]` or `Teams[1]`:
+To send a variable to all players, add it to an object that is available to all players client-side scripts, e.g. a player or team - A common best practice is to add global ones to `Teams[0]`:
 
 ```maniascript
-declare netwrite Integer MyVariableForAll for This;
+declare netwrite Integer MyVariableForAll for Teams[0];
 ```
 
-To send a variable to only one player, add it to this players `UI`:
+To send a variable to only one player, add it to this players UI object (which is only accessible to the client-side script of that player):
 
 ```maniascript
 declare UI <=> UIManager.GetUI(Player);
@@ -22,9 +22,10 @@ declare netwrite Integer MyVariableForOne for UI;
 Reading a network variable on the client side works similar - You declare an extension variable with the same name for the same object, and add the `netread` keyword. Then, the game will automatically keep the value in sync for you.
 
 ```maniascript
-declare netwrite Integer MyVariableForAll for This;
+declare netwrite Integer MyVariableForAll for Teams[0];
 ```
 
+The own players UI object is available via the [client side global variable](/manialinks/maniascript_in_manialinks.html#global-variables) `UI`:
 ```maniascript
 declare netwrite Integer MyVariableForOne for UI;
 ```

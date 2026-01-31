@@ -60,8 +60,15 @@ export default {
             { text: "Manialinks", link: "/manialinks/manialinks.md" },
             { text: "Development setup", link: "/manialinks/development_setup.md" },
             { text: "Elements", link: "/manialinks/elements.md" },
+            { text: "ManiaScript in Manialinks ", link: "/manialinks/maniascript_in_manialinks.md" },
             { text: "Text styling", link: "/manialinks/text_styling.md" },
             { text: "Symbols", link: "/manialinks/symbols.md" },
+          ],
+        },
+        {
+          text: "Game modes",
+          items: [
+            { text: "Layers", link: "/game_modes/layers.md" },
           ],
         },
       ]

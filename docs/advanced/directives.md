@@ -55,7 +55,7 @@ MyFunction();
 
 The reasons why these approaches that lead to merging namespaces are discouraged:
 - Worse traceability: It's hard to understand where `MyFunction` is coming from
-- Unexpected behavior: If a function named `MyFunction` already exists in the namespace (either directly declared there or indirectly via another included script), ManiaScript will not throw an error but simply ignore this conflict and will keep using the very first `MyFunction` that was declared/imported, even if the signatures are different. The non-conflicting functions from the different libraries will however be included just fine, which can lead to even more confusion or unpredictable behavior.
+- Unexpected behaviour: If a function named `MyFunction` already exists in the namespace (either directly declared there or indirectly via another included script), ManiaScript will not throw an error but simply ignore this conflict and will keep using the very first `MyFunction` that was declared/imported, even if the signatures are different. The non-conflicting functions from the different libraries will however be included just fine, which can lead to even more confusion or unpredictable behavior.
 
 In total, merging namespaces can result in a lot of (potentially undetected) issues that can be avoided by simply always specifying a namespace.
 
