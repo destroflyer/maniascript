@@ -1,5 +1,5 @@
 # Layers
-Layers are [Manialinks](/manialinks/manialinks.html) that can be shown on the players screen.
+Layers are [Manialinks](/manialinks/manialinks.html) that can be triggered by the server script and will be shown on the players screen.
 
 ## Create
 When creating a layer, you need to give it a name and the Manialink text.

@@ -68,6 +68,8 @@ export default {
         {
           text: "Game modes",
           items: [
+            { text: "Game modes", link: "/game_modes/game_modes.md" },
+            { text: "Server loop", link: "/game_modes/server_loop.md" },
             { text: "Layers", link: "/game_modes/layers.md" },
             { text: "Events", link: "/game_modes/events.md" },
           ],

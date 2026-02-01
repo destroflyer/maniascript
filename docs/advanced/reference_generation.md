@@ -16,7 +16,7 @@ It is possible to generate a reference of ManiaScript via the `Trackmania.exe` f
 (Adapt the paths to `Trackmania.exe` and `ManiaScriptDocumentation` accordingly)
 
 4. Run `generate.bat`
-5. Verify that there is a `doc.h` file inside your `ManiaScriptDocumentation\Sources` subfolder
+5. Verify that there is a `doc.h` file inside your `ManiaScriptDocumentation\Sources` subdirectory
 
 ## Convert to HTML
 There are various tools available to convert the generated `doc.h` file into a visually pleasant reference. One of them is called Doxygen.

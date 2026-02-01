@@ -5,6 +5,8 @@ Default events are events that are getting triggered by the game out-of-the-box.
 
 While they mostly also contain more specific (e.g. race-related) events, this is not the case for all of them, plus they are typed differently. As such, `PendingEvents` is usually only used for very generic events such as a player joining.
 
+TODO: Example
+
 ## Race events
 Race events are race-related events like a player respawning or being eliminated.
 
