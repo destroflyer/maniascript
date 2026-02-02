@@ -58,6 +58,8 @@ While the editor is closed, you can press `Ctrl` + `G` to open the output window
 ### Ingame
 While playing a map to test a game mode, you can restart the server by pressing `Shift` + `Scroll lock` (using the up-to-date saved script).
 
+Note that images and videos might not be downloaded on the initial try when editing game modes ingame. Restarting the server usually fixes it.
+
 ## External
 Be aware that Trackmania caches some resources, including scripts. Therefore, when updating a script with an external editor, it won't necessarily be reloaded in the game.
 

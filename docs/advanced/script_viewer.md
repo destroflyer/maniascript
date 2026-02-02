@@ -15,7 +15,7 @@ The script names are color coded:
 You can select a script by clicking on it, which will display details about it below the list (and also open its code in the "Script viewer" panel):
 - The `Insns` value is the number of instructions executed by the script
 - The `Pool mem` value is the total size of all variables stored inside the script
-- If existing, you can also see the number of layers and audio sources created by the script
+- If existing, you can also see the number of [layers](/game_modes/layers.html) and audio sources created by the script
 
 To identify scripts easier, it's possible to assign a name to them that will be displayed in this list. For scripts in Manialinks, this can be done via the attribute `name` on the `manialink` tag:
 

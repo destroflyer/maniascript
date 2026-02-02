@@ -50,3 +50,7 @@ Resetting styles in encapsulated sections behaves special:
 - `$z` and `$g` only reset inner styles - They will not reset to the default styling, but to the previous styling before the section
 - `$m` resets both outer and inner styles - It will reset to the default style, independent of the previous styling before the section
 - `$o`, `$i`, `$t`, `$s` and `$l` will actually reset their outer counterpart by being declared again inside the section (This can be highly unexpected but might be intentional to ensure that styled text in the section looks different from the wrapping style (which was probably the styles intention in the first place))
+
+## Color cheatsheet
+
+![Text styling - Color cheatsheet](/assets/images/text_styling_color_cheatsheet.png)

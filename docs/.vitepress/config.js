@@ -74,6 +74,12 @@ export default {
             { text: "Events", link: "/game_modes/events.md" },
           ],
         },
+        {
+          text: "Other",
+          items: [
+            { text: "Thanks", link: "/other/thanks.md" },
+          ],
+        },
       ]
     },
     editLink: {

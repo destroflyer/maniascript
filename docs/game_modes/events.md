@@ -28,7 +28,13 @@ On the client, they can be sent via the function `SendCustomEvent`, which requir
 SendCustomEvent("myCustomType", ["myCustomData1", "myCustomData2"]);
 ```
 
-On the server, they are available in the array `UIManager.PendingEvents`:
+Another simple way is to add the attribute `scriptactions` to a Manialink element, which will send the custom event on click. It contains the event name and data, separated by `'`:
+
+```xml
+<label text="Ok" scriptaction="myCustomType'myCustomData1'myCustomData2"/>
+```
+
+On the server, the custom events are available in the array `UIManager.PendingEvents`:
 ```maniascript
 foreach (Event in UIManager.PendingEvents) {
   if (Event.Type == CUIConfigEvent::EType::OnLayerCustomEvent) {
